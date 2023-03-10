@@ -1,0 +1,75 @@
+.contact-single {
+    padding: 60px 0 100px 0;
+}
+.contact-single svg:not(:root).svg-inline--fa{
+    height: 40px;
+    width: 40px;
+}
+.contact-single svg:not(:root).svg-inline--fa path 
+{
+    fill:#009DCE;
+  
+}
+
+.contact-single .address-list svg:not(:root).svg-inline--fa{
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+}
+
+
+.contact-single .address-list h6{
+    font-size: 15px;
+    font-weight: 500;
+    color:#333;
+}
+.contact-single .address-list  .color1{
+    color: #6d6d6d;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+
+.contact-single .contact-form-wrapper
+{
+     padding: 40px 50px 40px 50px;
+     background: linear-gradient(130deg, rgba(0,8,41,1) 0%, rgba(2,19,73,1) 100%);
+  
+}
+.contact-single.shop-description .contact-form-wrapper input,.contact-single.shop-description textarea
+{
+    border: 1px solid #6D6D6D;
+    padding: 20px;
+    color: #fff;
+}
+.contact-single.shop-description form .cover input:focus, .contact-single.shop-description form .cover textarea:focus 
+{
+  border-color: #009DCE;
+}
+.contact-single.shop-description form .cover textarea:focus-visible{
+    outline:none;
+}
+.contact-single.shop-description form input::placeholder,.contact-single.shop-description form textarea::placeholder
+{
+  color: #6D6D6D;
+  font-size:12px;
+  
+}
+
+.shop-description form .cover input,
+.shop-description form textarea,.service-detail-single .check-form-wrapper .form-select,
+.service-detail-single .check-form-wrapper  .form-control
+{
+    width: 100%;
+    border: 1px solid #e4e4e4;
+    background-color: transparent;
+    font-size: 14px;
+    border-radius: 0;
+    box-shadow: none;
+    transition: border-color .5s linear 0s;
+    vertical-align: middle;
+    padding: 0 20px;
+    height: 50px;
+    position: relative;
+    resize: none;
+}

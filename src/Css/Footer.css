@@ -1,0 +1,55 @@
+.footer-page ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .footer-page li {
+    margin-bottom: 8px;
+    font-weight: 400;
+    color: #002A53;
+    font-size: 13px;
+  }
+  .footer-page a {
+        color: inherit;
+        text-decoration: none;
+  }
+
+  .footer-page {
+    background-image: url('../Images/grid.png');
+    padding: 60px 0;
+    background-size: cover;
+    background-color: #ededed;
+    padding-bottom: 0;
+  }
+
+.footer-page .footer-title {
+    font-weight: 700;
+    color: #009DCE;
+    font-size: 18px;
+}
+
+.footer-page .footer-content {
+    color: #002A53;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.footer-page .footer-contact-icons {
+    display: flex;
+}
+
+.footer-page .footer-contact-details {
+    padding-left: 10px;
+}
+
+.footer-page .copyright {
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 10px;
+    margin: 70px 0 0 0;
+    padding: 10px 0;
+    background: linear-gradient(89.29deg, #020224 0.57%, #000E30 53.1%, #000F30 100.44%);
+}
+.footer-page .copyright .developed-by {
+    color: #009DCE;
+}

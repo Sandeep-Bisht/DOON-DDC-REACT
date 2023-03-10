@@ -1,0 +1,107 @@
+/* -------------service single page--------------------------- */
+
+.service-single-page{
+    /* padding: 60px 0 100px 0; */
+}
+.service-single-page-left{
+   background-image: url("../Images/service-single.jpg");
+   background-size: cover;
+   background-repeat: no-repeat;
+   width: 100%;
+   height: 100%;
+}
+.service-single-page-left img{
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+}
+.service-single-page-card{
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    padding: 45px 25px;
+    text-align: center;
+    cursor: pointer;
+}
+.service-single-page-card svg{
+    height: 50px;
+    width: 50px!important;
+}
+.service-single-page-card svg path{
+    fill:#009DCE;
+}
+.service-single-page-card:hover{
+    background-color:#009DCE ;
+}
+.service-single-page-card:hover svg path{
+    fill:#fff;
+}
+.service-single-page-card:hover .service-single-page-card-title{
+    color: #fff;
+}
+
+.service-single-page-card .service-single-page-card-title{
+    font-size: 22px;
+ 
+    margin: 13px 0;
+    font-weight: 500;
+}
+.service-single-page-card .sub-para{
+    color: #999;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+.service-single-page-card:hover .sub-para{
+    color: #fff;
+}
+/*-----service-detail-single-------*/
+.service-detail-single {
+    padding: 60px 0 100px 0;
+}
+.service-detail-single .upper-pic {
+    padding-bottom: 20px;
+}
+
+.service-detail-single .upper-pic img {
+    height: 450px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.service-detail-single .common-para {
+    line-height: 22px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.service-detail-single .colored-heading {
+    font-size: 20px;
+    color:#009DCE;
+    font-weight: 500;
+   
+}
+
+.service-detail-single .left li {
+    padding: 5px 0
+}
+
+.service-detail-single ::marker {
+    color:#009DCE;
+}
+
+.service-detail-single .left .accordian-box .accordian-card {
+    padding: 20px 0;
+}
+
+.service-detail-single .left .accordian-box .accordian-title {
+      font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.service-detail-single .left .accordian-box .accordian-title span {
+    color:#009DCE;
+}

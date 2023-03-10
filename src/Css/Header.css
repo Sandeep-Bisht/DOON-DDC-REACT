@@ -1,0 +1,45 @@
+/* -----------header css---------------------------- */
+
+header{
+    position: sticky;
+    top: 0;
+    left:0;
+    width: 100%;
+    z-index: 100;
+    padding-top: 12px;
+    background: linear-gradient(130deg, rgba(0,8,41,1) 0%, rgba(2,19,73,1) 100%);
+}
+header nav.navbar{
+    display: flex;
+    align-items:flex-start;
+}
+
+
+header nav .nav-link{
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 200;
+    margin-right: 5px;
+    padding: 5px 20px!important;
+    cursor: pointer;
+}
+.nav-link:focus, .nav-link:hover
+{
+    color:#fff!important;
+}
+
+
+
+header nav .nav-link:hover{
+    color: #fff;
+}
+header nav .nav-link.current{
+    background: #009DCE;
+border-radius: 5px;
+font-weight: 700;
+
+}
+header .navbar-brand {
+   width:18%;
+}

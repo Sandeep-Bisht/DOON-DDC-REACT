@@ -1,0 +1,409 @@
+/* -------------------------home-appointment css------------------------ */
+
+.home-appointment{
+    /* background: url('../images/appointment.png'); */
+    background-size: cover;
+    /* padding: 100px 0; */
+    height: 100vh;
+    background: linear-gradient(130deg, rgba(0,8,41,1) 0%, rgba(2,19,73,1) 100%);
+}
+
+.home-appointment .home-title{
+    font-size: 35px;
+    color: #fff;
+}
+/* ---------------------home-about"---------- */
+.home-about{
+    padding: 60px 0;
+    background: linear-gradient(130deg, rgb(0 11 50) 0%, rgba(2,19,73,1) 100%);
+    
+}
+.home-about .about-us-card-wrapper{
+    padding-left:0;
+    list-style: none;
+   
+}
+.home-about .about-us-single-card{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 24px rgb(0 0 0 / 25%);
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+    padding: 50px 50px;
+ 
+    cursor: pointer;
+}
+.home-about  .about-us-single-card-title{
+
+    font-weight: 700;
+    color: #009DCE;
+    font-size: 22px;
+    margin-bottom: 0;
+    text-align: center;
+}
+.home-about .about-us-single-card .common-para{
+    color: #2B2B2B;
+    font-weight: 400;
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 12px;
+    
+    padding-right: 80px;
+    
+}
+.home-about .about-us-single-card .row{
+    transition: .2s ease-in-out;
+}
+.home-about .about-us-single-card:hover{
+    background-color:#009DCE ;
+}
+.home-about .about-us-single-card:hover .row{
+    
+    transform: translateX(-20px);
+}
+.home-about .about-us-single-card:hover .common-para{
+    color: #fff;
+}
+.home-about .about-us-single-card:hover .about-us-single-card-title{
+  color: #fff;
+}
+.home-about .about-us-single-card .direction{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    visibility: hidden;
+    opacity: 0;
+}
+.home-about .about-us-single-card:hover .direction{
+    visibility: visible;
+    opacity: 1;
+    /* transform: translateX(-40px); */
+
+}
+
+/* -------------------------home faculty-------------------- */
+.home-faculty
+{
+    padding: 60px 0;
+    background-image: url('../Images/grid.png');
+    background-size: cover;
+    background-color: #ededed;
+
+}
+.home-faculty .common-para{
+    color: #2B2B2B;
+    font-weight: 400;
+    margin-bottom: 0;
+    transition: all 1s ease-in-out;
+}
+.home-faculty .card-row{
+    margin-top: 80px;
+}
+.home-faculty .home-faculty-card{
+    background: #FFFFFF;
+   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.08);
+   border-radius: 5px;
+   padding: 24px 39px;
+   text-align: center;
+   transition: all 1s ease-in-out;
+   cursor: pointer;
+}
+.home-faculty .home-faculty-card:hover {
+    transform: scale(.85);
+}
+.home-faculty .home-faculty-card:hover .common-para{
+    font-size: 12px;
+}
+.home-faculty .home-faculty-card .upper img{
+    width: 186px;
+    height: 186px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: all 1s ease-in-out;
+}
+.home-faculty .home-faculty-card:hover img{
+    width: 175px;
+    height: 175px;
+}
+.home-faculty .home-faculty-card .middle{
+    margin: 15px 0 20px 0;
+}
+.home-faculty .home-faculty-card .middle .name{
+
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #002A53;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+.home-faculty .home-faculty-card .middle .designation{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+   color: #009DCE;
+
+}
+.home-faculty .home-faculty-card .lower{
+    border-top:1px solid #B5B5B5; 
+}
+.home-faculty .home-faculty-card .social-links{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.home-faculty .home-faculty-card .social-links a{
+    background: #009DCE;
+    border-radius: 15px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s;
+
+}
+
+.home-faculty .home-faculty-card .social-links a:hover
+{
+    background:#002A53;
+}
+.home-faculty .home-faculty-card .social-links li:nth-child(2) a{
+    margin:0 5px;
+} 
+.home-faculty .home-faculty-card .social-links a svg{
+    height: 18px;
+    width: 18px;
+}
+
+
+/* ----------------------------------------home-scope-services----------------------------------- */
+.home-scope-services{
+    padding: 60px 0;
+    background: linear-gradient(89.29deg, #020224 0.57%, #000E30 53.1%, #000F30 100.44%);
+}
+.home-scope-services .card-row{
+   margin-top: 80px;
+}
+.home-scope-services .scope-service-card{
+    position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  cursor: pointer;
+
+}
+.home-scope-services .scope-service-card img{
+  
+    width: 100%;
+    object-fit: cover;
+    height:500px;
+    transition: all 1s ease-in-out;
+}
+.home-scope-services .scope-service-card a{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 18px;
+    transform: translate(-50%,-50%);
+    color:#002A53;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    text-align: center;
+
+}
+
+.home-scope-services .scope-service-card:hover img{
+    transform: scale(1.3);
+    opacity: 0.3;
+}
+.home-scope-services .scope-service-card:hover a{
+    opacity: 1;
+}
+
+/* ---------------------------home-training css--------------------- */
+.home-training{
+    padding: 130px 0;
+    background-image: url('../Images/grid.png');
+    background-size: cover;
+    background-color: #ededed;
+    position: relative;
+}
+.home-training::before{
+    position: absolute;
+    content: '';
+    left:0;
+    width:200px;
+    background: #010729;
+    width:100px;
+    height: 100%;
+    top:0;
+}
+
+.home-training .row{
+    align-items: center;
+}
+.home-training .left{
+    padding: 30px;
+}
+.home-training .left img{
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+}
+.home-training .right{
+   padding: 30px;
+}
+.home-training .right .common-para{
+    color: #2B2B2B;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+/* -----------------------home reserach---------------------------- */
+.home-research{
+    background: linear-gradient(89.29deg, #020224 0.57%, #000E30 53.1%, #000F30 100.44%);
+    padding: 60px 0 0 0;
+}
+.home-research-pic-box{
+    position: relative;
+    overflow: hidden;
+}
+.clinical-trail-box{
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    left: 0;
+    height: 60%;
+    background: linear-gradient(89.29deg, #020224 0.57%, #000E30 53.1%, #000F30 100.44%);
+}
+.home-research-pic-box img{
+
+}
+.clinical-trail-box-inner-wrapper{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 160px;
+    padding-right: 90px;
+}
+.clinical-trail-box-inner-wrapper .clinical-title{
+   color: #009DCE;
+   font-weight: 700;
+   font-size: 20px;
+   position: relative;
+   margin-bottom: 0;
+}
+
+.clinical-trail-box-inner-wrapper .clinical-title-box span{
+    background-color:#009DCE;
+    width: 100%;
+    height: 3px;
+    display: block;
+}
+
+
+/* ------------------------home-patient-corner----------------------------- */
+.home-patient-corner{
+    padding: 60px 0;
+    position: relative;
+}
+
+.home-patient-corner::after{
+    position:absolute;
+    right: 0;
+    top:0;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 60px;
+    background-color: #010729;
+}
+
+.home-patient-corner .patient-corner-card img{
+   width: 100%;
+   object-fit: cover;
+   height: 240px;
+
+}
+.home-patient-corner .patient-corner-card .bottom{
+    background-color: #E0F0FF;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.blog-box-text{
+   font-weight: 400;
+   color: #009BCC;
+   font-size: 12px;
+   border-right: 1px solid #009BCC;
+   padding-right: 10px;
+
+}
+.blog-box-text.second{
+    padding-left: 10px;
+}
+.blog-box{
+    margin: 10px 0;
+}
+.home-patient-corner .patient-corner-card .title{
+    font-weight: 700;
+    color: #002A53;
+    font-size: 20px;
+}
+
+.home-patient-corner .patient-corner-card .common-para{
+    color:#002A53;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+/* ----------------------------contact css----------------- */
+.contact-us{
+    padding: 60px 0;
+    background: url("../Images/contact-bg.jpg");
+    background-size: cover;
+ 
+ }
+ .contact-us .get-in-touch{
+     font-weight: 300;
+     color: #fff;
+ 
+ }
+ .map-div{
+     border:1px solid #fff;
+     padding: 4px;
+ }
+ .contact-us .contact-form-wrapper{
+     padding: 30px 30px;
+ }
+ .contact-us .contact-form-wrapper form input{
+     border: 0;
+     background: transparent;
+     border-bottom: 1px solid #D4D4D4;
+     border-radius: 0;
+ }
+ .contact-form-wrapper form input::placeholder{
+     color: #9E9E9E;
+     font-weight: 400;
+     font-size: 12px;
+ }
+ .contact-form-wrapper form .input-wrapper
+ {
+     padding: 20px 0;
+ }
+
+
+ 

@@ -1,0 +1,169 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
+@font-face {
+    font-family:TrajanPro-Bold;
+    src: url('../Offline-font/TrajanPro-Bold.otf');
+}
+@font-face {
+    font-family:TrajanPro-Regular;
+    src: url('../Offline-font/TrajanPro-Regular.ttf');
+}
+/* ----------------------commoncss------------------- */
+body{
+    font-family: 'Inter', sans-serif;
+}
+
+.f1{
+    font-family: 'Inter', sans-serif;
+}
+.f2{
+    font-family:TrajanPro-Bold;
+}
+.f3
+{
+    font-family:TrajanPro-Regular;
+}
+
+.common-container-fluid-adjust-padding{
+    padding: 0 90px;
+}
+.common-para{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+    color: #fff;
+}
+
+.common-para-second
+{
+    color: #2B2B2B;
+    font-weight: 400;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+
+
+
+.common-btn{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #009DCE;
+    text-decoration: none;
+    padding: 8px 40px;
+    border: 2px solid #009dce;
+    display: inline-block;
+    overflow: hidden;
+	transition: all 0.4s cubic-bezier(.86, .01, .15, .99);
+    transform: perspective(1px) translateZ(0);
+    transition: 0.4s;
+}
+.common-btn::before{
+    content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0;
+    background: #009dce;
+	clip-path: inset(0 100% 0 0);
+	opacity: 1;
+	transition: 0.4s;
+}
+.common-btn:hover::before{
+    clip-path: inset(0 0 0 0);
+}
+.common-btn:hover{
+    color: #fff;
+}
+
+
+/* 
+.common-btn:hover{
+    color: #009DCE;
+} */
+.common-heading{
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #009DCE;
+    font-size: 35px;
+    margin-bottom: 35px;
+}
+.common-heading .bar{
+   
+    width: 40px;
+    height: 2px;
+    background:#009DCE;
+    display: inline-block;
+}
+.common-heading .bar.one{
+    margin-right: 5px;
+}
+.common-heading .bar.two{
+    margin-left: 5px;
+}
+.common-submit{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 70px;
+   background-color: #009DCE;
+    display: inline-block;
+}
+.form-control:focus
+{
+    box-shadow: none;
+    outline: none;
+}
+
+.common-redirect-banner {
+    background: url('../Images/redirect-banner.jpg') center center;
+    background-size: cover;
+    position: relative;
+    padding: 70px 0;
+    display: flex;
+    align-items: center;
+}
+
+.common-redirect-banner::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    content: '';
+    background: rgba(0, 0, 0, .65);
+}
+
+.common-redirect-banner-title {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+}
+
+.breadcrumb {
+    position: relative;
+    font-weight: 700;
+}
+
+.breadcrumb .active {
+    color: #009DCE;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: #fff;
+}
