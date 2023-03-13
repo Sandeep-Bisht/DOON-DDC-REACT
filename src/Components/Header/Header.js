@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { ReactComponent as Logo } from "../../Images/ddcLogo.svg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useMutation, QueryClient, QueryClientProvider } from "npm i react-query";
+import { useMutation, QueryClient, QueryClientProvider } from "react-query";
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../Css/Header.css";
