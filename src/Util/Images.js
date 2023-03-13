@@ -25,7 +25,12 @@ const Images = {
     blog4 : require('../Images/stockphoto.jpg'),
     blog5 : require('../Images/stataicsScope.jpg'),
     blog6 : require('../Images/pexels.jpg'),
-    chindrenHealth : require('../Images/childrens-health.jpg')
+    chindrenHealth : require('../Images/childrens-health.jpg'),
+    training1 : require('../Images/training1.jpg'),
+    training2 : require('../Images/training2.jpg'),
+    training3 : require('../Images/training3.jpg'),
+    training4 : require('../Images/training4.jpg'),
+    training5 : require('../Images/training5.jpg'),
 
 }
 
