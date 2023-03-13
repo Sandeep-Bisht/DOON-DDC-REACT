@@ -1,17 +1,18 @@
 import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+
 import "../../Css/Homepage.css";
 import "../../Css/Common.css";
 
 import Images from "../../Util/Images";
 
 const Homepage = () => {
-  useEffect( () => {
+  
+
+  useEffect(() => {
     window.scrollTo(0, 0);
-  }, [])
+  }, []);
   return (
     <>
       <section className="home-appointment">
@@ -32,7 +33,7 @@ const Homepage = () => {
                 </p>
                 <a
                   href="#"
-                  class="common-btn mt-4"
+                  className="common-btn mt-4"
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
                 >
@@ -505,51 +506,51 @@ const Homepage = () => {
         <div className="container-fluid px-0">
           <div className="row card-row g-0">
             <div className="col-lg-3">
-              <Link to="/service-details" >
-              <div className="scope-service-card">
-                <img
-                  src={Images.scope1}
-                  className="img-fluid"
-                  alt="scope-pic"
-                />
-                <a href="#">procedure</a>
-              </div>
-              </Link>
-            </div>            
-            <div className="col-lg-3">
-            <Link to="/service-details" >
-              <div className="scope-service-card">
-                <img
-                  src={Images.scope2}
-                  className="img-fluid"
-                  alt="scope-pic"
-                />
-                <a href="#">Treated Conditions</a>
-              </div>
+              <Link to="/service-details">
+                <div className="scope-service-card">
+                  <img
+                    src={Images.scope1}
+                    className="img-fluid"
+                    alt="scope-pic"
+                  />
+                  <a href="#">procedure</a>
+                </div>
               </Link>
             </div>
             <div className="col-lg-3">
-            <Link to="/service-details" >
-              <div className="scope-service-card">
-                <img
-                  src={Images.scope3}
-                  className="img-fluid"
-                  alt="scope-pic"
-                />
-                <a href="#">Endoscopy</a>
-              </div>
+              <Link to="/service-details">
+                <div className="scope-service-card">
+                  <img
+                    src={Images.scope2}
+                    className="img-fluid"
+                    alt="scope-pic"
+                  />
+                  <a href="#">Treated Conditions</a>
+                </div>
               </Link>
             </div>
             <div className="col-lg-3">
-            <Link to="/service-details" >
-              <div className="scope-service-card">
-                <img
-                  src={Images.scope4}
-                  className="img-fluid"
-                  alt="scope-pic"
-                />
-                <a href="#">Enhanced Services</a>
-              </div>
+              <Link to="/service-details">
+                <div className="scope-service-card">
+                  <img
+                    src={Images.scope3}
+                    className="img-fluid"
+                    alt="scope-pic"
+                  />
+                  <a href="#">Endoscopy</a>
+                </div>
+              </Link>
+            </div>
+            <div className="col-lg-3">
+              <Link to="/service-details">
+                <div className="scope-service-card">
+                  <img
+                    src={Images.scope4}
+                    className="img-fluid"
+                    alt="scope-pic"
+                  />
+                  <a href="#">Enhanced Services</a>
+                </div>
               </Link>
             </div>
           </div>
@@ -760,7 +761,7 @@ const Homepage = () => {
             <div className="col-lg-6">
               <div className="map-div">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.047932312144!2d-74.19486208021587!3d40.650873792893876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24d6962843349%3A0x544956e41a391c3b!2s230%20E%20Jersey%20St%2C%20Elizabeth%2C%20NJ%2007206%2C%20USA!5e0!3m2!1sen!2sin!4v1677658555296!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3234.031780120001!2d78.01209227394212!3d30.316209142573676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39092a217c7f5be7%3A0x1f456d474de72e23!2s52%2F2%2C%20Ankit%20Puram%2C%20Shakti%20Enclave%2C%20Kaonli%2C%20Dehradun%2C%20Uttarakhand%20248001!5e0!3m2!1sen!2sin!4v1678688176177!5m2!1sen!2sin"
                   width="100%"
                   height="400"
                   style={{ border: 0 }}
@@ -813,43 +814,7 @@ const Homepage = () => {
           </div>
         </div>
       </section>
-      {/* -----------------Appointment Modal -------------------------- */}
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Modal title
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">Book Appointment</div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+    
     </>
   );
 };
