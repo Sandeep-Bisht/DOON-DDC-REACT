@@ -14,7 +14,9 @@ const Images = {
     patient2 : require('../Images/patient-corner2.jpg'),
     patient3 : require('../Images/patient-corner3.jpg'),
     patient4 : require('../Images/patient-corner4.jpg'),
-    logo : require('../Images/digestive-care-logo.png'),
+    logo : require('../Images/logo.png'),
+   
+  
     single : require('../Images/single.jpg'),
     aboutSingle : require('../Images/about-single.jpg'),
     serviceDetail : require('../Images/service-detail.jpg'),

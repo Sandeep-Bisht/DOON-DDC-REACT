@@ -16,14 +16,15 @@
 .about-who-content-title{
    
     font-size: 20px;
-    color:#ccc;
-    margin-bottom: 30px;
+    color:#fff;
+    margin-bottom: 20px;
 }
 .about-whoweare .common-para{
     color: #fff;
-    font-weight: 400;
+    font-weight: 300;
     margin-bottom: 0;
     margin-bottom: 40px;
-    line-height: 1.7;
+    line-height: 1.5;
     opacity: .75;
+    font-size: 13px;
 }

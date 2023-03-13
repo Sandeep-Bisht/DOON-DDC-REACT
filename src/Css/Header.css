@@ -9,6 +9,7 @@ header{
     padding-top: 12px;
     background: linear-gradient(130deg, rgba(0,8,41,1) 0%, rgba(2,19,73,1) 100%);
 }
+
 header nav.navbar{
     display: flex;
     align-items:flex-start;

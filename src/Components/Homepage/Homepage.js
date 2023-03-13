@@ -69,12 +69,7 @@ const Homepage = () => {
                     <div className="col-lg-10">
                       <div className="direction-wrapper">
                         <p className="common-para">
-                          Lorem ipsum dolor sit amet consectetur. Aliquet mollis
-                          commodo non facilisis venenatis justo viverra duis
-                          viverra. Fringilla mattis cursus ornare tristique
-                          aliquam. Lacinia dictum lectus nulla rutrum in
-                          convallis ipsum. Velit mattis id nibh nisl nulla.
-                          Purus non etiam senectus risus.
+                        To Be a Centre of Excellence for various Gastrointestinal and Liver Disorders, Affordable and Quality Healthcare Centre.
                         </p>
                         <span className="direction">
                           <svg
@@ -104,12 +99,7 @@ const Homepage = () => {
                     <div className="col-lg-10">
                       <div className="direction-wrapper">
                         <p className="common-para">
-                          Lorem ipsum dolor sit amet consectetur. Aliquet mollis
-                          commodo non facilisis venenatis justo viverra duis
-                          viverra. Fringilla mattis cursus ornare tristique
-                          aliquam. Lacinia dictum lectus nulla rutrum in
-                          convallis ipsum. Velit mattis id nibh nisl nulla.
-                          Purus non etiam senectus risus.
+                        To Achieve our Vision through Constant Technology Upgradation, Research and Innovations, Compassionate Patient Care, and Dissemination of Information.
                         </p>
                         <span className="direction">
                           <svg
@@ -201,8 +191,8 @@ const Homepage = () => {
                   </div>
                 </div>
                 <div className="middle">
-                  <p className="name">Dr.Name</p>
-                  <p className="designation">Designation</p>
+                  <p className="name">Dr. Sanjay Gupta</p>
+                  <p className="designation">D.M (Gastroenterology)</p>
                   <p className="common-para">
                     Lorem ipsum dolor sit amet consectetur. Aliquet mollis
                     commodo non facilisis venenatis justo viverra duis viverra.
