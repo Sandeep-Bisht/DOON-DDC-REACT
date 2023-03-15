@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-// import { signal } from "@preact/signals";
+import React, { useEffect, useState } from "react";
+import { signal, effect } from "@preact/signals";
 import { ReactComponent as Logo } from "../../Images/ddcLogo.svg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -15,6 +15,7 @@ const Header = () => {
 
   //const responseMsg = signal(undefined);
   const [activeLink, setActiveLink] = useState("/");
+  const currentDate = signal(undefined)
   const appointmentSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
     contactNo: Yup.string().required("Contact number is required"),
@@ -23,6 +24,15 @@ const Header = () => {
     time: Yup.string().required("Time is required"),
     description: Yup.string().required("Description is required"),
   });
+
+  effect(() => {
+    const date = new Date().toISOString().split('T')[0];  
+          
+      currentDate.value = date;
+  });
+
+ 
+  console.log(currentDate.value,"today date")
 
   const createAppointment = useMutation(
     (data) => {
@@ -139,7 +149,7 @@ const Header = () => {
                     </li>
                     <li className="nav-item">
                       <button
-                        className="btn"
+                        className="btn book-now nav-link"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
                       >
@@ -155,7 +165,7 @@ const Header = () => {
       </header>
         {/* -----------------Appointment Modal -------------------------- */}
         <div
-        className="modal fade"
+        className="modal fade common-booking-modal"
         id="exampleModal"
         tabIndex="-1"
         aria-labelledby="exampleModalLabel"
@@ -163,7 +173,7 @@ const Header = () => {
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
+            <div className="modal-header border-0 py-0">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
                 Appointment Form
               </h1>
@@ -176,7 +186,7 @@ const Header = () => {
             </div>
             <div className="modal-body">
               <div>
-                <h1>Appointment Form</h1>
+              
                 <Formik
                   initialValues={{
                     name: "",
@@ -234,6 +244,7 @@ const Header = () => {
                               name="date"
                               type="date"
                               className="form-control"
+                              min={currentDate.value}
                             />
                             <ErrorMessage
                               name="date"
@@ -272,9 +283,10 @@ const Header = () => {
                           className="text-danger"
                         />
                       </div>
-                      <Button variant="primary" type="submit">
-                        Submit
-                      </Button>
+                      <div>
+                      <button  type="submit" className="common-btn mt-4 bg-transparent ">
+                     Book Appointment
+                      </button></div>
                       {/* {responseMsg && <div>{responseMsg} </div>} */}
                       
                     </Form>
@@ -282,7 +294,7 @@ const Header = () => {
                 </Formik>
               </div>
             </div>
-            <div className="modal-footer">
+            {/* <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-secondary"
@@ -293,7 +305,7 @@ const Header = () => {
               <button type="button" className="btn btn-primary">
                 Save changes
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

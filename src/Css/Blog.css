@@ -291,3 +291,14 @@
   }
   }
   
+
+    /* ----------------training-content----------------- */
+    .training-content{
+      padding: 60px 0;
+      
+    }
+    .training-content h5{
+      font-weight: bold;
+      color: #009DCE;
+      margin:15px 0;
+    }

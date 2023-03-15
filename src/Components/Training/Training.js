@@ -24,6 +24,7 @@ const Training = () => {
             </div>
         </div>
     </div>
+   
     <section class="training-single">
         <div class="container">
             <div class="row">

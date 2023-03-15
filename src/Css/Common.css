@@ -12,7 +12,9 @@
 body{
     font-family: 'Inter', sans-serif;
 }
-
+html{
+    scroll-behavior: smooth;
+}
 .f1{
     font-family: 'Inter', sans-serif;
 }
@@ -166,4 +168,134 @@ body{
 
 .breadcrumb-item+.breadcrumb-item::before {
     color: #fff;
+}
+textarea{
+    resize: none;
+}
+/* ------------------------common modal css----------------- */
+.common-booking-modal .modal-content{
+border-radius: 0;
+
+
+}
+.common-booking-modal .modal-header{
+    border-radius: 0;
+    background: #009DCE;
+    padding: 15px!important;
+}
+.common-booking-modal .modal-header .modal-title{
+    width: 100%;
+    
+    color: #fff;
+}
+.common-booking-modal .modal-content label{
+    color: #666;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+.common-booking-modal .modal-content .form-control{
+  border:0;
+  border-bottom: 2px solid #e5e5e5;
+  border-radius: 0;
+  font-size: 13px;
+}
+.common-booking-modal .modal-content div.text-danger{
+  font-size: 10px;
+}
+.common-booking-modal .modal-content .form-group{
+    margin: 5px 0;
+}
+.common-booking-modal .modal-content .common-btn{
+    background-color: #009DCE;
+}
+
+/* ------------------------common-core-values----------------------- */
+.common-core-values{
+    padding: 60px 0;
+}
+.core-value-card-wrapper{
+    display: flex;
+    padding-left: 0;
+    list-style-type: none;
+    flex-grow: 1;
+    margin-bottom: 0;
+}
+.core-value-card{
+  
+    flex-grow: 1;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+.core-value-pic
+{
+    padding: 40px 50px;
+    text-align: center;
+   
+}
+
+.core-value-pic img{
+    filter: invert(1);
+    height: 120px;
+    width: 120px;
+}
+.core-value-card.one{
+    background-color: #6fb9a0;
+}
+.core-value-card.two{
+    background-color: #cf6152;
+}
+.core-value-card.three{
+    background-color: #efc258;
+}
+.core-value-card.four{
+    background-color: #d9766a;
+}
+.core-value-title{
+    padding: 15px 20px;
+    text-align: center;
+    background: rgba(0,0,0,.35);
+    margin-top: 20px;
+}
+.core-value-title p{
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+.core-value-heading{
+    color: #525355;
+    font-weight: 900;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-size: 90px;
+    text-align: center;
+    letter-spacing: 2px;
+    line-height: 1;
+    padding: 15px 0;
+}
+.core-value-card-wrapper.invert{
+    transform: rotate(180deg);
+}
+.core-value-card-wrapper.invert .core-value-title p{
+    transform: rotate(180deg);
+}
+.core-value-card-wrapper.invert .core-value-pic img
+{
+    transform: rotate(180deg);
+}
+.core-value-card-wrapper.invert .one{
+    background-color:#8e76b0;
+}
+.core-value-card-wrapper.invert .two
+{
+   background-color:#7c8488;
+}
+.core-value-card-wrapper.invert .three
+{
+   background-color:#65a8dd;
+}
+.core-value-card-wrapper.invert .four
+{
+   background-color:#9fc54c;
 }
