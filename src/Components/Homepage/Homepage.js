@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import {BsGlobe} from "react-icons/bs"
 
 import "../../Css/Homepage.css";
 import "../../Css/Common.css";
@@ -70,12 +71,7 @@ const Homepage = () => {
                     <div className="col-lg-10">
                       <div className="direction-wrapper">
                         <p className="common-para">
-                          Lorem ipsum dolor sit amet consectetur. Aliquet mollis
-                          commodo non facilisis venenatis justo viverra duis
-                          viverra. Fringilla mattis cursus ornare tristique
-                          aliquam. Lacinia dictum lectus nulla rutrum in
-                          convallis ipsum. Velit mattis id nibh nisl nulla.
-                          Purus non etiam senectus risus.
+                        To Be a Centre of Excellence for various Gastrointestinal and Liver Disorders, Affordable and Quality Healthcare Centre.
                         </p>
                         <span className="direction">
                           <svg
@@ -105,12 +101,7 @@ const Homepage = () => {
                     <div className="col-lg-10">
                       <div className="direction-wrapper">
                         <p className="common-para">
-                          Lorem ipsum dolor sit amet consectetur. Aliquet mollis
-                          commodo non facilisis venenatis justo viverra duis
-                          viverra. Fringilla mattis cursus ornare tristique
-                          aliquam. Lacinia dictum lectus nulla rutrum in
-                          convallis ipsum. Velit mattis id nibh nisl nulla.
-                          Purus non etiam senectus risus.
+                        To Achieve our Vision through Constant Technology Upgradation, Research and Innovations, Compassionate Patient Care, and Dissemination of Information.
                         </p>
                         <span className="direction">
                           <svg
@@ -130,7 +121,7 @@ const Homepage = () => {
                     </div>
                   </div>
                 </li>
-                <li className="about-us-single-card">
+                <li className="about-us-single-card d-none">
                   <div className="row">
                     <div className="col-lg-2">
                       <p className="about-us-single-card-title f1">
@@ -170,6 +161,95 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+      <section className="common-core-values">
+        <div className="container-fluid common-container-fluid-adjust-padding">
+           <div className="row">
+              <div className="col-md-12 d-flex justify-content-center">
+              <h1 className="common-heading d-flex align-items-center ">
+                <span className="bar one"></span> Core Values
+                <span className="bar two"></span>
+              </h1>
+              </div>
+             </div>  
+             <div className="row g-0">
+                <div className="col-md-12">
+                     <ul className="core-value-card-wrapper">
+                        <li className="core-value-card one">
+                           <div className="core-value-pic">
+                           <img src={Images.globe} className="img-fluid" alt="" />
+                           </div>
+                           <div className="core-value-title">
+                               <p>Responsibility</p>
+                           </div>
+                        </li>
+                        
+                        <li className="core-value-card three">
+                           <div className="core-value-pic">
+                           <img src={Images.user} className="img-fluid" alt="" />
+                           </div>
+                           <div className="core-value-title">
+                               <p>Coaching</p>
+                           </div>
+                        </li>
+                        <li className="core-value-card four">
+                           <div className="core-value-pic">
+                           <img src={Images.bulb} className="img-fluid" alt="" />
+                           </div>
+                           <div className="core-value-title">
+                               <p>Innovation</p>
+                           </div>
+                        </li>
+                        <li className="core-value-card two">
+                           <div className="core-value-pic"> <img src={Images.balance} className="img-fluid" alt="" /></div>
+                           <div className="core-value-title">
+                               <p>Ethics</p>
+                           </div>
+                        </li>
+                     </ul>
+                </div>
+                <div className="col-md-12">
+                    <p className="core-value-heading">
+                      Core Values
+                    </p>
+                </div>
+                <div className="col-md-12">
+                     <ul className="core-value-card-wrapper invert">
+                        <li className="core-value-card one">
+                           <div className="core-value-pic">
+                           <img src={Images.honesty} className="img-fluid" alt="" />
+                           </div>
+                           <div className="core-value-title">
+                               <p>Trust</p>
+                           </div>
+                        </li>
+                        
+                        <li className="core-value-card three">
+                           <div className="core-value-pic">
+                           <img src={Images.group} className="img-fluid" alt="" />
+                           </div>
+                           <div className="core-value-title">
+                               <p>Customers</p>
+                           </div>
+                        </li>
+                        <li className="core-value-card four">
+                           <div className="core-value-pic">
+                           <img src={Images.team} className="img-fluid" alt="" />
+                           </div>
+                           <div className="core-value-title">
+                               <p>Teamwork</p>
+                           </div>
+                        </li>
+                        <li className="core-value-card two">
+                           <div className="core-value-pic"> <img src={Images. target} className="img-fluid" alt="" /></div>
+                           <div className="core-value-title">
+                               <p>Goals</p>
+                           </div>
+                        </li>
+                     </ul>
+                </div>
+              </div> 
+        </div> 
+      </section>
       <section className="home-faculty">
         <div className="container-fluid common-container-fluid-adjust-padding">
           <div className="row">
@@ -190,7 +270,7 @@ const Homepage = () => {
             </div>
           </div>
           <div className="row card-row">
-            <div className="col-lg-3">
+            <div className="col-lg-6 mx-auto">
               <div className="home-faculty-card">
                 <div className="upper">
                   <div className="pic">
@@ -202,8 +282,8 @@ const Homepage = () => {
                   </div>
                 </div>
                 <div className="middle">
-                  <p className="name">Dr.Name</p>
-                  <p className="designation">Designation</p>
+                  <p className="name">Dr. Sanjay Gupta</p>
+                  <p className="designation">D.M (Gastroenterology)</p>
                   <p className="common-para">
                     Lorem ipsum dolor sit amet consectetur. Aliquet mollis
                     commodo non facilisis venenatis justo viverra duis viverra.
@@ -265,7 +345,7 @@ const Homepage = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3">
+            {/* <div className="col-lg-3">
               <div className="home-faculty-card">
                 <div className="upper">
                   <div className="pic">
@@ -489,7 +569,7 @@ const Homepage = () => {
                   </ul>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
