@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { signal } from "@preact/signals";
+ import { signal } from "@preact/signals";
 import { ReactComponent as Logo } from "../../Images/ddcLogo.svg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -13,7 +13,7 @@ import { url } from "../../Util/url";
 
 const Header = () => {
 
-  //const responseMsg = signal(undefined);
+  const responseMsg = signal(undefined);
   const [activeLink, setActiveLink] = useState("/");
   const appointmentSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -25,23 +25,26 @@ const Header = () => {
   });
 
   const createAppointment = useMutation(
-    (data) => {
-      return fetch(`${url}/appointment/add_appointment`, {
+    async (data) => {
+      const res = await fetch(`${url}/appointment/add_appointment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-      }).then((res) => res.json());
+      });
+      return await res.json();
     },
     {
       onSuccess: () => {
-        alert("Appointment created successfully");
+        responseMsg.value("Appointment created successfully")
+        //alert("Appointment created successfully");
         //responseMsg.value = "Appointment created successfully";
         //appointmentSchema.resetForm()
       },
       onError: (error) => {
-        alert("Error creating appointment: " + error.message);
+        responseMsg.value("Error creating appointment")
+        // alert("Error creating appointment: " + error.message);
         //responseMsg.value = "Error creating appointment: " + error.message;
       },
     }
@@ -275,7 +278,7 @@ const Header = () => {
                       <Button variant="primary" type="submit">
                         Submit
                       </Button>
-                      {/* {responseMsg && <div>{responseMsg} </div>} */}
+                      {responseMsg && <div>{responseMsg.value} </div>}
                       
                     </Form>
                   )}
