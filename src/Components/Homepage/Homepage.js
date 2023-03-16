@@ -26,11 +26,7 @@ const Homepage = () => {
                   <br /> doctor’s appointment
                 </p>
                 <p className="common-para">
-                  Lorem ipsum dolor sit amet consectetur. Aliquet mollis commodo
-                  non facilisis venenatis justo viverra duis viverra. Fringilla
-                  mattis cursus ornare tristique aliquam. Lacinia dictum lectus
-                  nulla rutrum in convallis ipsum. Velit mattis id nibh nisl
-                  nulla. Purus non etiam senectus risus.
+                The Doon Digestive Diseases Center has top notch infrastructure with state-of-the-art and sophisticated technology. And apart from being equipped with the best medical facilities, it is Human Touch & Care by which the hospital has been able to gain trust of people.
                 </p>
                 <a
                   href="#"
@@ -250,7 +246,7 @@ const Homepage = () => {
               </div> 
         </div> 
       </section>
-      <section className="home-faculty">
+      <section className="home-faculty ">
         <div className="container-fluid common-container-fluid-adjust-padding">
           <div className="row">
             <div className="col-md-12 d-flex justify-content-center">
@@ -261,11 +257,7 @@ const Homepage = () => {
             </div>
             <div className="col-md-10 col-lg-10 mx-auto">
               <p className="common-para text-center">
-                Lorem ipsum dolor sit amet consectetur. Aliquet mollis commodo
-                non facilisis venenatis justo viverra duis viverra. Fringilla
-                mattis cursus ornare tristique aliquam. Lacinia dictum lectus
-                nulla rutrum in convallis ipsum. Velit mattis id nibh nisl
-                nulla. Purus non etiam senectus risus.
+              The chief consultant, Dr. Sanjay Gupta, is an alumnus of the Internationally renowned Institution – Christian Medical College Vellore and has more than 20 years experience in management of various Gastrointestinal and liver related disorders.
               </p>
             </div>
           </div>
@@ -284,7 +276,7 @@ const Homepage = () => {
                 <div className="middle">
                   <p className="name">Dr. Sanjay Gupta</p>
                   <p className="designation">D.M (Gastroenterology)</p>
-                  <p className="common-para">
+                  <p className="common-para d-none">
                     Lorem ipsum dolor sit amet consectetur. Aliquet mollis
                     commodo non facilisis venenatis justo viverra duis viverra.
                   </p>
@@ -584,11 +576,7 @@ const Homepage = () => {
             </div>
             <div className="col-md-10 col-lg-10 mx-auto">
               <p className="common-para text-center mb-0">
-                Lorem ipsum dolor sit amet consectetur. Aliquet mollis commodo
-                non facilisis venenatis justo viverra duis viverra. Fringilla
-                mattis cursus ornare tristique aliquam. Lacinia dictum lectus
-                nulla rutrum in convallis ipsum. Velit mattis id nibh nisl
-                nulla. Purus non etiam senectus risus.
+               Main objective of the foundation is to provide insight about the various GI disorders in simplified way, for better understanding of the disease process and the available modalities of treatment.
               </p>
             </div>
           </div>
@@ -603,7 +591,7 @@ const Homepage = () => {
                     className="img-fluid"
                     alt="scope-pic"
                   />
-                  <a href="#">procedure</a>
+                  <a href="#">General Medicine</a>
                 </div>
               </Link>
             </div>
@@ -615,19 +603,7 @@ const Homepage = () => {
                     className="img-fluid"
                     alt="scope-pic"
                   />
-                  <a href="#">Treated Conditions</a>
-                </div>
-              </Link>
-            </div>
-            <div className="col-lg-3">
-              <Link to="/service-details">
-                <div className="scope-service-card">
-                  <img
-                    src={Images.scope3}
-                    className="img-fluid"
-                    alt="scope-pic"
-                  />
-                  <a href="#">Endoscopy</a>
+                  <a href="#">Gastroenterology</a>
                 </div>
               </Link>
             </div>
@@ -639,10 +615,23 @@ const Homepage = () => {
                     className="img-fluid"
                     alt="scope-pic"
                   />
-                  <a href="#">Enhanced Services</a>
+                  <a href="#">Cardiology</a>
                 </div>
               </Link>
             </div>
+            <div className="col-lg-3">
+              <Link to="/service-details">
+                <div className="scope-service-card">
+                  <img
+                    src={Images.scope3}
+                    className="img-fluid"
+                    alt="scope-pic"
+                  />
+                  <a href="#">Hepatology</a>
+                </div>
+              </Link>
+            </div>
+       
           </div>
         </div>
       </section>
@@ -658,11 +647,8 @@ const Homepage = () => {
               <div className="right">
                 <h2 className="common-heading">Training</h2>
                 <p className="common-para">
-                  Lorem ipsum dolor sit amet consectetur. Aliquet mollis commodo
-                  non facilisis venenatis justo viverra duis viverra. Fringilla
-                  mattis cursus ornare tristique aliquam. Lacinia dictum lectus
-                  nulla rutrum in convallis ipsum. Velit mattis id nibh nisl
-                  nulla. Purus non etiam senectus risus.
+                The aim of the centre is to provide the cutting edge technology in the 
+                field of Gastroenterology under one roof at an affordable cost and pragmatic approach.
                 </p>
               </div>
             </div>
@@ -698,12 +684,7 @@ const Homepage = () => {
                       </div>
                     </div>
                     <p className="common-para">
-                      Lorem ipsum dolor sit amet consectetur. Aliquet mollis
-                      commodo non facilisis venenatis justo viverra duis
-                      viverra. Fringilla mattis cursus ornare tristique aliquam.
-                      Lacinia dictum lectus nulla rutrum in convallis ipsum.
-                      Velit mattis id nibh nisl nulla. Purus non etiam senectus
-                      risus.
+                    The chief consultant, Dr. Sanjay Gupta, is an alumnus of the Internationally renowned Institution – Christian Medical College Vellore and has more than 20 years experience in management of various Gastrointestinal and liver related disorders. He has many national accreditations and has worked at top position at various leading Medical institutes in India.
                     </p>
                     <a href="#" className="common-btn mt-4">
                       Learn more

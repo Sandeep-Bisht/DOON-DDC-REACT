@@ -14,7 +14,7 @@ const Images = {
     patient2 : require('../Images/patient-corner2.jpg'),
     patient3 : require('../Images/patient-corner3.jpg'),
     patient4 : require('../Images/patient-corner4.jpg'),
-    logo : require('../Images/logo.png'),
+    logo : require('../Images/ddcLogo.png'),
    
   
     single : require('../Images/single.jpg'),
