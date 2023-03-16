@@ -3,7 +3,7 @@ import { signal, effect } from "@preact/signals";
 import { ReactComponent as Logo } from "../../Images/ddcLogo.svg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useMutation, QueryClient, QueryClientProvider } from "react-query";
+import { useMutation } from "react-query";
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../Css/Header.css";
@@ -11,11 +11,14 @@ import "../../Css/Common.css";
 import Images from "../../Util/Images";
 import { url } from "../../Util/url";
 
+const responseMsg = signal(undefined);
+
 const Header = () => {
 
-  const responseMsg = signal(undefined);
+ //const msg = responseMsg.value;
   const [activeLink, setActiveLink] = useState("/");
   const currentDate = signal(undefined)
+
   const appointmentSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
     contactNo: Yup.string().required("Contact number is required"),
@@ -26,10 +29,22 @@ const Header = () => {
   });
 
   effect(() => {
-    const date = new Date().toISOString().split('T')[0];  
-          
+    const date = new Date().toISOString().split('T')[0];          
       currentDate.value = date;
   });
+
+  effect(() => {
+      setTimeout(() => {
+        responseMsg.value = undefined;
+        console.log(responseMsg.value,"inside set time out")
+      }, 2000)
+
+  }, [responseMsg.value])
+
+   
+
+    
+  
 
  
 
@@ -45,19 +60,16 @@ const Header = () => {
       return await res.json();
     },
     {
-      onSuccess: () => {
-        responseMsg.value("Appointment created successfully")
-        //alert("Appointment created successfully");
-        //responseMsg.value = "Appointment created successfully";
-        //appointmentSchema.resetForm()
+      onSuccess: (res) => {
+        responseMsg.value = res.msg  
+        //clearMsg()     
       },
       onError: (error) => {
-        responseMsg.value("Error creating appointment")
-        // alert("Error creating appointment: " + error.message);
-        //responseMsg.value = "Error creating appointment: " + error.message;
+        responseMsg.value = error.msg       
       },
     }
   );
+  console.log(responseMsg.value, "msgegeege")
 
   return (
     <>
@@ -198,9 +210,13 @@ const Header = () => {
                     time: "",
                     description: "",
                   }}
-                  validationSchema={appointmentSchema}
-                  onSubmit={(values) => {
-                    createAppointment.mutate(values);
+                  validationSchema={appointmentSchema}                 
+                  onSubmit={(values, {resetForm}) => {
+                    createAppointment.mutate(values, {
+                      onSuccess: () => {
+                        resetForm();
+                      },
+                    });
                   }}
                 >
                   {({ errors, touched }) => (
@@ -288,25 +304,14 @@ const Header = () => {
                       <Button variant="primary" type="submit">
                         Submit
                       </Button>
-                      {responseMsg && <div>{responseMsg.value} </div>}
+                      
                       
                     </Form>
                   )}
                 </Formik>
+                {responseMsg && responseMsg.value ? <p>{responseMsg.value}</p> : ""}
               </div>
             </div>
-            {/* <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
-              </button>
-            </div> */}
           </div>
         </div>
       </div>
