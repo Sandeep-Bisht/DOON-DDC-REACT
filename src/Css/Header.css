@@ -57,3 +57,54 @@ header .navbar-brand {
 header .navbar-brand  img{
     height: 60px;
 }
+
+
+
+/* -----common responsive css---- */
+@media only screen and (max-width : 1399px){
+  
+}
+@media only screen and (max-width : 1265px){
+    header nav .nav-link{
+        padding: 5px 15px!important;
+    }
+}
+
+@media only screen and (max-width : 1199px){
+    header nav .nav-link{
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width : 1024px) {
+  
+}
+
+@media only screen and (max-width :991px) {
+  
+}
+@media only screen and (max-width : 767px) {
+  
+}
+@media only screen and (max-width : 575px) {
+  
+
+}
+
+
+@media only screen and (max-width : 480px) {
+ 
+ 
+
+}
+@media only screen and (max-width : 430px)
+{ 
+  
+ 
+  }
+
+@media only screen and (max-width : 320px) {
+
+  
+
+}

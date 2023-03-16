@@ -52,7 +52,7 @@ const Services = () => {
                     <p className="service-single-page-card-title">
                     General Medicine 
                     </p>
-                    <p className="sub-para">Far far away, behind the word mountains</p>
+                    <p className="sub-para d-none">Far far away, behind the word mountains</p>
                 </div>
             </ScrollLink>
             </div>
@@ -65,7 +65,7 @@ const Services = () => {
                     <p className="service-single-page-card-title">
                     Gastroenterology
                     </p>
-                    <p className="sub-para">Far far away, behind the word mountains</p>
+                    <p className="sub-para d-none">Far far away, behind the word mountains</p>
                 </div></ScrollLink>
             </div>
             <div className="col-lg-4">
@@ -77,7 +77,7 @@ const Services = () => {
                     <p className="service-single-page-card-title">
                     Hepatology
                     </p>
-                    <p className="sub-para">Far far away, behind the word mountains</p>
+                    <p className="sub-para d-none">Far far away, behind the word mountains</p>
                 </div></ScrollLink>
             </div>
             {/* <!-- ----------------copy---------- --> */}
@@ -89,7 +89,7 @@ const Services = () => {
                     <p className="service-single-page-card-title">
                     Cardiology 
                     </p>
-                    <p className="sub-para">Far far away, behind the word mountains</p>
+                    <p className="sub-para d-none">Far far away, behind the word mountains</p>
                 </div>
             </div>
             <div className="col-lg-4">
@@ -100,7 +100,7 @@ const Services = () => {
                     <p className="service-single-page-card-title">
                     Pediatrics
                     </p>
-                    <p className="sub-para">Far far away, behind the word mountains</p>
+                    <p className="sub-para d-none">Far far away, behind the word mountains</p>
                 </div>
             </div>
             <div className="col-lg-4">
@@ -111,7 +111,7 @@ const Services = () => {
                     <p className="service-single-page-card-title">
                       Gynecology 
                     </p>
-                    <p className="sub-para">Far far away, behind the word mountains</p>
+                    <p className="sub-para d-none">Far far away, behind the word mountains</p>
                 </div>
             </div>
             {/* <!-- ---------------paste------------- --> */}

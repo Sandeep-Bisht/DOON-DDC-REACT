@@ -32,9 +32,7 @@ const Training = () => {
                     <h1 class="common-heading d-flex align-items-center justify-content-center ">
                         <span class="bar one"></span>Training We Provide<span class="bar two"></span>
                     </h1>
-                    <p class="common-para-second text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Blanditiis, et!
-                        Reprehenderit repudiandae placeat eveniet rerum voluptates repellat maiores perferendis ut quo?
+                    <p class="common-para-second text-center">The aim of the centre is to provide the cutting edge technology in the field of Gastroenterology under one roof at an affordable cost and pragmatic approach.
                     </p>
                 </div>
             </div>
