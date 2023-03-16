@@ -53,3 +53,53 @@
 .footer-page .copyright .developed-by {
     color: #009DCE;
 }
+
+ /* -----common responsive css---- */
+ @media only screen and (max-width : 1399px){
+  
+ }
+ @media only screen and (max-width : 1265px){
+    
+ }
+ 
+ @media only screen and (max-width : 1199px){
+    .footer-contact-icons svg{
+      
+        height: 18px;
+        width: 18px;
+    }
+  
+ }
+ 
+ @media only screen and (max-width : 1024px) {
+   
+ }
+ 
+ @media only screen and (max-width :991px) {
+   
+ }
+ @media only screen and (max-width : 767px) {
+   
+ }
+ @media only screen and (max-width : 575px) {
+   
+ 
+ }
+ 
+ 
+ @media only screen and (max-width : 480px) {
+  
+  
+ 
+ }
+ @media only screen and (max-width : 430px)
+ { 
+   
+  
+   }
+ 
+ @media only screen and (max-width : 320px) {
+ 
+   
+ 
+ }

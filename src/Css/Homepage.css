@@ -406,4 +406,85 @@
  }
 
 
+ /* -----common responsive css---- */
+@media only screen and (max-width : 1399px){
+  
+}
+@media only screen and (max-width : 1265px){
+   
+}
+
+@media only screen and (max-width : 1199px){
+    .common-container-fluid-adjust-padding{
+        padding: 0 40px;
+    }
+    header .navbar-brand img{
+        height: 50px;
+    }
+    .home-appointment .home-title{
+        font-size: 32px;
+    }
+    .home-about .about-us-single-card{
+        padding: 35px 15px;
+        
+    }
+    .home-about .about-us-single-card-title{
+        font-size: 20px;
+    }
+    .core-value-pic img{
+        height: 90px;
+        width: 90px;
+    }
+    .core-value-title p
+    {
+        font-size: 13px;
+    }
+    .core-value-heading{
+        font-size: 70px;
+    }
+    .clinical-trail-box{
+        height: 70%;
+    }
+    .clinical-trail-box-inner-wrapper{
+        padding-left: 100px;
+    }
+    .home-patient-corner .patient-corner-card .title{
+        font-size: 18px;
+    }
+    .home-patient-corner::after{
+        width: 25px;
+    }
+}
+
+@media only screen and (max-width : 1024px) {
+  
+}
+
+@media only screen and (max-width :991px) {
+  
+}
+@media only screen and (max-width : 767px) {
+  
+}
+@media only screen and (max-width : 575px) {
+  
+
+}
+
+
+@media only screen and (max-width : 480px) {
  
+ 
+
+}
+@media only screen and (max-width : 430px)
+{ 
+  
+ 
+  }
+
+@media only screen and (max-width : 320px) {
+
+  
+
+}

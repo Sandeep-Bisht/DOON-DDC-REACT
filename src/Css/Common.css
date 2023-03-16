@@ -299,3 +299,67 @@ border-radius: 0;
 {
    background-color:#9fc54c;
 }
+
+
+
+ /* -----common responsive css---- */
+ @media only screen and (max-width : 1399px){
+  
+ }
+ @media only screen and (max-width : 1265px){
+    
+ }
+ 
+ @media only screen and (max-width : 1199px){
+    .common-heading{
+        font-size: 30px;
+    }
+    .common-para{
+        font-size: 13px;
+    }
+    .common-btn{
+        font-size: 12px;
+        padding: 6px 40px;
+
+    }
+    .home-appointment img{
+        height: 400px;
+    }
+    .common-submit{
+        padding: 12px 60px;
+        border:0;
+    }
+ }
+ 
+ @media only screen and (max-width : 1024px) {
+   
+ }
+ 
+ @media only screen and (max-width :991px) {
+   
+ }
+ @media only screen and (max-width : 767px) {
+   
+ }
+ @media only screen and (max-width : 575px) {
+   
+ 
+ }
+ 
+ 
+ @media only screen and (max-width : 480px) {
+  
+  
+ 
+ }
+ @media only screen and (max-width : 430px)
+ { 
+   
+  
+   }
+ 
+ @media only screen and (max-width : 320px) {
+ 
+   
+ 
+ }
