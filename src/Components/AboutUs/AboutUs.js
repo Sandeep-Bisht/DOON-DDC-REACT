@@ -33,11 +33,11 @@ const AboutUs = () => {
                   </h1>
             </div>
         </div>
-        <div className="row g-0">
-            <div className="col-lg-4 col-md-3 col-sm-12">
+        <div className="row g-0 about-row">
+            <div className="col-lg-4 col-md-12 col-sm-12">
                 <img src={Images.aboutSingle} alt="" className="img-fluid" />
             </div>
-            <div className="col-lg-8 col-md-9 col-sm-12">
+            <div className="col-lg-8 col-md-12 col-sm-12">
                 <div className="about-who-content">
                     <h2 className="about-who-content-title">
                     The Best Medics, Doctor & Physicians

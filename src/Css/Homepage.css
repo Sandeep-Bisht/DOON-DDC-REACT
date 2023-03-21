@@ -461,26 +461,287 @@
 }
 
 @media only screen and (max-width :991px) {
+    .home-scope-services .scope-service-card img{
+        height: 300px;
+    }
+    .home-faculty .home-faculty-card{
+        width: 60%;
+        margin: auto;
+    }
+    .home-training{
+        padding: 50px 0;
+    }
+    .clinical-trail-box-inner-wrapper{
+        padding: 20px;
+    }
+    .home-patient-corner .patient-corner-card{
+        margin: 20px;
+    }
+}
+
+@media only screen and (max-width : 950px){
+    .clinical-trail-box{
+     
+        width: 70%;
+        height: 80%;
+    }
+}
+@media only screen and (max-width : 930px){
+    .home-appointment .home-title{
+        font-size: 25px;
+    }
+    .core-value-pic img{
+        height: 75px;
+        width: 75px;
+    }
+    .home-appointment img{
+        height: 350px;
+    }
+    .core-value-heading{
+        font-size: 50px;
+    }
+    .home-training::before
+    {
+        width: 50px;
+    }
   
 }
+
+
+
 @media only screen and (max-width : 767px) {
-  
+    .home-appointment{
+        height: auto;
+        padding: 60px 0;
+    }
+    .home-appointment-pic-box{
+
+        display: none;
+    }
+    .home-patient-corner .patient-corner-card{
+        margin:0 0 20px 0;
+    }
+    .core-value-card-wrapper{
+        width: 100%;
+    }
+    .core-value-card-wrapper li{
+        width: 19.3333333%;
+    }
+    .core-value-card {
+        border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    }
+
+    .core-value-pic{
+        padding: 20px 10px;
+    }
+    .core-value-pic img{
+        height: 50px;
+        width: 50px;
+    }
+
+    .core-value-title{
+        padding: 10px;
+        
+    }
+    .core-value-title p{
+        font-size: 11px;
+    }
+    .home-scope-services .scope-service-card img{
+        height: 250px;
+    }
+    .clinical-trail-box-inner-wrapper .common-btn {
+        margin-top: 5px!important;
+    }
 }
+
+@media only screen and (max-width : 645px){
+    .clinical-trail-box{
+        width: 80%;
+    }
+    .home-research-pic-box img{
+        height: 430px;
+        object-fit: cover;
+    }
+    .clinical-trail-box{
+        height: 60%;
+    }
+    .clinical-trail-box-inner-wrapper .clinical-title{
+        font-size: 17px;
+    }
+    .clinical-trail-box-inner-wrapper .clinical-title-box span{
+        height: 2px;
+    }
+
+}
+
+
+
+
+
 @media only screen and (max-width : 575px) {
-  
+    .core-value-heading{
+        font-size: 30px;
+    }
+    .home-faculty .home-faculty-card .upper img{
+        height: 170px;
+        width: 170px;
+    }
+    .home-faculty .home-faculty-card .social-links a{
+        height: 35px;
+        width: 35px;
+    }
+    .home-faculty .home-faculty-card .social-links a svg{
+        height: 17px;
+        width: 17px;
+    }
+    .home-training::before{
+        width: 20px;
+    }
 
 }
 
 
 @media only screen and (max-width : 480px) {
- 
- 
+    .common-container-fluid-adjust-padding{
+        padding: 0 20px;
+    }
+    .core-value-pic img{
+        height: 37px;
+        width: 37px;
+    }
+    .core-value-card {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .core-value-title p{
+
+        font-size: 10px;
+    }
+    .home-faculty .home-faculty-card{
+        width: 80%;
+    }
+    .home-scope-services .scope-service-card img{
+        height: 230px;
+    }
+    .home-training .left img{
+        height: 300px;
+    }
+    .common-heading{
+        font-size: 20px;
+    }
+    .common-para{
+        font-size:11px;
+    }
+    .home-appointment .home-title{
+        font-size: 20px;
+    }
+    .common-btn {
+        font-size: 10px;
+        padding: 4px 20px;
+    }
+    .core-value-heading{
+        font-size:20px;
+    }
+    .home-about .about-us-single-card-title{
+        font-size: 18px;
+    }
+    .home-about .about-us-single-card .common-para {
+        font-size: 12px;
+        padding-right: 20px;
+    }
+    .home-about .about-us-single-card .direction {
+        height: 25px;
+        width: 25px;
+        right: 0;
+    }
+    .home-about .about-us-single-card .direction  svg{
+        height: 12px;
+        width: 12px;
+    }
+    .home-faculty .home-faculty-card .middle .name{
+        font-size: 16px;
+    }
+    .home-faculty .home-faculty-card .middle .designation{
+        font-size: 14px;
+    }
+    .home-patient-corner .patient-corner-card{
+        width: 80%;
+        margin: 0 auto 20px auto;
+    }
+    header .navbar-brand{
+        width: auto;
+    }
+    header .navbar-brand img{
+     
+        height: 40px;
+    }
+
 
 }
 @media only screen and (max-width : 430px)
 { 
-  
- 
+    .common-core-values .common-container-fluid-adjust-padding{
+
+        padding: 0 10px;
+
+    }
+    .core-value-pic {
+        padding: 10px 5px;
+    }
+    .core-value-pic img {
+        height: 30px;
+        width: 30px;
+    }
+    .core-value-title{
+        padding: 5px;
+    }
+    .core-value-title p{
+        font-size: 10px;
+    }
+    .clinical-trail-box{
+        width: 90%;
+    }
+  }
+
+
+  @media only screen and (max-width : 380px) {
+
+    .common-submit {
+        padding: 8px 30px;
+        border: 0;
+    }
+    .home-patient-corner .patient-corner-card{
+        width: 90%
+    }
+    .home-patient-corner::after{
+        width: 15px;
+    }
+    .home-patient-corner .patient-corner-card .title{
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .home-patient-corner .patient-corner-card .common-para{
+        font-size: 11px;
+        margin-bottom: 0;
+    }
+    .blog-box-text{
+        font-size: 11px;
+    }
+    .home-patient-corner .patient-corner-card img{
+        height: 220px;
+    }
+    .core-value-title p {
+        font-size: 9px;
+    }
+    .core-value-heading{
+        font-size: 16px;
+        padding: 10px 0;
+    }
+    .clinical-trail-box-inner-wrapper .clinical-title{
+        font-size: 15px;
+    }
+
   }
 
 @media only screen and (max-width : 320px) {

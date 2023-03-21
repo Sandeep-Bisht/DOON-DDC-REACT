@@ -38,7 +38,7 @@ const Homepage = () => {
                 </a>
               </div>
             </div>
-            <div className="col-md-6 text-center">
+            <div className="col-md-6 text-center home-appointment-pic-box">
               <img src={Images.single} className="img-fluid" alt="" />
             </div>
           </div>
@@ -583,7 +583,7 @@ const Homepage = () => {
         </div>
         <div className="container-fluid px-0">
           <div className="row card-row g-0">
-            <div className="col-lg-3">
+            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <Link to="/service-details">
                 <div className="scope-service-card">
                   <img
@@ -595,7 +595,7 @@ const Homepage = () => {
                 </div>
               </Link>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <Link to="/service-details">
                 <div className="scope-service-card">
                   <img
@@ -607,7 +607,7 @@ const Homepage = () => {
                 </div>
               </Link>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <Link to="/service-details">
                 <div className="scope-service-card">
                   <img
@@ -619,7 +619,7 @@ const Homepage = () => {
                 </div>
               </Link>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <Link to="/service-details">
                 <div className="scope-service-card">
                   <img
@@ -707,7 +707,7 @@ const Homepage = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-3">
+            <div className="col-lg-3 col-md-6 col-sm-6">
               <div className="patient-corner-card">
                 <div className="upper">
                   <img src={Images.patient1} className="img-fluid" alt="" />
@@ -733,7 +733,7 @@ const Homepage = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-3 col-md-6 col-sm-6">
               <div className="patient-corner-card">
                 <div className="upper">
                   <img src={Images.patient2} className="img-fluid" alt="" />
@@ -759,7 +759,7 @@ const Homepage = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-3 col-md-6 col-sm-6">
               <div className="patient-corner-card">
                 <div className="upper">
                   <img src={Images.patient3} className="img-fluid" alt="" />
@@ -785,7 +785,7 @@ const Homepage = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-3 col-md-6 col-sm-6">
               <div className="patient-corner-card">
                 <div className="upper">
                   <img src={Images.patient4} className="img-fluid" alt="" />
@@ -829,7 +829,7 @@ const Homepage = () => {
           </div>
 
           <div className="row mt-5">
-            <div className="col-lg-6">
+            <div className="col-lg-6 col-md-6">
               <div className="map-div">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3234.031780120001!2d78.01209227394212!3d30.316209142573676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39092a217c7f5be7%3A0x1f456d474de72e23!2s52%2F2%2C%20Ankit%20Puram%2C%20Shakti%20Enclave%2C%20Kaonli%2C%20Dehradun%2C%20Uttarakhand%20248001!5e0!3m2!1sen!2sin!4v1678688176177!5m2!1sen!2sin"
@@ -842,7 +842,7 @@ const Homepage = () => {
                 ></iframe>
               </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6 col-md-6">
               <div className="contact-form-wrapper">
                 <form>
                   <div className="input-wrapper">
