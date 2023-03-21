@@ -9,7 +9,7 @@ const Footer = () => {
       <footer className="footer-page">
         <div className="container-fluid common-container-fluid-adjust-padding">
           <div className="row">
-            <div className="col-md-3">
+            <div className="col-md-3 col-6">
               <p className="footer-title">Timings</p>
               <ul>
                 <li>
@@ -26,7 +26,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 col-6">
               <p className="footer-title">Treatments</p>
               <ul>
                 <li>
@@ -46,7 +46,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 col-6">
               <p className="footer-title">Quick links</p>
               <ul>
                 <li>
@@ -66,7 +66,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 col-6">
               <p className="footer-title">Contact</p>
               <div className="footer-contact-icons">
                 <div>

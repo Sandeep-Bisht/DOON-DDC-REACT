@@ -336,10 +336,27 @@ border-radius: 0;
  }
  
  @media only screen and (max-width :991px) {
+    .common-redirect-banner-title{
+        font-size: 33px;
+    }
    
  }
  @media only screen and (max-width : 767px) {
    
+    .common-para
+    {
+        font-size: 12px;
+    }
+    .common-btn {
+        font-size: 11px;
+        padding: 4px 30px;
+    }
+    .common-heading{
+        font-size: 26px;
+    }
+    header .navbar-brand img{
+        height: auto;
+    }
  }
  @media only screen and (max-width : 575px) {
    

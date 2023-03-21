@@ -3,7 +3,8 @@ import { signal, effect } from "@preact/signals";
 import { ReactComponent as Logo } from "../../Images/ddcLogo.svg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useMutation } from "react-query";
+import { useMutation, QueryClient, QueryClientProvider } from "react-query";
+import {FaBars} from "react-icons/fa"
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../Css/Header.css";
@@ -91,7 +92,9 @@ const Header = () => {
                   aria-expanded="false"
                   aria-label="Toggle navigation"
                 >
-                  <span className="navbar-toggler-icon"></span>
+                  <span className="navbar-toggler-icon">
+                    <FaBars/>
+                  </span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                   <ul className="navbar-nav justify-content-end w-100">

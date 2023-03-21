@@ -57,8 +57,26 @@ header .navbar-brand {
 header .navbar-brand  img{
     height: 60px;
 }
+.navbar-toggler{
+    background-color: #E0F0FF;
+    color: #009DCE;
+    padding: 0;
+    border-radius: 0;
+}
+.navbar-toggler-icon{
+    background-image: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-
+:focus-visible{
+    outline:none;
+}
+.navbar-toggler:focus
+{
+    box-shadow: none;
+}
 
 /* -----common responsive css---- */
 @media only screen and (max-width : 1399px){
@@ -75,13 +93,37 @@ header .navbar-brand  img{
         font-size: 14px;
     }
 }
-
+@media only screen and (max-width : 1035px){
+    header nav .nav-link{
+        padding: 5px 15px!important;
+    }
+    header nav .nav-link{
+        font-size: 13px;
+    }
+}
 @media only screen and (max-width : 1024px) {
   
 }
 
 @media only screen and (max-width :991px) {
-  
+    header nav .nav-link{
+        display: inline-block;
+    }
+    header nav .nav-link.current{
+    
+        background-color: transparent;
+      
+        font-weight: 700;
+        text-decoration: underline;
+
+    }
+    .navbar-nav{
+        padding-bottom: 20px;
+
+    }
+    header .book-now{
+        margin: 8px 0 0 12px;
+    }
 }
 @media only screen and (max-width : 767px) {
   
@@ -94,7 +136,9 @@ header .navbar-brand  img{
 
 @media only screen and (max-width : 480px) {
  
- 
+    header .navbar-brand img{
+        height: auto;
+    }
 
 }
 @media only screen and (max-width : 430px)
