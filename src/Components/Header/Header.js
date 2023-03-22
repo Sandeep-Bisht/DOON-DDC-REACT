@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from "../../Images/ddcLogo.svg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useMutation, QueryClient, QueryClientProvider } from "react-query";
-import {FaBars} from "react-icons/fa"
+import {FaBars,FaTimes} from "react-icons/fa"
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../Css/Header.css";
@@ -199,7 +199,10 @@ const Header = () => {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-              ></button>
+              >
+               <FaTimes/>
+
+              </button>
             </div>
             <div className="modal-body">
               <div>
@@ -304,9 +307,9 @@ const Header = () => {
                           className="text-danger"
                         />
                       </div>
-                      <Button variant="primary" type="submit">
+                      <button  type="submit" className=" common-submit  py-2 px-4 mt-4 border-0">
                         Submit
-                      </Button>
+                      </button>
                       
                       
                     </Form>
