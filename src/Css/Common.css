@@ -209,6 +209,17 @@ border-radius: 0;
 .common-booking-modal .modal-content .common-btn{
     background-color: #009DCE;
 }
+.common-booking-modal .btn-close{
+    background-image: none!important;
+    background: #fff;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 14px;
+    color: #009DCE;
+}
 
 /* ------------------------common-core-values----------------------- */
 .common-core-values{
@@ -338,6 +349,9 @@ border-radius: 0;
  @media only screen and (max-width :991px) {
     .common-redirect-banner-title{
         font-size: 33px;
+    }
+    .breadcrumb{
+        font-size: 14px;
     }
    
  }
