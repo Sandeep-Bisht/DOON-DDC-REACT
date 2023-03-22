@@ -73,3 +73,6 @@
     position: relative;
     resize: none;
 }
+.address-list{
+    padding-right: 30px;
+}

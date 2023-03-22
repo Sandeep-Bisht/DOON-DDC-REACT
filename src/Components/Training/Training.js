@@ -42,27 +42,27 @@ const Training = () => {
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                aria-selected="true">Neurology</button>
+                                aria-selected="true">Gastroenterology</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
-                                aria-selected="false">Surgical</button>
+                                aria-selected="false">Hepatology</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
-                                aria-selected="false">Dental</button>
+                                aria-selected="false">Cardiology</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-fourth-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-fourth" type="button" role="tab" aria-controls="pills-fourth"
-                                aria-selected="false">Ophthalmology</button>
+                                aria-selected="false">Pediatrics</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-fifth-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-fifth" type="button" role="tab" aria-controls="pills-fifth"
-                                aria-selected="false">Cardiology</button>
+                                aria-selected="false">Gynecology</button>
                         </li>
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
@@ -76,12 +76,11 @@ const Training = () => {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p class="training-common-tab-title">
-                                                    Neurological Deparments
+                                                Gastroenterology
                                                 </p>
-                                                <p class="training-common-tab-para">On her way she met a copy. The copy
-                                                    warned the Little Blind Text, that where it came from it would have
-                                                    been rewritten a thousand times and everything that was left from
-                                                    its origin would be the word.</p>
+                                                <p class="training-common-tab-para">
+                                                Gastroenterology, medical specialty concerned with the digestive system and its diseases. Gastroenterologists diagnose and treat the diseases and disorders of the esophagus, stomach, intestines, liver, biliary tract, and pancreas
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="row mt-5 pt-2">
@@ -157,12 +156,11 @@ const Training = () => {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p class="training-common-tab-title">
-                                                    Surgical Deparments
+                                                Hepatology
                                                 </p>
-                                                <p class="training-common-tab-para">On her way she met a copy. The copy
-                                                    warned the Little Blind Text, that where it came from it would have
-                                                    been rewritten a thousand times and everything that was left from
-                                                    its origin would be the word.</p>
+                                                <p class="training-common-tab-para">
+                                                Hepatology is a branch of medicine concerned with the study, prevention, diagnosis, and management of diseases that affect the liver, gallbladder, biliary tree, and pancreas.
+                                                    </p>
                                             </div>
                                         </div>
                                         <div class="row mt-5 pt-2">
@@ -239,12 +237,12 @@ const Training = () => {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p class="training-common-tab-title">
-                                                    Dental Deparments
+                                                Cardiology
                                                 </p>
-                                                <p class="training-common-tab-para">On her way she met a copy. The copy
-                                                    warned the Little Blind Text, that where it came from it would have
-                                                    been rewritten a thousand times and everything that was left from
-                                                    its origin would be the word.</p>
+                                                <p class="training-common-tab-para">
+                                                Cardiology is a branch of medicine that deals with disorders of the heart and the cardiovascular system. 
+                                                The field includes medical diagnosis and treatment of congenital heart defects, coronary artery disease, heart failure, valvular heart disease and electrophysiology.
+                                                    </p>
                                             </div>
                                         </div>
                                         <div class="row mt-5 pt-2">
@@ -319,12 +317,11 @@ const Training = () => {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p class="training-common-tab-title">
-                                                    Ophthalmology Deparments
+                                                Pediatrics
                                                 </p>
-                                                <p class="training-common-tab-para">On her way she met a copy. The copy
-                                                    warned the Little Blind Text, that where it came from it would have
-                                                    been rewritten a thousand times and everything that was left from
-                                                    its origin would be the word.</p>
+                                                <p class="training-common-tab-para">
+                                                Pediatrics is the branch of medicine dealing with the health and medical care of infants, children, and adolescents from birth up to the age of 18
+                                                    </p>
                                             </div>
                                         </div>
                                         <div class="row mt-5 pt-2">
@@ -399,7 +396,7 @@ const Training = () => {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p class="training-common-tab-title">
-                                                    Cardiology Deparments
+                                                Gynecology
                                                 </p>
                                                 <p class="training-common-tab-para">On her way she met a copy. The copy
                                                     warned the Little Blind Text, that where it came from it would have
