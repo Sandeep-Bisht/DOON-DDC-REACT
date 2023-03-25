@@ -111,7 +111,7 @@
     min-height: 163px;
   }
   .blog-page {
-    margin-top: 130px;
+    margin-top: 0;
   }
   
   /* / Single-blog-css / */
@@ -185,9 +185,7 @@
       height: 150px;
       padding-top: 26px;
     }
-    .blog-page{
-      margin-top: 175px;
-    }
+    
   }
   @media only screen and (max-width: 767.5px) {
     .blog-box-wrapper .left-blog-image-wrap img {
@@ -221,9 +219,7 @@
     .top-heading-box-3 p {
       font-size: 0.9rem;
     }
-      .blog-page {
-        margin-top: 129px;
-    }
+  
     
   }
 
@@ -237,9 +233,7 @@
   }
   
   @media only screen and (max-width: 729.98px){
-    .blog-page {
-      margin-top: 160px;
-  }
+   
   }
   @media only screen and (max-width: 596.6px) {
     .blog-page .card-text{
@@ -302,3 +296,90 @@
       color: #009DCE;
       margin:15px 0;
     }
+
+
+     /* -----common responsive css---- */
+ @media only screen and (max-width : 1399px){
+  
+ }
+ @media only screen and (max-width : 1265px){
+    
+ }
+ 
+ @media only screen and (max-width : 1199px){
+    
+    
+ }
+ 
+ @media only screen and (max-width : 1024px) {
+   
+ }
+ 
+ @media only screen and (max-width :991px) {
+   
+
+    
+ }
+ 
+ @media only screen and (max-width : 950px){
+    
+ }
+ @media only screen and (max-width : 930px){
+   
+   
+ }
+ 
+ 
+ 
+ @media only screen and (max-width : 767px) {
+     
+
+     
+    
+ }
+ 
+ @media only screen and (max-width : 645px){
+    
+ 
+ }
+ 
+  @media only screen and (max-width : 575px) {
+    .training-content{
+      padding: 20px 0;
+    } 
+    .training-content h5{
+      font-size: 16px;
+    }
+    .blog-page-section-2 .card-img-link .card-title{
+       font-size: 15px;
+    }
+    .blog-page .latest-blog-card .displayed-text{
+      font-size: 14px;
+    }
+    .blog-page .latest-blog-card .read-more-button{
+      font-size: 13px;
+    }
+  
+ 
+ }
+ 
+ @media only screen and (max-width : 480px) {
+    
+}
+
+@media only screen and (max-width : 430px)
+ { 
+ 
+}
+ 
+ 
+@media only screen and (max-width : 380px) {
+ 
+   }
+ 
+ @media only screen and (max-width : 320px) {
+ 
+   
+ 
+ }
+

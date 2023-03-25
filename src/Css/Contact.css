@@ -76,3 +76,91 @@
 .address-list{
     padding-right: 30px;
 }
+
+
+ /* -----common responsive css---- */
+ @media only screen and (max-width : 1399px){
+  
+ }
+ @media only screen and (max-width : 1265px){
+    
+ }
+ 
+ @media only screen and (max-width : 1199px){
+    
+    
+ }
+ @media only screen and (max-width : 1055px){
+    
+    
+ }
+
+ @media only screen and (max-width : 1024px) {
+   
+ }
+ @media only screen and (max-width :905px) {
+  
+    
+ }
+ 
+ @media only screen and (max-width :991px) {
+  
+
+    
+ }
+ 
+ @media only screen and (max-width : 950px){
+    
+ }
+ @media only screen and (max-width : 930px){
+   
+   
+ }
+ 
+ 
+ 
+ @media only screen and (max-width : 767px) {
+     
+     
+    
+ }
+ 
+ @media only screen and (max-width : 645px){
+    
+ 
+ }
+ 
+  @media only screen and (max-width : 575px) {
+   .contact-single .common-para-second{
+        font-size: 12px;
+   }
+   .contact-single .common-heading{
+      justify-content: center;
+   }
+   
+ 
+ }
+ 
+ @media only screen and (max-width : 480px) {
+    
+}
+
+@media only screen and (max-width : 430px)
+ { 
+  
+   
+}
+ 
+ 
+@media only screen and (max-width : 380px) {
+ 
+    
+
+   }
+ 
+ @media only screen and (max-width : 320px) {
+ 
+   
+ 
+ }
+

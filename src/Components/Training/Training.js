@@ -38,7 +38,9 @@ const Training = () => {
             </div>
             <div class="row pt-lg-5">
                 <div class="col-md-12">
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <div className='row g-0'>
+                        <div className='col-lg-12 col-md-12 col-sm-12 col-4'>
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
@@ -65,14 +67,16 @@ const Training = () => {
                                 aria-selected="false">Gynecology</button>
                         </li>
                     </ul>
-                    <div class="tab-content" id="pills-tabContent">
+                        </div>
+                        <div className='col-lg-12 col-md-12 col-sm-12 col-8'>
+                        <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab">
 
                             <div class="training-common-tab">
                                 <div class="row">
                                 <div class="col-lg-8">
-                                    <div class="left">
+                                    <div class="left pe-3">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p class="training-common-tab-title">
@@ -83,7 +87,7 @@ const Training = () => {
                                                 </p>
                                             </div>
                                         </div>
-                                        <div class="row mt-5 pt-2">
+                                        <div class="row mt-5 pt-2 middle-row">
                                             <div class="col-lg-6">
                                                 <div class="training-box row">
                                                     <div
@@ -163,7 +167,7 @@ const Training = () => {
                                                     </p>
                                             </div>
                                         </div>
-                                        <div class="row mt-5 pt-2">
+                                        <div class="row mt-5 pt-2 middle-row">
                                             <div class="col-lg-6">
                                                 <div class="training-box row">
                                                     <div
@@ -245,7 +249,7 @@ const Training = () => {
                                                     </p>
                                             </div>
                                         </div>
-                                        <div class="row mt-5 pt-2">
+                                        <div class="row mt-5 pt-2 middle-row">
                                             <div class="col-lg-6">
                                                 <div class="training-box row">
                                                     <div
@@ -324,7 +328,7 @@ const Training = () => {
                                                     </p>
                                             </div>
                                         </div>
-                                        <div class="row mt-5 pt-2">
+                                        <div class="row mt-5 pt-2 middle-row">
                                             <div class="col-lg-6">
                                                 <div class="training-box row">
                                                     <div
@@ -404,7 +408,7 @@ const Training = () => {
                                                     its origin would be the word.</p>
                                             </div>
                                         </div>
-                                        <div class="row mt-5 pt-2">
+                                        <div class="row mt-5 pt-2 middle-row">
                                             <div class="col-lg-6">
                                                 <div class="training-box row">
                                                     <div
@@ -469,6 +473,10 @@ const Training = () => {
                             </div>
                         </div>
                     </div>
+                        </div>
+                    </div>
+                   
+                    
                 </div>
             </div>
 

@@ -598,6 +598,22 @@
     .home-training::before{
         width: 20px;
     }
+    .home-about .about-us-single-card-title{
+        font-size: 18px;
+    }
+    .home-about .about-us-single-card .direction{
+        width: 25px;
+        height: 25px;
+        right: 0;
+      }
+      .home-about .about-us-single-card .direction svg{
+        height: 14px;
+        width: 14px;    
+
+      }
+      .home-about .about-us-single-card .common-para{
+        padding: 0 20px;
+      }
 
 }
 

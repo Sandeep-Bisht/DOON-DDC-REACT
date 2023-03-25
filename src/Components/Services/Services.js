@@ -29,7 +29,7 @@ const Services = () => {
     <div className="container">
         <div className="row">
             <div className="col-md-12">
-                <h1 className="common-heading d-flex align-items-center justify-content-center py-5">
+                <h1 className="common-heading d-flex align-items-center justify-content-center py-lg-5 py-4 mb-sm-0 ">
                     <span className="bar one"></span>Scope of services <span className="bar two"></span>
                   </h1>
             </div>
@@ -37,13 +37,13 @@ const Services = () => {
     </div>
    <div className="container-fluid g-0">
     <div className="row g-0">
-    <div className="col-md-4 ">
+    <div className="col-md-4 col-4 ">
         <div className="service-single-page-left " ></div>
        
     </div>
-    <div className="col-md-8">
+    <div className="col-md-8 col-8">
         <div className="row g-0">
-            <div className="col-lg-4">
+            <div className="col-lg-4  col-6 col-sm-6">
             <ScrollLink to="one" smooth={true} duration={200}>
                 <div className="service-single-page-card">
                     <div className="icon">
@@ -56,7 +56,7 @@ const Services = () => {
                 </div>
             </ScrollLink>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-6 col-sm-6">
             <ScrollLink to="two" smooth={true} duration={200}>
                 <div className="service-single-page-card">
                     <div className="icon">
@@ -68,7 +68,7 @@ const Services = () => {
                     <p className="sub-para d-none">Far far away, behind the word mountains</p>
                 </div></ScrollLink>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-6 col-sm-6">
             <ScrollLink to="three" smooth={true} duration={200}>
                 <div className="service-single-page-card">
                     <div className="icon">
@@ -81,7 +81,7 @@ const Services = () => {
                 </div></ScrollLink>
             </div>
             {/* <!-- ----------------copy---------- --> */}
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-6 col-sm-6">
                 <div className="service-single-page-card">
                     <div className="icon">
                         <i className="fal fa-stethoscope"></i>
@@ -92,7 +92,7 @@ const Services = () => {
                     <p className="sub-para d-none">Far far away, behind the word mountains</p>
                 </div>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-6 col-sm-6">
                 <div className="service-single-page-card">
                     <div className="icon">
                         <i className="fal fa-stethoscope"></i>
@@ -103,7 +103,7 @@ const Services = () => {
                     <p className="sub-para d-none">Far far away, behind the word mountains</p>
                 </div>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 col-6 col-sm-6">
                 <div className="service-single-page-card">
                     <div className="icon">
                         <i className="fal fa-stethoscope"></i>
@@ -127,7 +127,7 @@ const Services = () => {
         Related to general Medicine</h1></div>
       </div>
       <div className='row' >
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-md-4 col-sm-6 col-6'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -137,7 +137,7 @@ const Services = () => {
                 </ul>
             </div>
           </div>
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-md-4 col-sm-6 col-6'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -148,7 +148,7 @@ const Services = () => {
                 </ul>
             </div>
           </div>
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-md-4 col-sm-6 col-6'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -160,7 +160,7 @@ const Services = () => {
                 </ul>
             </div>
           </div>
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-md-4 col-sm-6 col-6'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -203,7 +203,7 @@ const Services = () => {
         Related to Gastroenterology</h1></div>
       </div>
       <div className='row'>
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-md-4 col-sm-6 col-6'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -213,7 +213,7 @@ const Services = () => {
                 </ul>
             </div>
           </div>
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-md-4 col-sm-6 col-6'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -224,7 +224,7 @@ const Services = () => {
                 </ul>
             </div>
           </div>
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-md-4 col-sm-6 col-6'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -236,7 +236,7 @@ const Services = () => {
                 </ul>
             </div>
           </div>
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-md-4 col-sm-6 col-6'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -246,7 +246,7 @@ const Services = () => {
                 </ul>
             </div>
           </div>
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-md-4 col-sm-6 col-6'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -256,7 +256,7 @@ const Services = () => {
                 </ul>
             </div>
           </div>
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-md-4 col-sm-6 col-6'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -275,7 +275,7 @@ const Services = () => {
         Day Care</h1></div>
       </div>
       <div className='row' >
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-4'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -285,7 +285,7 @@ const Services = () => {
                 </ul>
             </div>
           </div>
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-4'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -296,7 +296,7 @@ const Services = () => {
                 </ul>
             </div>
           </div>
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-4'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
@@ -308,7 +308,7 @@ const Services = () => {
                 </ul>
             </div>
           </div>
-          <div className='col-lg-4'>
+          <div className='col-lg-4 col-4'>
             <div className='procedure-card card shadow p-4' >
 
                 <ul>
