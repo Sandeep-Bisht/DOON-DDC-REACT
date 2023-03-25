@@ -325,7 +325,7 @@ border-radius: 0;
     .common-heading{
         font-size: 30px;
     }
-    .common-para{
+    .common-para,.common-para-second{
         font-size: 13px;
     }
     .common-btn{
@@ -356,8 +356,15 @@ border-radius: 0;
    
  }
  @media only screen and (max-width : 767px) {
+    .common-redirect-banner-title{
+        font-size: 25px;
+        margin-bottom: 5px;
+    }
+    .breadcrumb{
+        font-size: 13px;
+    }
    
-    .common-para
+    .common-para,.common-para-second
     {
         font-size: 12px;
     }
@@ -373,7 +380,9 @@ border-radius: 0;
     }
  }
  @media only screen and (max-width : 575px) {
-   
+    .training-single{
+        padding-bottom: 20px;
+    }
  
  }
  
@@ -385,7 +394,11 @@ border-radius: 0;
  }
  @media only screen and (max-width : 430px)
  { 
-   
+    .common-submit{
+        padding: 10px 36px;
+    border: 0;
+    font-size: 11px;
+    }
   
    }
  

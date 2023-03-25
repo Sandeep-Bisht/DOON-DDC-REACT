@@ -134,3 +134,112 @@
     text-align: center;
     
 }
+
+ /* -----common responsive css---- */
+ @media only screen and (max-width : 1399px){
+  
+ }
+ @media only screen and (max-width : 1265px){
+    
+ }
+ 
+ @media only screen and (max-width : 1199px){
+    
+    
+ }
+ @media only screen and (max-width : 1055px){
+    
+    .service-single-page-card .service-single-page-card-title{
+        font-size: 18px;
+    }
+    .procedure .procedure-card ul li{
+        font-size: 14px;
+    }
+ }
+
+ @media only screen and (max-width : 1024px) {
+   
+ }
+ @media only screen and (max-width :905px) {
+  
+    .service-single-page-card{
+        padding: 20px ;
+    }
+    
+ }
+ 
+ @media only screen and (max-width :991px) {
+  
+
+    
+ }
+ 
+ @media only screen and (max-width : 950px){
+    
+ }
+ @media only screen and (max-width : 930px){
+   
+   
+ }
+ 
+ 
+ 
+ @media only screen and (max-width : 767px) {
+     
+    .service-single-page-card .service-single-page-card-title{
+        font-size: 16px;
+    }
+     
+    
+ }
+ 
+ @media only screen and (max-width : 645px){
+    
+ 
+ }
+ 
+  @media only screen and (max-width : 575px) {
+   
+    .procedure .procedure-card{
+        padding: 8px!important;
+    }
+    .procedure .procedure-card ul li{
+        font-size: 12px;
+    }
+    .service-single-page-card{
+        padding: 10px;
+    }
+    .service-single-page-card .service-single-page-card-title{
+        font-size: 14px;
+    }
+ 
+ }
+ 
+ @media only screen and (max-width : 480px) {
+    
+}
+
+@media only screen and (max-width : 430px)
+ { 
+  
+    .service-single-page-card .service-single-page-card-title{
+        font-size: 12px;
+    }
+    .service-single-page-card{
+        padding: 5px;
+    }
+}
+ 
+ 
+@media only screen and (max-width : 380px) {
+ 
+    
+
+   }
+ 
+ @media only screen and (max-width : 320px) {
+ 
+   
+ 
+ }
+

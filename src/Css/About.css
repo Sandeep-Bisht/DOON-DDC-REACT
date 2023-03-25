@@ -75,7 +75,9 @@
  
  @media only screen and (max-width : 767px) {
      
- 
+  .about-row {
+    padding: 0 70px;
+}
      
     
  }
@@ -85,25 +87,21 @@
  
  }
  
- 
- 
- 
- 
- @media only screen and (max-width : 575px) {
+  @media only screen and (max-width : 575px) {
    
-    
+  
  
  }
- 
  
  @media only screen and (max-width : 480px) {
     
 }
 
-
- @media only screen and (max-width : 430px)
+@media only screen and (max-width : 430px)
  { 
-     
+  .about-row{
+    padding: 0 20px;
+  }
 }
  
  
@@ -116,3 +114,4 @@
    
  
  }
+
