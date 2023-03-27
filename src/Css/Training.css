@@ -89,3 +89,164 @@
   
   }
 
+
+
+ /* -----common responsive css---- */
+ @media only screen and (max-width : 1399px){
+  
+ }
+ @media only screen and (max-width : 1265px){
+    
+ }
+ 
+ @media only screen and (max-width : 1199px){
+    
+    
+ }
+ @media only screen and (max-width : 1055px){
+    
+    
+ }
+
+ @media only screen and (max-width : 1024px) {
+   
+ }
+
+ 
+ @media only screen and (max-width :991px) {
+    .training-single .nav-pills .nav-link{
+        padding: 10px 15px!important;
+        font-size: 14px;
+    }
+    .training-common-tab .training-common-tab-title{
+        font-size: 24px;
+    }
+    .training-single .nav-pills{
+        margin-top: 20px;
+    }
+    .training-common-tab .training-box{
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+    .training-common-tab .right{
+        margin-top: 30px;
+    }
+    .training-common-tab .training-box .icon{
+        display: none;
+    }
+    .training-common-tab .right img{
+        padding:20px 100px 40px 0;
+    }
+
+    
+ }
+ 
+ @media only screen and (max-width : 950px){
+    
+ }
+ @media only screen and (max-width : 930px){
+   
+   
+ }
+ 
+ 
+ 
+ @media only screen and (max-width : 767px) {
+     
+    .training-common-tab{
+        padding: 20px;
+        margin-top: 0;
+    }
+
+    .training-common-tab .training-box{
+        display: none;
+    } 
+    .training-common-tab .middle-row{
+        display: none;
+    }
+    .training-single .nav-pills .nav-link{
+        padding: 10px 5px!important;
+        font-size: 12px;
+    }
+    .training-common-tab .training-common-tab-title{
+        font-size: 18px;
+    }
+    .training-common-tab .training-common-tab-para, .training-common-tab .training-box .text p{
+        font-size: 13px;
+    }
+    .training-common-tab .right{
+        padding: 0 100px 0 0;
+        margin-top: 0;
+    }
+    
+ }
+ 
+ @media only screen and (max-width : 645px){
+    
+ 
+ }
+ 
+  @media only screen and (max-width : 575px) {
+  
+    .training-single .nav-pills .nav-item{
+        display: block;
+        width: 100%;
+    }
+    .training-single .nav-pills .nav-link{
+        display:flex;
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .training-common-tab .right{
+        padding: 0 70px 0 0;
+    }
+    .training-common-tab .right img {
+        padding: 0px 60px 0px 0;
+    }
+    .training-single .nav-pills,.training-common-tab{
+        margin-top: 25px;
+    }
+ 
+ }
+ 
+ @media only screen and (max-width : 480px) {
+    .training-common-tab .training-common-tab-title{
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+    .training-single .nav-pills .nav-link{
+        font-size: 11px;
+        padding: 10px 3px!important;
+    }
+    .training-common-tab .training-common-tab-para, .training-common-tab .training-box .text p{
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width : 430px)
+ { 
+
+    .training-common-tab{
+        padding: 6px 15px;
+    }
+    .training-common-tab .right img{
+        padding: 0;
+    }
+    .training-common-tab .training-common-tab-para, .training-common-tab .training-box .text p{
+        line-height: 1.5;
+    }
+   
+}
+ 
+ 
+@media only screen and (max-width : 380px) {
+ 
+    
+
+   }
+ 
+ @media only screen and (max-width : 320px) {
+ 
+   
+ 
+ }
