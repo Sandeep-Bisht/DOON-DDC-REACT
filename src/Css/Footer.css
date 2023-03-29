@@ -54,6 +54,23 @@
     color: #009DCE;
 }
 
+.timing-box{
+  display: flex;
+  margin-bottom: 10px;
+  
+}
+.timing-box .left p{
+  margin-bottom: 0;
+}
+.timing-box .left{
+  margin-right: 8px;
+  width: 35%;
+}
+.timing-box .right span{
+  font-size: 11px;
+  display: block;
+}
+
  /* -----common responsive css---- */
  @media only screen and (max-width : 1399px){
   
@@ -77,7 +94,12 @@
  
  @media only screen and (max-width :991px) {
    
+  .timing-box .left{
+    width: 45%;
+  }
  }
+
+
  @media only screen and (max-width : 767px) {
    
  }
@@ -103,6 +125,13 @@
   }
   .footer-page .copyright{
     margin: 30px 0 0  0;
+  }
+
+  .timing-box .left{
+    width: 45%;
+  }
+  .timing-box .right span{
+    font-size: 10px;
   }
 
  }

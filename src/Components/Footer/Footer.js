@@ -13,17 +13,64 @@ const Footer = () => {
               <p className="footer-title">Timings</p>
               <ul>
                 <li>
-                  Monday-Friday <br />
-                  8:00 - 16:00 
+                  <div className="timing-box">
+                    <div className="left">
+                        <p>Monday:</p>
+                    </div>
+                    <div className="right"> <span><strong>11AM to 2PM</strong> </span>
+                  <span><strong>4PM to 8PM</strong></span></div>
+                  </div>
+                 
+                  
+                  
                 </li>
-                {/* <li>
-                  Thu - Closed <br />
-                  Closed
-                </li> */}
                 <li>
-                  Saturday - Sunday <br />
-                  8:00 - 16:00
+                  <div className="timing-box">
+                    <div className="left">
+                        <p>Tuesday:</p>
+                    </div>
+                    <div className="right"> <span><strong>11AM to 2PM</strong> </span>
+                  <span><strong>4PM to 8PM</strong></span></div>
+                  </div>
                 </li>
+                <li>
+                  <div className="timing-box">
+                    <div className="left">
+                        <p>Wednesday:</p>
+                    </div>
+                    <div className="right"> <span><strong>11AM to 2PM</strong> </span>
+                  <span><strong>4PM to 8PM</strong></span></div>
+                  </div>
+                </li>
+                <li>
+                  <div className="timing-box">
+                    <div className="left">
+                        <p>Thursday:</p>
+                    </div>
+                    <div className="right"> <span><strong>Holiday</strong> </span>
+                 </div>
+                  </div>
+                </li>
+                <li>
+                  <div className="timing-box">
+                    <div className="left">
+                        <p>Friday:</p>
+                    </div>
+                    <div className="right"> <span><strong>11AM to 2PM</strong> </span>
+                  <span><strong>4PM to 8PM</strong></span></div>
+                  </div>
+                </li>
+                <li>
+                  <div className="timing-box">
+                    <div className="left">
+                        <p>Saturday:</p>
+                    </div>
+                    <div className="right"> <span><strong>11AM to 2PM</strong> </span>
+                  <span><strong>4PM to 8PM</strong></span></div>
+                  </div>
+                </li>
+               
+              
               </ul>
             </div>
             <div className="col-md-3 col-6">
@@ -87,7 +134,7 @@ const Footer = () => {
                 <div className="footer-contact-details">
                   <address className="footer-content">
                     Digestive Disease Centre, 2, Gms Road, Dehradun City,
-                    dehradun - 248001 (Ankit Puram, Near Chaudhary Farm House)
+                    dehradun - 248001 (2Ankit Puram, Near Chaudhary Farm House)
                   </address>
                 </div>
               </div>
@@ -130,7 +177,7 @@ const Footer = () => {
                   </svg>
                 </div>
                 <div className="footer-contact-details">
-                  <p className="footer-content">info@doonddc.in</p>
+                  <p className="footer-content">info@doonddc.com</p>
                 </div>
               </div>
             </div>

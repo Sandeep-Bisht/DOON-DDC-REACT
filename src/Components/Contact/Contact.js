@@ -44,7 +44,7 @@ const Contact = () => {
                     <div>
                         <h6 className="mb-0">Adress</h6>
                         <p className="color1">
-                        Digestive Disease Centre, 2, Gms Road, Dehradun City, dehradun - 248001 (Ankit Puram, Near Chaudhary Farm House)
+                        Digestive Disease Centre, 2, Gms Road, Dehradun City, dehradun - 248001 (2Ankit Puram, Near Chaudhary Farm House)
                         </p>
                     </div>
                 </li>
@@ -68,7 +68,7 @@ const Contact = () => {
                     <div>
                         <h6 className="mb-0">Email</h6>
                         <p>
-                            <a className="color1 common-para" href="mailto:mayank@proponenttechnlogies.com"> info@doonddc.in</a>
+                            <a className="color1 common-para" href="mailto:mayank@proponenttechnlogies.com"> info@doonddc.com</a>
                         </p>
                     </div>
                 </li>

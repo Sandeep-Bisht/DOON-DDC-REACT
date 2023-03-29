@@ -167,7 +167,7 @@ const Homepage = () => {
               </h1>
               </div>
              </div>  
-             <div className="row g-0">
+             <div className="row g-0 d-none">
                 <div className="col-md-12">
                      <ul className="core-value-card-wrapper">
                         <li className="core-value-card one">
@@ -244,6 +244,18 @@ const Homepage = () => {
                      </ul>
                 </div>
               </div> 
+              <div className="row">
+                 <div className="col-md-12">
+                  <div className="core-values-singlepic-box"> 
+                 <Link
+                        to="/about-us"
+                        >
+                                      <img src={Images.coreValue} className="img-fluid" alt="" />
+
+
+                        </Link></div>
+                 </div>
+              </div>
         </div> 
       </section>
       <section className="home-faculty ">
