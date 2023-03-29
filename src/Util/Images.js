@@ -41,6 +41,7 @@ const Images = {
     honesty: require('../Images/honesty.png'),
     team: require('../Images/team.png'),
     target: require('../Images/target.png'),
+    coreValue: require('../Images/core-values.png')
 
 }
 

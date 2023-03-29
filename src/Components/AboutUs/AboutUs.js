@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import "../../Css/About.css"
 import Images from '../../Util/Images'
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
 
@@ -172,7 +173,7 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
-      <section className="common-core-values">
+      {/* <section className="common-core-values">
         <div className="container-fluid common-container-fluid-adjust-padding">
            <div className="row">
               <div className="col-md-12 d-flex justify-content-center">
@@ -259,6 +260,107 @@ const AboutUs = () => {
                      </ul>
                 </div>
               </div> 
+        </div> 
+      </section> */}
+       <section className="common-core-values">
+        <div className="container-fluid common-container-fluid-adjust-padding">
+           <div className="row">
+              <div className="col-md-12 d-flex justify-content-center">
+              <h1 className="common-heading d-flex align-items-center ">
+                <span className="bar one"></span> Core Values
+                <span className="bar two"></span>
+              </h1>
+              </div>
+             </div>  
+             <div className="row g-0 d-none">
+                <div className="col-md-12">
+                     <ul className="core-value-card-wrapper">
+                        <li className="core-value-card one">
+                           <div className="core-value-pic">
+                           <img src={Images.globe} className="img-fluid" alt="" />
+                           </div>
+                           <div className="core-value-title">
+                               <p>Responsibility</p>
+                           </div>
+                        </li>
+                        
+                        <li className="core-value-card three">
+                           <div className="core-value-pic">
+                           <img src={Images.user} className="img-fluid" alt="" />
+                           </div>
+                           <div className="core-value-title">
+                               <p>Coaching</p>
+                           </div>
+                        </li>
+                        <li className="core-value-card four">
+                           <div className="core-value-pic">
+                           <img src={Images.bulb} className="img-fluid" alt="" />
+                           </div>
+                           <div className="core-value-title">
+                               <p>Innovation</p>
+                           </div>
+                        </li>
+                        <li className="core-value-card two">
+                           <div className="core-value-pic"> <img src={Images.balance} className="img-fluid" alt="" /></div>
+                           <div className="core-value-title">
+                               <p>Ethics</p>
+                           </div>
+                        </li>
+                     </ul>
+                </div>
+                <div className="col-md-12">
+                    <p className="core-value-heading">
+                      Core Values
+                    </p>
+                </div>
+                <div className="col-md-12">
+                     <ul className="core-value-card-wrapper invert">
+                        <li className="core-value-card one">
+                           <div className="core-value-pic">
+                           <img src={Images.honesty} className="img-fluid" alt="" />
+                           </div>
+                           <div className="core-value-title">
+                               <p>Trust</p>
+                           </div>
+                        </li>
+                        
+                        <li className="core-value-card three">
+                           <div className="core-value-pic">
+                           <img src={Images.group} className="img-fluid" alt="" />
+                           </div>
+                           <div className="core-value-title">
+                               <p>Customers</p>
+                           </div>
+                        </li>
+                        <li className="core-value-card four">
+                           <div className="core-value-pic">
+                           <img src={Images.team} className="img-fluid" alt="" />
+                           </div>
+                           <div className="core-value-title">
+                               <p>Teamwork</p>
+                           </div>
+                        </li>
+                        <li className="core-value-card two">
+                           <div className="core-value-pic"> <img src={Images. target} className="img-fluid" alt="" /></div>
+                           <div className="core-value-title">
+                               <p>Goals</p>
+                           </div>
+                        </li>
+                     </ul>
+                </div>
+              </div> 
+              <div className="row">
+                 <div className="col-md-12">
+                  <div className="core-values-singlepic-box"> 
+                 <Link
+                        to="/about-us"
+                        >
+                                      <img src={Images.coreValue} className="img-fluid" alt="" />
+
+
+                        </Link></div>
+                 </div>
+              </div>
         </div> 
       </section>
 </>

@@ -224,6 +224,9 @@ border-radius: 0;
 /* ------------------------common-core-values----------------------- */
 .common-core-values{
     padding: 60px 0;
+    background-image: url('../Images/grid.png');
+    background-size: cover;
+    background-color:#BDCDD6;
 }
 .core-value-card-wrapper{
     display: flex;
@@ -310,6 +313,14 @@ border-radius: 0;
 {
    background-color:#9fc54c;
 }
+.core-values-singlepic-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.core-values-singlepic-box img{
+    height: 700px;
+}
 
 
 
@@ -353,6 +364,9 @@ border-radius: 0;
     .breadcrumb{
         font-size: 14px;
     }
+    .core-values-singlepic-box img{
+        height: 600px;
+    }
    
  }
  @media only screen and (max-width : 767px) {
@@ -378,10 +392,17 @@ border-radius: 0;
     header .navbar-brand img{
         height: auto;
     }
+
+    .core-values-singlepic-box img{
+        height: 500px;
+    }
  }
  @media only screen and (max-width : 575px) {
     .training-single{
         padding-bottom: 20px;
+    }
+    .core-values-singlepic-box img{
+        height: 400px;
     }
  
  }
@@ -389,7 +410,9 @@ border-radius: 0;
  
  @media only screen and (max-width : 480px) {
   
-  
+    .core-values-singlepic-box img{
+        height: 300px;
+    } 
  
  }
  @media only screen and (max-width : 430px)
