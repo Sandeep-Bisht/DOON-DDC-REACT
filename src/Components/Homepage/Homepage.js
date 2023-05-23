@@ -248,7 +248,7 @@ const Homepage = () => {
                  <div className="col-md-12">
                   <div className="core-values-singlepic-box"> 
                  <Link
-                        to="/about-us"
+                        to="/core-value-detail"
                         >
                                       <img src={Images.coreValue} className="img-fluid" alt="" />
 

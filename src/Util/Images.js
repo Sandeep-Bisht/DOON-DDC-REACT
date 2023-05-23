@@ -41,7 +41,16 @@ const Images = {
     honesty: require('../Images/honesty.png'),
     team: require('../Images/team.png'),
     target: require('../Images/target.png'),
-    coreValue: require('../Images/core-values.png')
+    coreValue: require('../Images/core-values.png'),
+    responsibilty:require('../Images/responsibility.png'),
+    trust:require('../Images/trust.png'),
+    customer:require('../Images/customer.png'),
+    ethics:require('../Images/ethics.png'),
+    goals:require('../Images/goals.png'),
+    innovation:require('../Images/innovation.png'),
+    coaching:require('../Images/coaching.png'),
+    positiveAttitude:require('../Images/positive-attitude.png')
+
 
 }
 

@@ -7,6 +7,8 @@ import Services from "../Components/Services/Services";
 import Training from "../Components/Training/Training";
 import Patient from "../Components/Patient/Patient";
 import ServiceDetail from "../ServiceDetails/ServiceDetail";
+import CoreValueDetail from "../Components/CoreValueDetail/CoreValueDetail"
+
 
 const ApplicationRoutes = () => {
 
@@ -20,6 +22,7 @@ const ApplicationRoutes = () => {
             <Route path="/training" element={<Training />} />
             <Route path="/our-services" element={<Services />} />
             <Route path="/service-details" element={< ServiceDetail/>} />
+            <Route path="/core-value-detail" element={<CoreValueDetail/>}/>
 
             
         </Routes>
