@@ -1,0 +1,21 @@
+.sidebar {
+    background: linear-gradient(130deg, rgba(0,8,41,1) 0%, rgba(2,19,73,1) 100%);
+    height: 100vh;
+    padding-left: 0;
+}
+
+.sidebar .sidebar-nav-wrapper {
+    padding-top: 40px;
+}
+
+.sidebar .sidebar-nav {
+    color: #fff;
+    /* padding: 40px 15px 0px 15px; */
+    /* text-align: inherit; */
+}
+
+.sidebar .sidebar-nav a {
+    color: #fff;
+    text-decoration: none;
+
+}

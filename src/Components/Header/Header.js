@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import { signal, effect } from "@preact/signals";
-import { ReactComponent as Logo } from "../../Images/ddcLogo.svg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useMutation, QueryClient, QueryClientProvider } from "react-query";
+import { useMutation } from "react-query";
 import {FaBars,FaTimes} from "react-icons/fa"
-import { Row, Col, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import "../../Css/Header.css";
 import "../../Css/Common.css";
 import Images from "../../Util/Images";
@@ -15,10 +14,10 @@ import { url } from "../../Util/url";
 const responseMsg = signal(undefined);
 
 const Header = () => {
-
- //const msg = responseMsg.value;
   const [activeLink, setActiveLink] = useState("/");
   const currentDate = signal(undefined)
+  const navigate = useNavigate();
+  const loginModalRef = useRef(null);
 
   const appointmentSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -28,6 +27,11 @@ const Header = () => {
     time: Yup.string().required("Time is required"),
     description: Yup.string().required("Description is required"),
   });
+
+  const loginSchema = Yup.object().shape({
+    adminEmail: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string().required("Password is required"),
+  })
 
   effect(() => {
     const date = new Date().toISOString().split('T')[0];          
@@ -40,14 +44,7 @@ const Header = () => {
         console.log(responseMsg.value,"inside set time out")
       }, 2000)
 
-  }, [responseMsg.value])
-
-   
-
-    
-  
-
- 
+  }, [responseMsg.value])  
 
   const createAppointment = useMutation(
     async (data) => {
@@ -63,14 +60,40 @@ const Header = () => {
     {
       onSuccess: (res) => {
         responseMsg.value = res.msg  
-        //clearMsg()     
       },
       onError: (error) => {
         responseMsg.value = error.msg       
       },
     }
   );
-  console.log(responseMsg.value, "msgegeege")
+
+  const adminLoginHandler = useMutation(
+    
+    async (data) => {
+      console.log(data,"dataaaaaaaaaaa")
+      const res = await fetch(`${url}/authantication/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      return await res.json();
+    },
+    {
+      onSuccess: (res) => {
+        responseMsg.value = res.msg
+        if(res.status === 200){
+          loginModalRef.current.click();
+        navigate("/dashboard")  
+        }        
+        
+      },
+      onError: (error) => {
+        responseMsg.value = error.msg       
+      },
+    }
+  )
 
   return (
     <>
@@ -80,7 +103,6 @@ const Header = () => {
             <div className="col-md-12">
               <nav className="navbar navbar-expand-lg ">
                 <Link className="navbar-brand" to="/">
-                  {/* <Logo className="img-fluid" /> */}
                   <img src={Images.logo} alt="" className="img-fluid" />
                 </Link>
                 <button
@@ -171,6 +193,17 @@ const Header = () => {
                         data-bs-target="#exampleModal"
                       >
                         Book Appointment
+                      </button>
+                    </li>
+                    <li className="nav=item">
+                    <button
+                        to="/contact-us"
+                        // onClick={() => setActiveLink("/contact-us")}
+                        className="btn book-now nav-link"
+                        data-bs-toggle="modal"
+                        data-bs-target="#loginModal"
+                      >
+                        Login
                       </button>
                     </li>
                   </ul>
@@ -308,6 +341,90 @@ const Header = () => {
                         />
                       </div>
                       <button  type="submit" className=" common-submit  py-2 px-4 mt-4 border-0">
+                        Submit
+                      </button>
+                      
+                      
+                    </Form>
+                  )}
+                </Formik>
+                {responseMsg && responseMsg.value ? <p>{responseMsg.value}</p> : ""}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* -----------------Login Modal -------------------------- */}
+      <div
+        className="modal fade common-booking-modal"
+        id="loginModal"
+        tabIndex="-1"
+        aria-labelledby="loginModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header border-0 py-0">
+              <h1 className="modal-title fs-5" id="loginModalLabel">
+                Admin Login
+              </h1>
+              <button
+              ref={loginModalRef}
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+               <FaTimes/>
+
+              </button>
+            </div>
+            <div className="modal-body">
+              <div>              
+                <Formik
+                  initialValues={{
+                    adminEmail: "",
+                    password: "",
+                  }}
+                  validationSchema={loginSchema}                 
+                  onSubmit={(values, {resetForm}) => {
+                    adminLoginHandler.mutate(values, {
+                      onSuccess: () => {
+                        resetForm();
+                      },
+                    });
+                  }}
+                >
+                  {({ errors, touched }) => (
+                    <Form >
+                      <Row>
+                      <div className="form-group">
+                        <label htmlFor="adminEmail">Email:</label>
+                        <Field name="adminEmail" className="form-control"  
+                        autoComplete="new-email" /* Set a unique value */
+                        />
+                        <ErrorMessage
+                          name="adminEmail"
+                          component="div"
+                          className="text-danger"
+                        />
+                      </div>
+                      
+                      <div className="form-group">
+                            <label htmlFor="name">Password:</label>
+                            <Field name="password" className="form-control" type="password" 
+                            autoComplete="new-password" /* Set a unique value */
+                             />
+                            <ErrorMessage
+                              name="password"                              
+                              component="div"
+                              className="text-danger"
+                            />
+                          </div>
+                      </Row>
+                      
+                      <button  type="submit" className="common-submit  py-2 px-4 mt-4 border-0">
                         Submit
                       </button>
                       

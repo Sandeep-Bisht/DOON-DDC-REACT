@@ -7,7 +7,12 @@ import Services from "../Components/Services/Services";
 import Training from "../Components/Training/Training";
 import Patient from "../Components/Patient/Patient";
 import ServiceDetail from "../ServiceDetails/ServiceDetail";
-
+import AdminDashboard from "../Components/Dashboard/AdminDashboard"
+import Booking from "../Layout/Booking";
+import AllBooking from "../Layout/AllBooking";
+import AddBooking from "../Layout/AddBooking";
+import People from "../Layout/People"
+import Dashboard from "../Layout/Dashboard";
 const ApplicationRoutes = () => {
 
     return(
@@ -20,7 +25,13 @@ const ApplicationRoutes = () => {
             <Route path="/training" element={<Training />} />
             <Route path="/our-services" element={<Services />} />
             <Route path="/service-details" element={< ServiceDetail/>} />
-
+            <Route path="/dashboard" element={<AdminDashboard />} >
+                <Route index element={< Dashboard/>} />
+                <Route path="/dashboard/people" element={< People/>} />
+                <Route path="/dashboard/addbooking" element={< AddBooking />} />
+                <Route path="/dashboard/allbooking" element={< AllBooking />} />
+                <Route path="/dashboard/booking" element={< Booking/>} />
+                </Route>
             
         </Routes>
         
