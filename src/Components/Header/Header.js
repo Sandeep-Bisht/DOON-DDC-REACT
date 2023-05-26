@@ -1,11 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { signal, effect } from "@preact/signals";
+import Cookies from "js-cookie";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useMutation } from "react-query";
-import {FaBars,FaTimes} from "react-icons/fa"
+import { FaBars, FaTimes } from "react-icons/fa";
 import { Row, Col } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../../Css/Header.css";
 import "../../Css/Common.css";
 import Images from "../../Util/Images";
@@ -15,9 +16,44 @@ const responseMsg = signal(undefined);
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState("/");
-  const currentDate = signal(undefined)
+  const [token, setToken] = useState(null);
+  const currentDate = signal(undefined);
   const navigate = useNavigate();
+  const location = useLocation();
   const loginModalRef = useRef(null);
+  const timeRef = useRef();
+
+  const startTimeMorning = new Date();
+  startTimeMorning.setHours(9, 0, 0); // Set start time for the morning range (9 am)
+
+  const endTimeMorning = new Date();
+  endTimeMorning.setHours(13, 0, 0); // Set end time for the morning range (1 pm)
+
+  const startTimeAfternoon = new Date();
+  startTimeAfternoon.setHours(14, 0, 0); // Set start time for the afternoon range (2 pm)
+
+  const endTimeAfternoon = new Date();
+  endTimeAfternoon.setHours(18, 0, 0); // Set end time for the afternoon range (6 pm)
+
+  const [timeSlots, setTimeSlots] = useState([]);
+
+  // Generate morning time slots
+  let currentTime = startTimeMorning;
+  while (currentTime < endTimeMorning) {
+    timeSlots.push(
+      currentTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+    );
+    currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+  }
+
+  // Generate afternoon time slots
+  currentTime = startTimeAfternoon;
+  while (currentTime < endTimeAfternoon) {
+    timeSlots.push(
+      currentTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+    );
+    currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+  }
 
   const appointmentSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -29,22 +65,27 @@ const Header = () => {
   });
 
   const loginSchema = Yup.object().shape({
-    adminEmail: Yup.string().email("Invalid email").required("Email is required"),
+    adminEmail: Yup.string()
+      .email("Invalid email")
+      .required("Email is required"),
     password: Yup.string().required("Password is required"),
-  })
+  });
 
+  useEffect(() => {
+    // Get the token from the cookie
+    const token = Cookies.get("ddc_token");
+    setToken(token);
+  }, []);
   effect(() => {
-    const date = new Date().toISOString().split('T')[0];          
-      currentDate.value = date;
+    const date = new Date().toISOString().split("T")[0];
+    currentDate.value = date;
   });
 
   effect(() => {
-      setTimeout(() => {
-        responseMsg.value = undefined;
-        console.log(responseMsg.value,"inside set time out")
-      }, 2000)
-
-  }, [responseMsg.value])  
+    setTimeout(() => {
+      responseMsg.value = undefined;
+    }, 2000);
+  }, [responseMsg.value]);
 
   const createAppointment = useMutation(
     async (data) => {
@@ -59,18 +100,46 @@ const Header = () => {
     },
     {
       onSuccess: (res) => {
-        responseMsg.value = res.msg  
+        responseMsg.value = res.msg;
       },
       onError: (error) => {
-        responseMsg.value = error.msg       
+        responseMsg.value = error.msg;
+      },
+    }
+  );
+
+  const getSpecificDateAppointment = useMutation(
+    async (date) => {
+      const res = await fetch(
+        `${url}/appointment/get_specific_date_appointment_list/${date}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      return await res.json();
+    },
+    {
+      onSuccess: (res) => {
+        setTimeSlots("");
+        let appointmentSlot = res.data;
+        const availableSlots = timeSlots.filter((slot) => {
+          return !appointmentSlot.some(
+            (appointmentSlot) => appointmentSlot.time === slot
+          );
+        });
+        setTimeSlots(availableSlots);
+      },
+      onError: (error) => {
+        responseMsg.value = error.msg;
       },
     }
   );
 
   const adminLoginHandler = useMutation(
-    
     async (data) => {
-      console.log(data,"dataaaaaaaaaaa")
       const res = await fetch(`${url}/authantication/login`, {
         method: "POST",
         headers: {
@@ -82,18 +151,19 @@ const Header = () => {
     },
     {
       onSuccess: (res) => {
-        responseMsg.value = res.msg
-        if(res.status === 200){
+        responseMsg.value = res.msg;
+        if (res.status === 200) {
           loginModalRef.current.click();
-        navigate("/dashboard")  
-        }        
-        
+          setToken(res.token);
+          Cookies.set("ddc_token", res.token, { expires: 7 }); // 'expires' sets the expiration time in days
+          navigate("/dashboard");
+        }
       },
       onError: (error) => {
-        responseMsg.value = error.msg       
+        responseMsg.value = error.msg;
       },
     }
-  )
+  );
 
   return (
     <>
@@ -115,7 +185,7 @@ const Header = () => {
                   aria-label="Toggle navigation"
                 >
                   <span className="navbar-toggler-icon">
-                    <FaBars/>
+                    <FaBars />
                   </span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
@@ -195,17 +265,29 @@ const Header = () => {
                         Book Appointment
                       </button>
                     </li>
-                    <li className="nav=item">
-                    <button
-                        to="/contact-us"
-                        // onClick={() => setActiveLink("/contact-us")}
-                        className="btn book-now nav-link"
-                        data-bs-toggle="modal"
-                        data-bs-target="#loginModal"
-                      >
-                        Login
-                      </button>
-                    </li>
+                    {token == null ? (
+                      <li className="nav-item">
+                        <button
+                          className="btn book-now nav-link"
+                          data-bs-toggle="modal"
+                          data-bs-target="#loginModal"
+                        >
+                          Login
+                        </button>
+                      </li>
+                    ) : (
+                      location &&
+                      location.pathname !== "/dashboard" && (
+                        <li className="nav-item">
+                          <Link
+                            className="btn book-now nav-link"
+                            to="/dashboard"
+                          >
+                            Dashboard
+                          </Link>
+                        </li>
+                      )
+                    )}
                   </ul>
                 </div>
               </nav>
@@ -213,8 +295,8 @@ const Header = () => {
           </div>
         </div>
       </header>
-        {/* -----------------Appointment Modal -------------------------- */}
-        <div
+      {/* -----------------Appointment Modal -------------------------- */}
+      <div
         className="modal fade common-booking-modal"
         id="exampleModal"
         tabIndex="-1"
@@ -233,13 +315,11 @@ const Header = () => {
                 data-bs-dismiss="modal"
                 aria-label="Close"
               >
-               <FaTimes/>
-
+                <FaTimes />
               </button>
             </div>
             <div className="modal-body">
               <div>
-              
                 <Formik
                   initialValues={{
                     name: "",
@@ -249,8 +329,9 @@ const Header = () => {
                     time: "",
                     description: "",
                   }}
-                  validationSchema={appointmentSchema}                 
-                  onSubmit={(values, {resetForm}) => {
+                  validationSchema={appointmentSchema}
+                  onSubmit={(values, { resetForm }) => {
+                    console.log(values, "valueis in submit");
                     createAppointment.mutate(values, {
                       onSuccess: () => {
                         resetForm();
@@ -302,7 +383,13 @@ const Header = () => {
                               type="date"
                               className="form-control"
                               min={currentDate.value}
+                              onBlur={(e) =>
+                                getSpecificDateAppointment.mutate(
+                                  e.target.value
+                                )
+                              }
                             />
+
                             <ErrorMessage
                               name="date"
                               component="div"
@@ -312,12 +399,21 @@ const Header = () => {
                         </Col>
                         <Col md={6}>
                           <div className="form-group">
-                            <label htmlFor="time">Time:</label>
+                            <label htmlFor="time">Select a time slot:</label>
                             <Field
                               name="time"
                               type="time"
+                              as="select"
+                              ref={timeRef}
                               className="form-control"
-                            />
+                            >
+                              <option value="">Select a time</option>
+                              {timeSlots.map((timeSlot, index) => (
+                                <option key={index} value={timeSlot}>
+                                  {timeSlot}
+                                </option>
+                              ))}
+                            </Field>
                             <ErrorMessage
                               name="time"
                               component="div"
@@ -340,15 +436,20 @@ const Header = () => {
                           className="text-danger"
                         />
                       </div>
-                      <button  type="submit" className=" common-submit  py-2 px-4 mt-4 border-0">
+                      <button
+                        type="submit"
+                        className=" common-submit  py-2 px-4 mt-4 border-0"
+                      >
                         Submit
                       </button>
-                      
-                      
                     </Form>
                   )}
                 </Formik>
-                {responseMsg && responseMsg.value ? <p>{responseMsg.value}</p> : ""}
+                {responseMsg && responseMsg.value ? (
+                  <p>{responseMsg.value}</p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
@@ -370,25 +471,24 @@ const Header = () => {
                 Admin Login
               </h1>
               <button
-              ref={loginModalRef}
+                ref={loginModalRef}
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               >
-               <FaTimes/>
-
+                <FaTimes />
               </button>
             </div>
             <div className="modal-body">
-              <div>              
+              <div>
                 <Formik
                   initialValues={{
                     adminEmail: "",
                     password: "",
                   }}
-                  validationSchema={loginSchema}                 
-                  onSubmit={(values, {resetForm}) => {
+                  validationSchema={loginSchema}
+                  onSubmit={(values, { resetForm }) => {
                     adminLoginHandler.mutate(values, {
                       onSuccess: () => {
                         resetForm();
@@ -397,42 +497,52 @@ const Header = () => {
                   }}
                 >
                   {({ errors, touched }) => (
-                    <Form >
+                    <Form>
                       <Row>
-                      <div className="form-group">
-                        <label htmlFor="adminEmail">Email:</label>
-                        <Field name="adminEmail" className="form-control"  
-                        autoComplete="new-email" /* Set a unique value */
-                        />
-                        <ErrorMessage
-                          name="adminEmail"
-                          component="div"
-                          className="text-danger"
-                        />
-                      </div>
-                      
-                      <div className="form-group">
-                            <label htmlFor="name">Password:</label>
-                            <Field name="password" className="form-control" type="password" 
+                        <div className="form-group">
+                          <label htmlFor="adminEmail">Email:</label>
+                          <Field
+                            name="adminEmail"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="adminEmail"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="form-group">
+                          <label htmlFor="name">Password:</label>
+                          <Field
+                            name="password"
+                            className="form-control"
+                            type="password"
                             autoComplete="new-password" /* Set a unique value */
-                             />
-                            <ErrorMessage
-                              name="password"                              
-                              component="div"
-                              className="text-danger"
-                            />
-                          </div>
+                          />
+                          <ErrorMessage
+                            name="password"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
                       </Row>
-                      
-                      <button  type="submit" className="common-submit  py-2 px-4 mt-4 border-0">
+
+                      <button
+                        type="submit"
+                        className="common-submit  py-2 px-4 mt-4 border-0"
+                      >
                         Submit
                       </button>
-                      
-                      
                     </Form>
                   )}
                 </Formik>
-                {responseMsg && responseMsg.value ? <p>{responseMsg.value}</p> : ""}
+                {responseMsg && responseMsg.value ? (
+                  <p>{responseMsg.value}</p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
