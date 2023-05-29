@@ -122,8 +122,8 @@ const Services = () => {
   <section  className='procedure'>
    <div className='container-fluid common-container-fluid-adjust-padding '>
       <div className='row' id="one">
-      <div class="col-md-12">
-        <h1 class="common-heading d-flex align-items-center justify-content-center text-white fs-3">
+      <div className="col-md-12">
+        <h1 className="common-heading d-flex align-items-center justify-content-center text-white fs-3">
         Related to general Medicine</h1></div>
       </div>
       <div className='row' >
@@ -197,8 +197,8 @@ const Services = () => {
           </div> */}
       </div>
       <div className='row' id="two">
-      <div class="col-md-12">
-        <h1 class="common-heading d-flex align-items-center justify-content-center text-white fs-3">
+      <div className="col-md-12">
+        <h1 className="common-heading d-flex align-items-center justify-content-center text-white fs-3">
         
         Related to Gastroenterology</h1></div>
       </div>
@@ -269,8 +269,8 @@ const Services = () => {
          
       </div>
       <div className='row' id="three">
-      <div class="col-md-12">
-        <h1 class="common-heading d-flex align-items-center justify-content-center text-white fs-3">
+      <div className="col-md-12">
+        <h1 className="common-heading d-flex align-items-center justify-content-center text-white fs-3">
           
         Day Care</h1></div>
       </div>

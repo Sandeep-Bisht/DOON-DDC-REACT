@@ -8,6 +8,13 @@ const AllBooking = () => {
     const date = new Date().toISOString().split('T')[0];          
       currentDate.value = date;
   });
+
+  async function fetchData(date) {
+    const response = await fetch(`https://api.example.com/data?date=${date}`);
+    const data = await response.json();
+    return data;
+  }
+  
   return (
     <>
        <section className='all-booking-area'>
@@ -15,7 +22,7 @@ const AllBooking = () => {
               <div className='row'>
                    <div className='col-md-12'>
                         
-                        <h1 class="common-heading d-flex align-items-center justify-content-center mb-4"><span class="bar one"></span>All Booking<span class="bar two"></span></h1>
+                        <h1 className="common-heading d-flex align-items-center justify-content-center mb-4"><span className="bar one"></span>All Booking<span className="bar two"></span></h1>
                    </div>
               </div>
               <div className='row'> 
@@ -23,9 +30,10 @@ const AllBooking = () => {
                   <input 
                   type='date'
                   name="date"
+                  value={currentDate && currentDate.value}
                   min={currentDate.value}
             
-                  class="w-100 px-3">
+                  className="w-100 px-3">
                   </input>
                 </div>
               </div>

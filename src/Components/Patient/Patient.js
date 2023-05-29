@@ -12,15 +12,15 @@ const Patient = () => {
 
   return (
     <>
-      <div class="common-redirect-banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p class="common-redirect-banner-title">Blog</p>
+      <div className="common-redirect-banner">
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12 text-center">
+                    <p className="common-redirect-banner-title">Blog</p>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb bg-transparent p-0 mb-0 d-flex justify-content-center">
-                            <li class="breadcrumb-item"><a href="/" class="text-white">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Blog </li>
+                        <ol className="breadcrumb bg-transparent p-0 mb-0 d-flex justify-content-center">
+                            <li className="breadcrumb-item"><a href="/" className="text-white">Home</a></li>
+                            <li className="breadcrumb-item active" aria-current="page">Blog </li>
                         </ol>
                     </nav>
                 </div>
@@ -178,7 +178,7 @@ const Patient = () => {
                             alt="blog-image"
                           />                        
                         <div className="card-body">
-                        <h5 class="card-title">GETTING THE MOST OUT OF THE CLARI</h5>
+                        <h5 className="card-title">GETTING THE MOST OUT OF THE CLARI</h5>
                           <div className="card-text">
                             <ReadMoreReact                            
                               text="Elementum libero hac leo integer. Risus hac part duriw feugiat litora cursus hendrerit bibendum per person on elit.Tempus inceptos posuere me"
@@ -204,7 +204,7 @@ const Patient = () => {
                             alt="blog-image"
                           />                        
                         <div className="card-body">
-                        <h5 class="card-title">Consulting</h5>
+                        <h5 className="card-title">Consulting</h5>
                           <div className="card-text">
                             <ReadMoreReact                            
                               text="Elementum libero hac leo integer. Risus hac part duriw feugiat litora cursus hendrerit bibendum per person on elit.Tempus inceptos posuere me"
@@ -230,7 +230,7 @@ const Patient = () => {
                             alt="blog-image"
                           />                        
                         <div className="card-body">
-                        <h5 class="card-title">Child Care</h5>
+                        <h5 className="card-title">Child Care</h5>
                           <div className="card-text">
                             <ReadMoreReact                            
                               text="Elementum libero hac leo integer. Risus hac part duriw feugiat litora cursus hendrerit bibendum per person on elit.Tempus inceptos posuere me"
