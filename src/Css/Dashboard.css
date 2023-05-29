@@ -1,7 +1,44 @@
 .dashboard-container {
     height: 100vh;
 }
-
-.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
- --bs-gutter-x: 0;
+.outlet-wrapper
+{
+    background: #f1f4f6;
+    height: calc(100vh - 86px);
+    overflow: auto;
+}
+/* ------------------all-booking-area css----------- */
+.all-booking-area
+{
+  padding: 40px;
+  
+}
+.appointment-card
+{
+    box-shadow: 0 0.46875rem 2.1875rem rgba(58,196,125,.03), 0 0.9375rem 1.40625rem rgba(58,196,125,.03), 
+    0 0.25rem 0.53125rem rgba(58,196,125,.05), 0 0.125rem 0.1875rem rgba(58,196,125,.03);
+    background-color: #fff;
+    border-bottom: 2px solid #009DCE;
+    padding: 15px 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.appointment-card p{
+    margin-bottom: 5px;
+}
+.appointment-card  .descrption-heading-detail
+{
+    font-size: 12px;
+    color: grey;
+    font-weight: 500;
+}
+.appointment-card .descrption-heading
+{
+    font-size: 12px;
+    color:#212121;
+    font-weight: 600;
+    margin-right: 8px;
 }

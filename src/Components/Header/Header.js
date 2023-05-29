@@ -130,6 +130,8 @@ const Header = () => {
             (appointmentSlot) => appointmentSlot.time === slot
           );
         });
+       
+
         setTimeSlots(availableSlots);
       },
       onError: (error) => {

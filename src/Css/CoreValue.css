@@ -1,0 +1,16 @@
+.core-value-detail{
+    padding: 60px 0;
+}
+.core-value-detail-heading{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.core-value-detail-single-box{
+    margin-bottom: 20px;
+}
+.core-value-detail img{
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}

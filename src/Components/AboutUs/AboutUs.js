@@ -262,7 +262,7 @@ const AboutUs = () => {
               </div> 
         </div> 
       </section> */}
-       <section className="common-core-values">
+       <section className="common-core-values d-none">
         <div className="container-fluid common-container-fluid-adjust-padding">
            <div className="row">
               <div className="col-md-12 d-flex justify-content-center">

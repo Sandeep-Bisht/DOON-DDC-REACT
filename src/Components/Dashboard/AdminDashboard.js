@@ -6,12 +6,12 @@ import { Outlet } from "react-router-dom";
 const AdminDashboard = () => {
   return (
     <>
-      <section>
+      <section className="dashboard-area">
         <div className="row g-0">
           <div className="col-md-2">
             <Sidebar />
           </div>
-          <div className="col-md-10">
+          <div className="col-md-10 outlet-wrapper">
             <Outlet />
           </div>
         </div>

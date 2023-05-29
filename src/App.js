@@ -2,14 +2,22 @@ import React from "react";
 import Header from "./Components/Header/Header";
 import Footer  from "./Components/Footer/Footer";
 import ApplicationRoutes from "./Routes/ApplicationRoutes";
-
-
+import {useRef} from "react"
+import { useState } from "react";
+import { useEffect } from "react";
+import { useLocation } from "react-router";
 function App() {
+
+  // const match = useRef(window.location.pathname);
+  const match=useLocation();
   return (  
     <>
     <Header />
     <ApplicationRoutes />
-    <Footer />
+    {
+      (match.pathname.includes("/dashboard")) ? null : <Footer />    
+    }
+    {/* <Footer /> */}
     </>  
   );
 }

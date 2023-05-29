@@ -17,6 +17,7 @@ import Cookies from "js-cookie";
 import TimeSlotSelection from "../Components/TimeSlot/TimeSlot";
 
 const Authanticated = (props) => {
+      console.log(props,)
      let token = Cookies.get("ddc_token");
 
      if(!token) {

@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import { RxDashboard } from "react-icons/rx";
 import { TbBrandBooking } from "react-icons/tb";
-import { BsPeople } from "react-icons/bs";
-import { RiLogoutCircleRLine } from "react-icons/ri";
+import { BsPeople } from 'react-icons/bs'
+import {RiLogoutCircleRLine} from "react-icons/ri"
+
 import "../../Css/Sidebar.css";
 
 const Sidebar = () => {
@@ -14,7 +15,7 @@ const Sidebar = () => {
   };
   return (
     <section>
-      <div className="container-fluid">
+      <div className="container-fluid px-0">
         <div className="sidebar">
           <div className="row">
             <div className="col-md-12">
