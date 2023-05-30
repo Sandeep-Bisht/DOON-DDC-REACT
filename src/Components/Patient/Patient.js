@@ -3,12 +3,26 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReadMoreReact from "read-more-react/dist/components/ReadMoreReact";
 import Images from "../../Util/Images";
+import axios from "axios";
+import { url } from "../../Util/url";
 import "../../Css/Blog.css"
+import { useState } from "react";
 
 const Patient = () => {
+
+  const [blog, setBlog] = useState()
   useEffect(() => {
     window.scrollTo(0, 0);
+    getAllBlogs();
   }, []);
+
+  const getAllBlogs = async () => {
+    const response = await axios.get(`${url}/blog/find_all_blog`);
+    setBlog(response.data)
+  }
+
+  console.log(blog, "blog ")
+
 
   return (
     <>
@@ -115,48 +129,57 @@ const Patient = () => {
             <div className="blog-box-wrapper">
               <div className="row">
                 <div className="col-md-7">
-                  <div className="left-blog-image-wrap">
-                    <img
-                      // src={
-                      //   item.featuredImage &&
-                      //   `${baseUrl}/` + item.featuredImage[0].path
-                      // }
-                      src={Images.welcome}
-                      alt=""
-                      className="img-fluid"
-                    />
-                    <div className="top-heading-box-1 common-overlay">                     
-                      <p className="blog-title">Welcome to our clinic</p>
-                      <p className="blog-para">Subdue whales void god which living don't midst lesser yielding over lights whose. Cattle greater brought sixth fly den dry good tree isn't seed stars were.</p>
+                  { blog && blog.length > 0 && blog.map((item, index) => {
+                    if(index < 1){
+                    return(
+                      <div className="left-blog-image-wrap" key={index}>
+                      <img                     
+                        src={`http://localhost:4000/${item.featuredImage.path}`}
+                        alt=""
+                        className="img-fluid"
+                      />
+                      <div className="top-heading-box-1 common-overlay">                     
+                        <p className="blog-title">{item.title}</p>
+                        <p className="blog-para">{item.description}</p>
+                      </div>
                     </div>
-                  </div>
+                    )
+                  }
+                    
+                  })}
+                  
                 </div>
                 <div className="col-md-5 ps-0">
+                { blog && blog.length > 1 && (
+                  <>
                   <div className="right-blog-image-wrapper">
                     <div className="right-blog-image-wrap">
                       <img                       
-                        src={Images.blog1}
+                        src={`http://localhost:4000/${blog[1].featuredImage.path}`}
                         alt=""
                         className="img-fluid"
                       />
                       <div className="top-heading-box-2 common-overlay">
-                       <p className="blog-title">CHIP TO MODEL COELIAC DISEASE</p>
-                       <p className="blog-para">Elementum libero hac leo integer. Risus hac part duriw feugiat litora cursus hendrerit bibendum per person on elit.Tempus inceptos posuere me.</p>
+                       <p className="blog-title">{blog[1].title}</p>
+                       <p className="blog-para">{blog[1].description}</p>
                       </div>
                     </div>
                   </div>
                   <div className="right-blog-image-wrapper">
                     <div className="right-blog-image-wrap">
                       <img
-                        src={Images.blog2}
+                        src={`http://localhost:4000/${blog[2].featuredImage.path}`}
                         alt=""
                       />
                       <div className="top-heading-box-2 common-overlay">
-                        <p className="blog-title">GALECTINS AN ANCIENT FASI FUTURE</p>
-                        <p className="blog-para">Elementum libero hac leo integer. Risus hac part duriw feugiat litora cursus hendrerit bibendum per person on elit.Tempus inceptos posuere me.</p>
+                      <p className="blog-title">{blog[2].title}</p>
+                       <p className="blog-para">{blog[2].description}</p>
                       </div>
                     </div>
                   </div>
+                  </>
+                    )                
+                }
                 </div>
               </div>
             </div>

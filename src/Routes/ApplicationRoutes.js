@@ -15,6 +15,7 @@ import People from "../Layout/People"
 import Dashboard from "../Layout/Dashboard";
 import Cookies from "js-cookie";
 import TimeSlotSelection from "../Components/TimeSlot/TimeSlot";
+import AddBlog from "../Layout/AddBlog";
 
 const Authanticated = (props) => {
       console.log(props,)
@@ -45,6 +46,7 @@ const ApplicationRoutes = () => {
                 <Route path="/dashboard/addbooking" element={< AddBooking />} />
                 <Route path="/dashboard/allbooking" element={< AllBooking />} />
                 <Route path="/dashboard/booking" element={< Booking/>} />
+                <Route path="/dashboard/addblog" element={< AddBlog />} />
                 </Route>
             <Route path="book-appointment" element={<TimeSlotSelection />} /> 
             

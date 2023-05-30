@@ -53,8 +53,7 @@ const Header = () => {
       currentTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
     );
     currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
-  }
-
+  }  
   const appointmentSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
     contactNo: Yup.string().required("Contact number is required"),
@@ -333,7 +332,6 @@ const Header = () => {
                   }}
                   validationSchema={appointmentSchema}
                   onSubmit={(values, { resetForm }) => {
-                    console.log(values, "valueis in submit");
                     createAppointment.mutate(values, {
                       onSuccess: () => {
                         resetForm();
@@ -410,11 +408,13 @@ const Header = () => {
                               className="form-control"
                             >
                               <option value="">Select a time</option>
-                              {timeSlots.map((timeSlot, index) => (
-                                <option key={index} value={timeSlot}>
-                                  {timeSlot}
-                                </option>
-                              ))}
+                              {timeSlots.map((timeSlot, index) => 
+      index < 31 ? (
+        <option key={index} value={timeSlot}>
+          {timeSlot}
+        </option>
+      ) : null
+    )}
                             </Field>
                             <ErrorMessage
                               name="time"
