@@ -38,12 +38,12 @@ const Sidebar = () => {
                   </span>
                   <Link to="/dashboard/addblog">Add blog</Link>
                 </div>
-                <div className="sidebar-nav">
+                {/* <div className="sidebar-nav">
                   <span className="px-3">
                     <RxDashboard />
                   </span>
                   <Link to="/dashboard/addbooking">Add Booking</Link>
-                </div>
+                </div> */}
                 <div className="sidebar-nav">
                   <span className="px-3">
                     <RxDashboard />
