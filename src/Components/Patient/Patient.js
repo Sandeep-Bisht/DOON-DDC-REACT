@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ReadMoreReact from "read-more-react/dist/components/ReadMoreReact";
 import Images from "../../Util/Images";
 import axios from "axios";
@@ -10,6 +10,7 @@ import { useState } from "react";
 
 const Patient = () => {
 
+    const navigate = useNavigate()
   const [blog, setBlog] = useState()
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -132,9 +133,9 @@ const Patient = () => {
                   { blog && blog.length > 0 && blog.map((item, index) => {
                     if(index < 1){
                     return(
-                      <div className="left-blog-image-wrap" key={index}>
+                      <div className="left-blog-image-wrap" key={index} onClick={() => navigate("/blog-detail", { state : item })}>
                       <img                     
-                        src={`http://localhost:4000/${item.featuredImage.path}`}
+                        src={`${url}/${item.featuredImage.path}`}
                         alt=""
                         className="img-fluid"
                       />
@@ -152,10 +153,10 @@ const Patient = () => {
                 <div className="col-md-5 ps-0">
                 { blog && blog.length > 1 && (
                   <>
-                  <div className="right-blog-image-wrapper">
+                  <div className="right-blog-image-wrapper" onClick={() => navigate("/blog-detail", { state : blog[1] })}>
                     <div className="right-blog-image-wrap">
                       <img                       
-                        src={`http://localhost:4000/${blog[1].featuredImage.path}`}
+                        src={`${url}/${blog[1].featuredImage.path}`}
                         alt=""
                         className="img-fluid"
                       />
@@ -165,10 +166,10 @@ const Patient = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="right-blog-image-wrapper">
+                  <div className="right-blog-image-wrapper" onClick={() => navigate("/blog-detail", { state : blog[2] })}>
                     <div className="right-blog-image-wrap">
                       <img
-                        src={`http://localhost:4000/${blog[2].featuredImage.path}`}
+                        src={`${url}/${blog[2].featuredImage.path}`}
                         alt=""
                       />
                       <div className="top-heading-box-2 common-overlay">

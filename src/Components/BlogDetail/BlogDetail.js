@@ -1,9 +1,16 @@
 
 import "../../Css/Common.css";
 import "../../Css/BlogDetail.css";
+import { useLocation } from "react-router-dom";
 import Images from '../../Util/Images'
+import { url } from "../../Util/url";
 
 const BlogDetail = () => {
+
+    const location = useLocation();
+  const state = location.state;
+
+  console.log(state, "stateee")
     return (
         <>
             <section className="blog-detail">
@@ -19,11 +26,11 @@ const BlogDetail = () => {
                                     </p>
                                 </div>
                                 <p className="blog-detail-title">
-                                    Your most unhappy customers are your greatest source of learning.
+                                    {state?.title}
                                 </p>
                                 <p className="blog-detail-subtitle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                     there live the blind texts.</p>
-                                <img src={Images.singleBlogPic} className="img-fluid single-blog-pic" alt="" />
+                                <img src={`http://localhost:400/${state?.featuredImage.path}`} className="img-fluid single-blog-pic" alt="" />
                                 <p className="blog-detail-subtitle my-2 text-start">
                                     Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated
                                     they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>

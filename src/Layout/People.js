@@ -61,7 +61,8 @@ const People = () => {
 
   return (
     <>
-      <section id="body-pd">
+      <section >
+        <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
             <h1 className="common-heading d-flex align-items-center justify-content-center mb-4">
@@ -70,13 +71,13 @@ const People = () => {
             </h1>
           </div>
         </div>
-        <div className="container-fluid">
-          <div className="row px-0 dashboard-container">
-            <div className="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-8 mt-2">
-              <div className="all-products-details-section">
+        <div className="row px-0 dashboard-container ">
+            <div className="col-md-12 mt-2">
+              <div className=" mb-4">
                 <div className="all-products-search-wrap">
                   <input
                     type="text"
+                    
                     onChange={(e) => onChangeHandler(e)}
                     onKeyUp={searchHandler}
                     placeholder="Search.."
@@ -97,6 +98,8 @@ const People = () => {
             </div>
           </div>
         </div>
+       
+        
       </section>
     </>
   );
