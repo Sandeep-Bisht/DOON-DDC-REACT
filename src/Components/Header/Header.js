@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { signal, effect } from "@preact/signals";
 import Cookies from "js-cookie";
+import TokenContext from "../../ContextAPi/TokenContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useMutation } from "react-query";
@@ -11,12 +12,13 @@ import "../../Css/Header.css";
 import "../../Css/Common.css";
 import Images from "../../Util/Images";
 import { url } from "../../Util/url";
+import { useContext } from "react";
 
 const responseMsg = signal(undefined);
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState("/");
-  const [token, setToken] = useState(null);
+  const { token, setToken} =useContext(TokenContext)
   const currentDate = signal(undefined);
   const navigate = useNavigate();
   const location = useLocation();

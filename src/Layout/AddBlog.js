@@ -1,15 +1,36 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
+import { Table, Input, Space, Popconfirm, Typography } from "antd";
+import { MdPlaylistAdd } from "react-icons/md";
+import { BiSearchAlt } from "react-icons/bi";
+import {BsTrash} from "react-icons/bs"
 import JoditEditor from "jodit-react";
 import { useMutation } from "react-query";
 import axios from "axios";
 import { url } from "../Util/url";
 import { Row, Col } from "react-bootstrap";
 import slugify from "react-slugify";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const AddBlog = () => {
-  const createData = async (data) => {
-    try {
+
+  const [allBlogs, setAllBlogs] = useState(undefined)
+  const [searchVal, setSearchVal] = useState();
+  const [addBlog, setAddBlog] = useState(false)
+
+    useEffect(()=> {
+      getAllBlogs();
+    },[])
+
+    const getAllBlogs = async() => {
+      const response = await axios.get(`${url}/blog/find_all_blog`);
+      setAllBlogs(response.data)
+    }
+
+
+  const createData = async (data) => { 
+  try {
       const formData = new FormData();
       formData.append("title", data.title);
       formData.append("description", data.description);
@@ -25,8 +46,84 @@ const AddBlog = () => {
 
   const mutation = useMutation(createData);
 
+  const columns = [
+    {
+      title: "Title",
+      dataIndex: "title",
+      key: "tile",
+    },
+
+    {
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
+    },
+    {
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
+    },
+    {
+      title: "FeaturedImage",
+      dataIndex: "featuredImage[0].path",
+      key: "featuredImage",
+      width: 20,
+      maxWidth: 40,
+       render: (t,r)=><img src={`http://localhost:4000/${r.featuredImage.path}`}/>
+    },
+    {
+      title: "Action",
+      dataIndex: "Action",
+      width: "20%",
+      render: (_, record) =>
+      allBlogs.length >= 1 ? (
+          <Space size="middle">
+            <Popconfirm
+              title="Sure to delete?"
+              onConfirm={() => handleDelete(record._id)}
+            >
+              <a className="delete-icon-wrap" title="Delete" style={{ color: "blue" }}><BsTrash/></a>
+            </Popconfirm>            
+          </Space>
+        ) : null,
+    },
+   
+  ];
+
+  const searchHandler = () => {
+    const filteredData = allBlogs.filter((value) => {
+      return value.title.toLowerCase().includes(searchVal.toLowerCase());
+    });
+    setAllBlogs(filteredData);
+  };
+
+  const onChangeHandler = (e) => {
+    setSearchVal(e.target.value);
+    if (e.target.value === "") {
+      setAllBlogs();
+    }
+  };
+
+  const handleDelete = async (_id) => {
+    try{
+      //const DeletedData=await axios.delete(`${baseUrl}/api/blogs/delete_slug_by_id`,{data : {_id:_id}});
+      getAllBlogs();
+    }catch(error){
+    }
+  };
+
   return (
     <section className="continer pt-5">
+      {addBlog ?
+      <>
+      <div className="row">
+      <div className="col-md-12">
+        <h1 className="common-heading d-flex align-items-center justify-content-center mb-4">
+          <span className="bar one"></span>All Blogs
+          <span className="bar two"></span>
+        </h1>
+      </div>
+    </div>
       <div className="row">
         <div className="col-md-12">        
         <Formik
@@ -86,6 +183,52 @@ const AddBlog = () => {
         </Formik>
         </div>
       </div>
+      </>
+      : 
+      <>           
+        <div className="row">
+          <div className="col-md-12">
+            <h1 className="common-heading d-flex align-items-center justify-content-center mb-4">
+              <span className="bar one"></span>Create Blogs
+              <span className="bar two"></span>
+            </h1>
+          </div>
+        </div>
+        <div className="container-fluid">
+          <div className="row px-0 dashboard-container">
+            <div className="col-xl-10 col-lg-9 col-md-9 col-sm-8 col-8 mt-2">
+              <div className="all-products-details-section">
+                <div className="all-products-search-wrap">
+                <button  className="add-icon" onClick={()=>setAddBlog(true)}>
+                    <MdPlaylistAdd />
+                    Add
+                  </button>
+                  <input
+                    type="text"
+                    onChange={(e) => onChangeHandler(e)}
+                    onKeyUp={searchHandler}
+                    placeholder="Search.."
+                    enterButton
+                    style={{ position: "sticky", top: "0", left: "0" }}
+                  />
+                  <button type="button" className="dashboard-search-btn">
+                    <BiSearchAlt />
+                  </button>
+                </div>
+              </div>
+              <Table
+                rowKey="name"
+                dataSource={allBlogs && allBlogs.length ? allBlogs : ""}
+                columns={columns}
+                pagination={false}
+              />
+            </div>
+          </div>
+        </div>
+        </>
+}
+       
+    
     </section>
   );
 };

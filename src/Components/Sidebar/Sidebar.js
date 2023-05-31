@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import TokenContext from "../../ContextAPi/TokenContext";
 import { RxDashboard } from "react-icons/rx";
 import { TbBrandBooking } from "react-icons/tb";
 import { BsPeople } from 'react-icons/bs'
@@ -9,8 +10,11 @@ import {RiLogoutCircleRLine} from "react-icons/ri"
 import "../../Css/Sidebar.css";
 
 const Sidebar = () => {
+
+  const { token, setToken} =useContext(TokenContext)
   const handleLogout = () => {
     // Remove the token cookie
+    setToken(undefined)
     Cookies.remove("ddc_token");
   };
   return (
@@ -30,7 +34,7 @@ const Sidebar = () => {
                   <span className="px-3">
                     <BsPeople />
                   </span>
-                  <Link to="/dashboard/people">All Patient</Link>
+                  <Link to="/dashboard/patient">All Patient</Link>
                 </div>
                 <div className="sidebar-nav">
                   <span className="px-3">

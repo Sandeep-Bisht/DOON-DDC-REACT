@@ -44,7 +44,7 @@ const ApplicationRoutes = () => {
             <Route path="*" element={< Homepage />} />
             <Route path="/dashboard"  element={<Authanticated component= {<AdminDashboard />} /> } >
                 <Route index element={< Dashboard/>} />
-                <Route path="/dashboard/people" element={< People/>} />
+                <Route path="/dashboard/patient" element={< People/>} />
                 <Route path="/dashboard/addbooking" element={< AddBooking />} />
                 <Route path="/dashboard/allbooking" element={< AllBooking />} />
                 <Route path="/dashboard/booking" element={< Booking/>} />

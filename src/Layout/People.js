@@ -31,7 +31,6 @@ const People = () => {
     const filteredData = patientList.filter((value) => {
       return value.name.toLowerCase().includes(searchVal.toLowerCase());
     });
-    console.log("filter data", filteredData)
     setPatientList(filteredData);
   };
 
