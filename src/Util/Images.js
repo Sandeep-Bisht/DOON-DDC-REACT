@@ -49,7 +49,9 @@ const Images = {
     goals:require('../Images/goals.png'),
     innovation:require('../Images/innovation.png'),
     coaching:require('../Images/coaching.png'),
-    positiveAttitude:require('../Images/positive-attitude.png')
+    positiveAttitude:require('../Images/positive-attitude.png'),
+    blogPic:require('../Images/blogpic.jpg'),
+    singleBlogPic:require('../Images/single-blog-pic.jpg')
 
 
 }

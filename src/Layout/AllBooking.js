@@ -28,6 +28,7 @@ const AllBooking = () => {
                   class="w-100 px-3">
                   </input>
                 </div>
+              
               </div>
               <div>
                 <hr></hr>
