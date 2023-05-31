@@ -7,6 +7,56 @@
     height: calc(100vh - 86px);
     overflow: auto;
 }
+
+/* ------------------dashboard css--------------- */
+.dashboard-overview
+{
+    padding: 40px;
+}
+.dashboard-overview .dash-card
+{
+    background: linear-gradient(130deg, rgba(0,8,41,1) 0%, rgba(2,19,73,1) 100%);
+    border-radius: 10px;
+    -webkit-transition: .5s;
+    transition: .5s;
+    padding: 43px 30px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 20px;
+    
+}
+.dashboard-overview .dash-card-inner
+{
+    display: flex;
+    align-items: center;
+}
+.dashboard-overview .dash-card-inner .left svg{
+    height: 100px;
+    width: 100px;
+    margin-right: 30px;
+   
+}
+.dashboard-overview .dash-card-inner .left svg path
+{
+    fill:rgba(255,255,255,.65);
+    
+}
+.dashboard-overview .patient-number
+{
+    margin-bottom: 5px;
+    transition: .5s;
+    font-size: 30px;
+    font-weight: 700;
+    color: #009DCE;
+}
+.dashboard-overview .dash-card-title
+{
+    margin-bottom: 0;
+    color: #fff;
+}
+
+
 /* ------------------all-booking-area css----------- */
 .all-booking-area
 {
@@ -41,4 +91,8 @@
     color:#212121;
     font-weight: 600;
     margin-right: 8px;
+}
+.all-booking-search-wrapper
+{
+    width: 200px;
 }

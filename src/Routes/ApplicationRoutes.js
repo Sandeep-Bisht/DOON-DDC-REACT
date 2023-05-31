@@ -6,6 +6,7 @@ import Homepage from "../Components/Homepage/Homepage"
 import Services from "../Components/Services/Services";
 import Training from "../Components/Training/Training";
 import Patient from "../Components/Patient/Patient";
+import BlogDetail from "../Components/BlogDetail/BlogDetail";
 import ServiceDetail from "../ServiceDetails/ServiceDetail";
 import AdminDashboard from "../Components/Dashboard/AdminDashboard"
 import Booking from "../Layout/Booking";
@@ -39,6 +40,7 @@ const ApplicationRoutes = () => {
             <Route path="/training" element={<Training />} />
             <Route path="/our-services" element={<Services />} />
             <Route path="/service-details" element={< ServiceDetail/>} />
+            <Route path="/blog-deatil" element={<BlogDetail/>}/>
             <Route path="*" element={< Homepage />} />
             <Route path="/dashboard"  element={<Authanticated component= {<AdminDashboard />} /> } >
                 <Route index element={< Dashboard/>} />

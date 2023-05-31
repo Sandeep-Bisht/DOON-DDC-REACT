@@ -30,20 +30,14 @@ const Sidebar = () => {
                   <span className="px-3">
                     <BsPeople />
                   </span>
-                  <Link to="/dashboard/people">People</Link>
+                  <Link to="/dashboard/people">All Patient</Link>
                 </div>
                 <div className="sidebar-nav">
                   <span className="px-3">
                     <TbBrandBooking />
                   </span>
-                  <Link to="/dashboard/addblog">Add blog</Link>
-                </div>
-                {/* <div className="sidebar-nav">
-                  <span className="px-3">
-                    <RxDashboard />
-                  </span>
-                  <Link to="/dashboard/addbooking">Add Booking</Link>
-                </div> */}
+                  <Link to="/dashboard/addblog">Blog</Link>
+                </div>                
                 <div className="sidebar-nav">
                   <span className="px-3">
                     <RxDashboard />
