@@ -2,6 +2,7 @@
 {
    
     padding: 80px;
+    border-bottom: 1px solid #dee2e6 !important;
 }
 
 .blog-detail-wrapper
@@ -32,10 +33,93 @@
 }
 .blog-detail-wrapper .blog-detail-subtitle
 {
-    font-size: 20px;
+    font-size: 18px;
     color: #888;
 }
-.blog-detail-wrapper .single-blog-pic
+.single-blog-pic
+{
+    height: 500px;
+    object-fit: cover;
+}
+.blog-detail-wrapper blockquote
+{
+    font-style: italic;
+    padding-left: 25px;
+    border-left: 2px solid #000;
+    color: #888;
+    text-align: left;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.blog-detail-related
+{
+    padding: 60px 0;
+}
+.blog-detail-related .related-card 
+{
+    margin-bottom: 35px;
+}
+.blog-detail-related .related-card .realted-card-pic
+{
+    height: 100%;
+}
+.blog-detail-related .related-card img
+{
+    height: 180px;
+    width: 100%;
+    border-radius: 7px;
+    object-fit: cover;
+}
+.blog-detail-related .related-card .top p
+{
+    color: #222;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.blog-detail-related .related-card .top p span{
+    color: #999;
+    font-weight: 300;
+}
+.related-card-content .middle-title
 {
     
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 5px;
+}
+.blog-detail-related .related-card .middle-subtitle
+{
+    color: #888;
+    font-size: 14px;
+}
+.blog-detail-related .related-card  .lower
+{
+    display: flex;
+    align-items: center;
+}
+.blog-detail-related .related-card  .lower .published-content
+{
+    padding-left: 20px;
+}
+.blog-detail-related .related-card .published-pic img{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+}
+.published-title
+{
+    color: #222;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+.published-date
+{
+    color: #888;
+    font-size: 12px;
+    margin-bottom: 0;
+   letter-spacing: .2px;
 }

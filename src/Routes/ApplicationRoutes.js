@@ -40,7 +40,7 @@ const ApplicationRoutes = () => {
             <Route path="/training" element={<Training />} />
             <Route path="/our-services" element={<Services />} />
             <Route path="/service-details" element={< ServiceDetail/>} />
-            <Route path="/blog-deatil" element={<BlogDetail/>}/>
+            <Route path="/blog-detail" element={<BlogDetail/>}/>
             <Route path="*" element={< Homepage />} />
             <Route path="/dashboard"  element={<Authanticated component= {<AdminDashboard />} /> } >
                 <Route index element={< Dashboard/>} />
