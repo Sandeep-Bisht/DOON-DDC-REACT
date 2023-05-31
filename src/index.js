@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import GlobalState from './ContextAPi/GlobalState';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -11,14 +11,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient();
 root.render(
   // <React.StrictMode>
+  <GlobalState>
   <QueryClientProvider client={queryClient}>
-    {/* <ReactQueryDevtools> */}
   <BrowserRouter>
   <App />
   </BrowserRouter>
-  {/* </ReactQueryDevtools> */}
   </QueryClientProvider>
-    
+  </GlobalState>
   // </React.StrictMode>
 );
 

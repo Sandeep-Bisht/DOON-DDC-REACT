@@ -1,72 +1,107 @@
-import React, { useEffect } from 'react';
-import { useQuery } from 'react-query';
+import React, { useEffect, useState } from "react";
+import { Table } from "antd";
+import { BiSearchAlt } from "react-icons/bi";
+import axios from "axios";
+import { url } from "../Util/url";
 
 const People = () => {
-  const PAGE_SIZE = 10;
-  
-  const fetchData = async (page = 1) => {
-    const response = await fetch(`http://localhost:4000/api/patient/get_patient${page}&limit=${PAGE_SIZE}`);
-    const data = await response.json();
-    return data;
-  };
-  
-  const { data, isLoading, isError, isFetching, fetchMore } = useQuery('tableData', fetchData);
-  
+  const [patientList, setPatientList] = useState("");
+  const [searchVal, setSearchVal] = useState();
+
   useEffect(() => {
-    if (data && !isFetching) {
-      window.addEventListener('scroll', handleScroll);
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }
-  }, [data, isFetching]);
-  
-  const handleScroll = () => {
-    if (
-      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
-      !isFetching &&
-      data &&
-      data.length % PAGE_SIZE === 0
-    ) {
-      fetchMore();
+    getAllPatients();
+  }, []);
+
+
+  const getAllPatients = async () => {
+    const response = await axios.get(`${url}/patient/get_patient`);
+    setPatientList(response.data.data)
+  }
+
+  console.log(patientList, "patientListpatientList")
+
+  const onChangeHandler = (e) => {
+    setSearchVal(e.target.value);
+    if (e.target.value === "") {
+      getAllPatients();
     }
   };
-  
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  
-  if (isError) {
-    return <div>Error loading data</div>;
-  }
-  
+
+  const searchHandler = () => {
+    const filteredData = patientList.filter((value) => {
+      return value.name.toLowerCase().includes(searchVal.toLowerCase());
+    });
+    setPatientList(filteredData);
+  };
+
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+    {
+      title: "ContactNo",
+      dataIndex: "contactNo",
+      key: "contactNo",
+    },
+    {
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
+    },
+   
+  ];
+
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          {/* Add more table headers */}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item) => (
-          <tr key={item.id}>
-            <td>{item.id}</td>
-            <td>{item.name}</td>
-            <td>{item.email}</td>
-            {/* Render more table cells based on your data structure */}
-          </tr>
-        ))}
-        {isFetching && (
-          <tr>
-            <td colSpan="3">Loading more...</td>
-          </tr>
-        )}
-      </tbody>
-    </table>
+    <>
+      <section >
+        <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-12">
+            <h1 className="common-heading d-flex align-items-center justify-content-center mb-4">
+              <span className="bar one"></span>All Patient
+              <span className="bar two"></span>
+            </h1>
+          </div>
+        </div>
+        <div className="row px-0 dashboard-container ">
+            <div className="col-md-12 mt-2">
+              <div className=" mb-4">
+                <div className="all-products-search-wrap">
+                  <input
+                    type="text"
+                    
+                    onChange={(e) => onChangeHandler(e)}
+                    onKeyUp={searchHandler}
+                    placeholder="Search.."
+                    enterButton
+                    style={{ position: "sticky", top: "0", left: "0" }}
+                  />
+                  <button type="button" className="dashboard-search-btn">
+                    <BiSearchAlt />
+                  </button>
+                </div>
+              </div>
+              <Table
+                rowKey="name"
+                dataSource={patientList && patientList.length ? patientList : ""}
+                columns={columns}
+                pagination={false}
+              />
+            </div>
+          </div>
+        </div>
+       
+        
+      </section>
+    </>
   );
 };
-
 export default People;
