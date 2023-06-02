@@ -18,8 +18,13 @@ const responseMsg = signal(undefined);
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState("/");
-  const { token, setToken} =useContext(TokenContext)
+  const { token, setToken } = useContext(TokenContext);
   const currentDate = signal(undefined);
+  const [time, setTime] = useState(
+    new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+  );
+
+  const [selectedDate, setSelectedDate] = useState(undefined);
   const navigate = useNavigate();
   const location = useLocation();
   const loginModalRef = useRef(null);
@@ -43,7 +48,11 @@ const Header = () => {
   let currentTime = startTimeMorning;
   while (currentTime < endTimeMorning) {
     timeSlots.push(
-      currentTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+      currentTime.toLocaleTimeString([], {
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+      })
     );
     currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
   }
@@ -52,10 +61,15 @@ const Header = () => {
   currentTime = startTimeAfternoon;
   while (currentTime < endTimeAfternoon) {
     timeSlots.push(
-      currentTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+      currentTime.toLocaleTimeString([], {
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+      })
     );
     currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
-  }  
+  }
+
   const appointmentSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
     contactNo: Yup.string().required("Contact number is required"),
@@ -111,6 +125,7 @@ const Header = () => {
 
   const getSpecificDateAppointment = useMutation(
     async (date) => {
+      setSelectedDate(date);
       const res = await fetch(
         `${url}/appointment/get_specific_date_appointment_list/${date}`,
         {
@@ -131,7 +146,6 @@ const Header = () => {
             (appointmentSlot) => appointmentSlot.time === slot
           );
         });
-       
 
         setTimeSlots(availableSlots);
       },
@@ -409,14 +423,29 @@ const Header = () => {
                               ref={timeRef}
                               className="form-control"
                             >
-                              <option value="">Select a time</option>
-                              {timeSlots.map((timeSlot, index) => 
-      index < 31 ? (
-        <option key={index} value={timeSlot}>
-          {timeSlot}
-        </option>
-      ) : null
-    )}
+                              <option value="" hidden>
+                                Select a time
+                              </option>
+                              {selectedDate ? (
+                                timeSlots.map((timeSlot, index) =>
+                                  selectedDate > currentDate.value &&
+                                  index <= 31 ? (
+                                    <option key={index} value={timeSlot}>
+                                      {timeSlot}
+                                    </option>
+                                  ) : (
+                                    selectedDate &&
+                                    index <= 31 &&
+                                    timeSlot > time && (
+                                      <option key={index} value={timeSlot}>
+                                        {timeSlot}
+                                      </option>
+                                    )
+                                  )
+                                )
+                              ) : (
+                                <option value="">Select a Date First</option>
+                              )}
                             </Field>
                             <ErrorMessage
                               name="time"
@@ -442,15 +471,19 @@ const Header = () => {
                       </div>
                       <button
                         type="submit"
-                        className=" common-submit  py-2 px-4 mt-4 border-0"
+                        className="common-submit  py-2 px-4 mt-4 border-0"
+                        disabled={createAppointment.isLoading}
                       >
-                        Submit
+                        {createAppointment.isLoading ? 'Loading...' : 'Submit'}
                       </button>
                     </Form>
                   )}
                 </Formik>
+                
                 {responseMsg && responseMsg.value ? (
-                  <p>{responseMsg.value}</p>
+                  <div className="text-success mt-3">
+                    <p>{responseMsg.value}</p>
+                    </div>
                 ) : (
                   ""
                 )}
@@ -536,8 +569,9 @@ const Header = () => {
                       <button
                         type="submit"
                         className="common-submit  py-2 px-4 mt-4 border-0"
-                      >
-                        Submit
+                        disabled={adminLoginHandler.isLoading}
+                        >
+                          {adminLoginHandler.isLoading ? 'Loading...' : 'Submit'}
                       </button>
                     </Form>
                   )}

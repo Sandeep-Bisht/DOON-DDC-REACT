@@ -56,8 +56,8 @@ const BlogDetail = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <h1 class="common-heading d-flex align-items-center justify-content-center">
-                                <span class="bar one"></span>Related Post<span class="bar two"></span></h1>
+                            <h1 className="common-heading d-flex align-items-center justify-content-center">
+                                <span className="bar one"></span>Related Post<span className="bar two"></span></h1>
                         </div>
                     </div>
                     <div className="row">

@@ -12,7 +12,7 @@ import { Row, Col } from "react-bootstrap";
 import slugify from "react-slugify";
 import { useState } from "react";
 import { useEffect } from "react";
-import "../Css/AddBlog.css"
+import "../Css/AddBlog.css";
 
 const AddBlog = () => {
   const [allBlogs, setAllBlogs] = useState(undefined);
@@ -76,7 +76,7 @@ const AddBlog = () => {
           <Space size="middle">
             <Popconfirm
               title="Sure to delete?"
-              onConfirm={() => handleDelete(record._id)}
+              onConfirm={() => handleDelete(record.id)}
             >
               <a
                 className="delete-icon-wrap"
@@ -105,11 +105,14 @@ const AddBlog = () => {
     }
   };
 
-  const handleDelete = async (_id) => {
+  const handleDelete = async (id) => {
+    console.log("indide handle delete ", id)
     try {
-      //const DeletedData=await axios.delete(`${baseUrl}/api/blogs/delete_slug_by_id`,{data : {_id:_id}});
+      const DeletedData = await axios.delete(`${url}/blog/delete_blogById`,{data : {id:id}});
       getAllBlogs();
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
@@ -216,45 +219,46 @@ const AddBlog = () => {
               </h1>
             </div>
           </div>
-            <div className="row px-0 dashboard-container">
-              <div className="col-md-12">
-                <div className="all-products-details-section">
-                  <div className="blog-header">
-                    <div>
+          <div className="row px-0 dashboard-container">
+            <div className="col-md-12">
+              <div className="all-products-details-section">
+                <div className="blog-header">
+                  <div>
                     <button
-                      className="btn btn-primary"
+                      className="common-add"
                       onClick={() => setAddBlog(true)}
                     >
                       <MdPlaylistAdd />
                       Add
                     </button>
-                    </div>
+                  </div>
 
-                    <div>                  
+                  <div>
+                  <div className="common-search-bar">
+                  <input
+                    type="text"
                     
-                    <input
-                      type="text"
-                      onChange={(e) => onChangeHandler(e)}
-                      onKeyUp={searchHandler}
-                      placeholder="Search.."
-                      enterButton
-                      style={{ position: "sticky", top: "0", left: "0" }}
-                    />
-                    <button type="button" className="">
-                      <BiSearchAlt />
-                    </button>
-                    </div>
+                    onChange={(e) => onChangeHandler(e)}
+                    onKeyUp={searchHandler}
+                    placeholder="Search.."
+                    enterButton
+                    style={{ position: "sticky", top: "0", left: "0" }}
+                  />
+                  <button type="button" className="dashboard-search-btn">
+                    <BiSearchAlt />
+                  </button>
+                </div>
                   </div>
                 </div>
-                <Table
-                  rowKey="name"
-                  dataSource={allBlogs && allBlogs.length ? allBlogs : ""}
-                  columns={columns}
-                  pagination={false}
-                />
               </div>
+              <Table
+                rowKey="name"
+                dataSource={allBlogs && allBlogs.length ? allBlogs : ""}
+                columns={columns}
+                pagination={false}
+              />
             </div>
-          
+          </div>
         </>
       )}
     </section>

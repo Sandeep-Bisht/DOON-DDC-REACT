@@ -34,8 +34,8 @@ const Dashboard = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <h1 class="common-heading d-flex align-items-center justify-content-center mb-4">
-              <span class="bar one"></span>Overview<span class="bar two"></span>
+            <h1 className="common-heading d-flex align-items-center justify-content-center mb-4">
+              <span className="bar one"></span>Overview<span className="bar two"></span>
             </h1>
           </div>
         </div>

@@ -41,8 +41,9 @@ const AllBooking = () => {
               </h1>
             </div>
           </div>
-          <div className="row">
-            <div className="col-lg-3">
+          <div className="row">    
+           <div className="col-lg-3">
+            <p>Select Date</p>
               <input
                 type="date"
                 name="date"
@@ -51,6 +52,28 @@ const AllBooking = () => {
                 onChange={handleDateChange}
                 className="w-100 px-3"
               />
+            </div>
+
+            <div className="col-lg-3">
+            <p>From</p>
+              <input
+                type="date"
+                name="date"               
+                className="w-100 px-3"
+              />
+            </div>
+
+            <div className="col-lg-3">
+            <p>Till</p>
+              <input
+                type="date"
+                name="date"
+                className="w-100 px-3"
+              />
+            </div>
+
+            <div className="col-lg-3">
+           <button>Find</button>
             </div>
           </div>
           <div>
