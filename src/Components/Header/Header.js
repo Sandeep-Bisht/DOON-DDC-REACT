@@ -20,10 +20,10 @@ const Header = () => {
   const [activeLink, setActiveLink] = useState("/");
   const { token, setToken } = useContext(TokenContext);
   const currentDate = signal(undefined);
-  const [time, setTime] = useState(
-    new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-  );
+  const options = { hour: "2-digit", minute: "2-digit", hour12: false };
+const [time] = useState(new Date().toLocaleTimeString([], options));
 
+  console.log("timeeee", time)
   const [selectedDate, setSelectedDate] = useState(undefined);
   const navigate = useNavigate();
   const location = useLocation();
@@ -434,9 +434,9 @@ const Header = () => {
                                       {timeSlot}
                                     </option>
                                   ) : (
-                                    selectedDate &&
+                                    selectedDate && timeSlot > time &&
                                     index <= 31 &&
-                                    timeSlot > time && (
+                                     (
                                       <option key={index} value={timeSlot}>
                                         {timeSlot}
                                       </option>

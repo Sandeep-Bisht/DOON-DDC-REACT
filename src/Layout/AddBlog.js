@@ -49,7 +49,7 @@ const AddBlog = () => {
     {
       title: "Title",
       dataIndex: "title",
-      key: "tile",
+      key: "title",
     },
 
     {
@@ -101,12 +101,11 @@ const AddBlog = () => {
   const onChangeHandler = (e) => {
     setSearchVal(e.target.value);
     if (e.target.value === "") {
-      setAllBlogs();
+      getAllBlogs();
     }
   };
 
   const handleDelete = async (id) => {
-    console.log("indide handle delete ", id)
     try {
       const DeletedData = await axios.delete(`${url}/blog/delete_blogById`,{data : {id:id}});
       getAllBlogs();
