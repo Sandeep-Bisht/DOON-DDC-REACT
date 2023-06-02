@@ -62,7 +62,7 @@ const People = () => {
   return (
     <>
       <section >
-        <div className="container-fluid">
+        <div className="container-fluid pt-5">
         <div className="row">
           <div className="col-md-12">
             <h1 className="common-heading d-flex align-items-center justify-content-center mb-4">
@@ -73,8 +73,8 @@ const People = () => {
         </div>
         <div className="row px-0 dashboard-container ">
             <div className="col-md-12 mt-2">
-              <div className=" mb-4">
-                <div className="all-products-search-wrap">
+              <div className=" mb-4 d-flex justify-content-end">
+                <div className="common-search-bar">
                   <input
                     type="text"
                     

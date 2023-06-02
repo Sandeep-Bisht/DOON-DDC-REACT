@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FiMail } from 'react-icons/fi'
 import "../../Css/Common.css";
 import "../../Css/Footer.css";
+
 
 const Footer = () => {
   return (
@@ -17,8 +19,8 @@ const Footer = () => {
                     <div className="left">
                         <p>Monday:</p>
                     </div>
-                    <div className="right"> <span><strong>11AM to 2PM</strong> </span>
-                  <span><strong>4PM to 8PM</strong></span></div>
+                    <div className="right"> <span><strong>9AM to 1PM</strong> </span>
+                  <span><strong>2PM to 6PM</strong></span></div>
                   </div>
                  
                   
@@ -29,8 +31,8 @@ const Footer = () => {
                     <div className="left">
                         <p>Tuesday:</p>
                     </div>
-                    <div className="right"> <span><strong>11AM to 2PM</strong> </span>
-                  <span><strong>4PM to 8PM</strong></span></div>
+                    <div className="right"> <span><strong>9AM to 1PM</strong> </span>
+                  <span><strong>2PM to 6PM</strong></span></div>
                   </div>
                 </li>
                 <li>
@@ -38,8 +40,8 @@ const Footer = () => {
                     <div className="left">
                         <p>Wednesday:</p>
                     </div>
-                    <div className="right"> <span><strong>11AM to 2PM</strong> </span>
-                  <span><strong>4PM to 8PM</strong></span></div>
+                    <div className="right"> <span><strong>9AM to 1PM</strong> </span>
+                  <span><strong>2PM to 6PM</strong></span></div>
                   </div>
                 </li>
                 <li>
@@ -56,8 +58,8 @@ const Footer = () => {
                     <div className="left">
                         <p>Friday:</p>
                     </div>
-                    <div className="right"> <span><strong>11AM to 2PM</strong> </span>
-                  <span><strong>4PM to 8PM</strong></span></div>
+                    <div className="right"> <span><strong>9AM to 1PM</strong> </span>
+                  <span><strong>2PM to 6PM</strong></span></div>
                   </div>
                 </li>
                 <li>
@@ -65,8 +67,8 @@ const Footer = () => {
                     <div className="left">
                         <p>Saturday:</p>
                     </div>
-                    <div className="right"> <span><strong>11AM to 2PM</strong> </span>
-                  <span><strong>4PM to 8PM</strong></span></div>
+                    <div className="right"> <span><strong>9AM to 1PM</strong> </span>
+                  <span><strong>2PM to 6PM</strong></span></div>
                   </div>
                 </li>
                
@@ -138,7 +140,7 @@ const Footer = () => {
                   </address>
                 </div>
               </div>
-              <div className="footer-contact-icons">
+              <div className="footer-contact-icons d-flex align-items-center mb-3">
                 <div>
                   <svg
                     width="25"
@@ -156,28 +158,16 @@ const Footer = () => {
                   </svg>
                 </div>
                 <div className="footer-contact-details">
-                  <p className="footer-content">9997711444</p>
+                  <p className="footer-content mb-0">9997711444</p>
                 </div>
               </div>
-              <div className="footer-contact-icons">
+              <div className="footer-contact-icons d-flex align-items-center">
                 <div>
-                  <svg
-                    width="25"
-                    height="25"
-                    viewBox="0 0 25 25"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M23.04 16.8454L20.9863 14.7917C20.3741 14.1844 19.5478 13.842 18.6855 13.8383C17.8232 13.8347 16.994 14.17 16.3767 14.7721C16.0473 15.1034 15.6127 15.3095 15.1477 15.355C14.6828 15.4005 14.2165 15.2825 13.8291 15.0213C12.3002 14.001 10.9868 12.6901 9.96348 11.1631C9.70692 10.7714 9.5932 10.3033 9.64149 9.83754C9.68979 9.3718 9.89713 8.93694 10.2286 8.60623C10.8252 7.98831 11.1562 7.1614 11.1508 6.30249C11.1454 5.44357 10.804 4.6209 10.1997 4.01054L8.14595 1.95681C7.53109 1.34406 6.69843 1 5.83039 1C4.96234 1 4.12968 1.34406 3.51483 1.95681L2.92392 2.54866C-0.156645 5.62925 0.0739308 12.106 6.48337 18.5117C10.3481 22.3774 14.238 23.9961 17.3923 23.9961C18.3208 24.027 19.2462 23.8728 20.1146 23.5425C20.9829 23.2122 21.7768 22.7124 22.45 22.0722L23.0419 21.4803C23.6557 20.8652 24.0003 20.0315 24 19.1625C23.9996 18.2934 23.6544 17.4601 23.04 16.8454ZM21.72 20.1603L21.1282 20.7522C18.7011 23.1793 13.3437 22.7359 7.80148 17.1927C2.25927 11.6495 1.81492 6.28831 4.24203 3.86118L4.8292 3.27027C5.09358 3.00684 5.45158 2.85894 5.82479 2.85894C6.198 2.85894 6.55599 3.00684 6.82037 3.27027L8.87408 5.324C9.13365 5.58487 9.28099 5.93687 9.28465 6.30486C9.28832 6.67286 9.14801 7.02772 8.89368 7.29371C8.26289 7.92852 7.86941 8.76084 7.77917 9.6512C7.68893 10.5416 7.9074 11.4359 8.39799 12.1844C9.56072 13.9244 11.0559 15.4173 12.7976 16.5775C13.5438 17.0682 14.4358 17.2879 15.3246 17.2001C16.2133 17.1122 17.045 16.7221 17.6808 16.0949C17.9462 15.8375 18.3021 15.6946 18.6718 15.6969C19.0415 15.6992 19.3956 15.8464 19.6579 16.107L21.7116 18.1607C21.844 18.2912 21.9493 18.4465 22.0214 18.6178C22.0935 18.7891 22.131 18.9729 22.1318 19.1588C22.1325 19.3446 22.0966 19.5288 22.0259 19.7007C21.9552 19.8725 21.8513 20.0288 21.72 20.1603Z"
-                      fill="#009DCE"
-                      stroke="#009DCE"
-                      strokeWidth="0.5"
-                    />
-                  </svg>
+                 
+                  <svg stroke="#009DCE" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </div>
                 <div className="footer-contact-details">
-                  <p className="footer-content">info@doonddc.com</p>
+                  <p className="footer-content mb-0">info@doonddc.com</p>
                 </div>
               </div>
             </div>
