@@ -21,9 +21,8 @@ const Header = () => {
   const { token, setToken } = useContext(TokenContext);
   const currentDate = signal(undefined);
   const options = { hour: "2-digit", minute: "2-digit", hour12: false };
-const [time] = useState(new Date().toLocaleTimeString([], options));
+  const [time] = useState(new Date().toLocaleTimeString([], options));
 
-  console.log("timeeee", time)
   const [selectedDate, setSelectedDate] = useState(undefined);
   const navigate = useNavigate();
   const location = useLocation();
@@ -434,9 +433,9 @@ const [time] = useState(new Date().toLocaleTimeString([], options));
                                       {timeSlot}
                                     </option>
                                   ) : (
-                                    selectedDate && timeSlot > time &&
-                                    index <= 31 &&
-                                     (
+                                    selectedDate &&
+                                    timeSlot > time &&
+                                    index <= 31 && (
                                       <option key={index} value={timeSlot}>
                                         {timeSlot}
                                       </option>
@@ -474,16 +473,16 @@ const [time] = useState(new Date().toLocaleTimeString([], options));
                         className="common-submit  py-2 px-4 mt-4 border-0"
                         disabled={createAppointment.isLoading}
                       >
-                        {createAppointment.isLoading ? 'Loading...' : 'Submit'}
+                        {createAppointment.isLoading ? "Loading..." : "Submit"}
                       </button>
                     </Form>
                   )}
                 </Formik>
-                
+
                 {responseMsg && responseMsg.value ? (
                   <div className="text-success mt-3">
                     <p>{responseMsg.value}</p>
-                    </div>
+                  </div>
                 ) : (
                   ""
                 )}
@@ -570,8 +569,8 @@ const [time] = useState(new Date().toLocaleTimeString([], options));
                         type="submit"
                         className="common-submit  py-2 px-4 mt-4 border-0"
                         disabled={adminLoginHandler.isLoading}
-                        >
-                          {adminLoginHandler.isLoading ? 'Loading...' : 'Submit'}
+                      >
+                        {adminLoginHandler.isLoading ? "Loading..." : "Submit"}
                       </button>
                     </Form>
                   )}
