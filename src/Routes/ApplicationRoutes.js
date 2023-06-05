@@ -17,6 +17,7 @@ import Dashboard from "../Layout/Dashboard";
 import Cookies from "js-cookie";
 import TimeSlotSelection from "../Components/TimeSlot/TimeSlot";
 import AddBlog from "../Layout/AddBlog";
+import ScheduleAppointments from "../Layout/ScheduleAppointments";
 
 const Authanticated = (props) => {
       console.log(props,)
@@ -49,6 +50,7 @@ const ApplicationRoutes = () => {
                 <Route path="/dashboard/allbooking" element={< AllBooking />} />
                 <Route path="/dashboard/booking" element={< Booking/>} />
                 <Route path="/dashboard/addblog" element={< AddBlog />} />
+                <Route path="/dashboard/schedule-appointments" element={< ScheduleAppointments/>} />
                 </Route>
             <Route path="book-appointment" element={<TimeSlotSelection />} /> 
             

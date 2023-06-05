@@ -50,6 +50,12 @@ const Sidebar = () => {
                 </div>
                 <div className="sidebar-nav">
                   <span className="px-3">
+                    <RxDashboard />
+                  </span>
+                  <Link to="/dashboard/schedule-appointments">Schedule Holiday</Link>
+                </div>
+                <div className="sidebar-nav">
+                  <span className="px-3">
                     <RiLogoutCircleRLine />
                   </span>
                   <Link to="/" onClick={() => handleLogout()}>
