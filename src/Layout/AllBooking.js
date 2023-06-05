@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { url } from "../Util/url";
+import { AiOutlineCheck } from "react-icons/ai";
+import { RxCross1 } from "react-icons/rx";
+import {AiOutlineExclamation} from "react-icons/ai"
 
 const AllBooking = () => {
   const [selectedDate, setSelectedDate] = useState(
@@ -45,15 +48,28 @@ const AllBooking = () => {
     setSelectedDate(selectedDate);
   };
 
-  const findAppointments = async(fromDate, tillDate) => {
+  const findAppointments = async (fromDate, tillDate) => {
     if (fromDate && tillDate) {
-    const response = await axios.get(`${url}/appointment/get_specific_period_date_appointment_list/from/${fromDate}/to/${tillDate}`)
-    console.log(response, "inisde response")
-    setSpecificPeriodAppointment(response.data.data);
-  }
+      const response = await axios.get(`${url}/appointment/get_specific_period_date_appointment_list/from/${fromDate}/to/${tillDate}`)
+      console.log(response, "inisde response")
+      setSpecificPeriodAppointment(response.data.data);
+    }
   };
 
-  console.log(specificPeriodAppointment, "result")
+ const handleAction = async (consultation,id) =>{
+    console.log(consultation,"action aaya kya", id);
+    if(consultation)
+    {
+      const response = await axios.patch(`${url}/appointment/update_appointment`,{consultation,id})
+      console.log(response, "resons of actiob")
+
+    }
+
+ }
+
+
+
+  
 
   return (
     <>
@@ -91,7 +107,7 @@ const AllBooking = () => {
             </div>
 
             <div className="col-lg-3">
-              <p>Till</p>
+              <p>To</p>
               <input
                 type="date"
                 name="tillDate"
@@ -100,8 +116,14 @@ const AllBooking = () => {
               />
             </div>
 
-            <div className="col-lg-3">
-              <button onClick={() => findAppointments(fromDate, tillDate)}>Find</button>
+            <div className="col-lg-3 d-flex align-items-end justify-content-end">
+              <button 
+              onClick={() => findAppointments(fromDate, tillDate)}
+               className="common-add"
+              >
+                
+                Find
+                </button>
             </div>
           </div>
           <div>
@@ -116,6 +138,21 @@ const AllBooking = () => {
               bookingData.map((booking) => (
                 <div className="col-lg-3" key={booking.id}>
                   <div className="appointment-card">
+                    <div className="appointment-card-cancel-accept-icon">
+                   
+                   { booking.consultation === 'consulted' ? (
+                      <div className="check-icon">
+                        <span data-toggle="tooltip" data-placement="top" title="Consultation is done"
+                         
+                        ><AiOutlineCheck /></span>
+                      </div>
+                   ) : booking.consultation === 'cancelled' ? (
+                      <div className="cancel-icon">
+                        <span data-toggle="tooltip" data-placement="top" title="Consultation Cancelled"><AiOutlineExclamation/></span>
+                      </div>
+                   ) : "" }
+
+                    </div>
                     <p className="patient-name descrption-heading-detail">
                       <span className="descrption-heading">Name:</span>
                       {booking.name}
@@ -128,31 +165,53 @@ const AllBooking = () => {
                       <span className="descrption-heading">Phone:</span>
                       {booking.contactNo}
                     </p>
+                    {!booking.consultation &&
+                       <div className="appointment-card-cancel-accept-box">
+                       <div>
+                         <button 
+                          className="appointment-card-btn accept"
+                          onClick={() =>handleAction('consulted',booking.id)}
+                          >
+                          Consulted
+                         </button>
+                       </div>
+                       <div>
+                         <button 
+                         className="appointment-card-btn reject"
+                         onClick={() =>handleAction('cancelled', booking.id)}
+                         >
+                           Cancel
+                         </button>
+                       </div>
+                     </div>
+                    }
+                    
                   </div>
                 </div>
               ))
-            ) : specificPeriodAppointment?.length > 0 ? ( 
-              specificPeriodAppointment.map((booking) => 
+            ) : specificPeriodAppointment?.length > 0 ? (
+              specificPeriodAppointment.map((booking) =>
               (
                 <div className="col-lg-3" key={booking.id}>
-                <div className="appointment-card">
-                  <p className="patient-name descrption-heading-detail">
-                    <span className="descrption-heading">Name:</span>
-                    {booking.name}
-                  </p>
-                  <p className="booking-time descrption-heading-detail">
-                    <span className="descrption-heading">Timing:</span>
-                    {booking.time}
-                  </p>
-                  <p className="patient-mobile descrption-heading-detail">
-                    <span className="descrption-heading">Phone:</span>
-                    {booking.contactNo}
-                  </p>
+                  <div className="appointment-card">
+                    <p className="patient-name descrption-heading-detail">
+                      <span className="descrption-heading">Name:</span>
+                      {booking.name}
+                    </p>
+                    <p className="booking-time descrption-heading-detail">
+                      <span className="descrption-heading">Timing:</span>
+                      {booking.time}
+                    </p>
+                    <p className="patient-mobile descrption-heading-detail">
+                      <span className="descrption-heading">Phone:</span>
+                      {booking.contactNo}
+                    </p>
+
+                  </div>
                 </div>
-              </div>
               )
-             )
-            
+              )
+
             ) : (
               <div>No booking data available</div>
             )}
