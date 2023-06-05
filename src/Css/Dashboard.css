@@ -76,6 +76,7 @@
     position: relative;
     overflow: hidden;
     margin-bottom: 15px;
+    height: 130px;
 }
 .appointment-card p{
     margin-bottom: 5px;
@@ -96,6 +97,69 @@
 .all-booking-search-wrapper
 {
     width: 200px;
+}
+
+.appointment-card-cancel-accept-box
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.appointment-card-cancel-accept-box .appointment-card-btn
+{
+    border: 0;
+    padding: 3px 12px;
+    font-size: 10px;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 3px;
+    text-transform: capitalize;
+
+}
+.appointment-card-cancel-accept-box .appointment-card-btn.accept
+{
+    background-color: #00b88d;
+}
+.appointment-card-cancel-accept-box .appointment-card-btn.reject
+{
+    background-color: #ff3145;
+}
+.appointment-card-cancel-accept-icon
+{
+    position: absolute;
+    right: 5px;
+    display: flex;
+    top: 5px;
+    cursor: pointer;
+}
+.appointment-card-cancel-accept-icon span{
+    height: 18px;
+    width: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+}
+.appointment-card-cancel-accept-icon .cancel-icon
+{
+   
+}
+.appointment-card-cancel-accept-icon .cancel-icon span
+{
+   background-color: #ff3145;
+}
+.appointment-card-cancel-accept-icon .check-icon span
+{
+   background-color:#00b88d;
+   margin-right: 5px;
+ 
+}
+
+.appointment-card-cancel-accept-icon svg
+{
+   height: 10px;
+   width: 10px;
 }
 
 

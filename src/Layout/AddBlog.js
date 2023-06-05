@@ -41,9 +41,11 @@ const AddBlog = () => {
     } catch (error) {
       throw new Error(error.response.data.error);
     }
+   
   };
 
   const mutation = useMutation(createData);
+  
 
   const columns = [
     {
@@ -114,7 +116,10 @@ const AddBlog = () => {
     }
   };
 
+  
+
   return (
+
     <section className="container-fluid pt-5">
       {addBlog ? (
         <>
@@ -135,7 +140,15 @@ const AddBlog = () => {
                   image: "",
                   content: "",
                 }}
-                onSubmit={mutation.mutate}
+                onSubmit={(values, { resetForm }) => {
+                  mutation.mutate(values, {
+                    onSuccess: () => {
+                      resetForm();
+                      getAllBlogs();
+                      setAddBlog(false)
+                    },
+                  });
+                }}
               >
                 {({ values, setFieldValue }) => (
                   <Form>
@@ -197,7 +210,7 @@ const AddBlog = () => {
 
                     <button
                       type="submit"
-                      className="btn btn-primary"
+                      className="btn btn-primary mt-3"
                       disabled={mutation.isLoading}
                     >
                       {mutation.isLoading ? "Submitting..." : "Submit"}
