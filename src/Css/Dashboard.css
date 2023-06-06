@@ -76,7 +76,7 @@
     position: relative;
     overflow: hidden;
     margin-bottom: 15px;
-    height: 130px;
+    /* height: 130px; */
 }
 .appointment-card p{
     margin-bottom: 5px;

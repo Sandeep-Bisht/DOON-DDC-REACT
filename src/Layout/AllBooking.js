@@ -3,7 +3,6 @@ import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { url } from "../Util/url";
 import { AiOutlineCheck } from "react-icons/ai";
-import { RxCross1 } from "react-icons/rx";
 import {AiOutlineExclamation} from "react-icons/ai"
 
 const AllBooking = () => {
@@ -15,6 +14,7 @@ const AllBooking = () => {
   const [tillDate, setTillDate] = useState(undefined);
   const [specificPeriodAppointment, setSpecificPeriodAppointment] = useState(undefined)
   const queryClient = useQueryClient();
+  const [actionResposne, setActionResposne] = useState(undefined)
 
   const fetchBookingData = async (date) => {
     const response = await fetch(
@@ -39,8 +39,10 @@ const AllBooking = () => {
   useEffect(() => {
     queryClient.prefetchQuery(["bookingData", selectedDate], () =>
       fetchBookingData(selectedDate)
+      
     );
-  }, [queryClient, selectedDate]);
+    setActionResposne(undefined)
+  }, [queryClient, selectedDate, actionResposne]);
 
   const handleDateChange = (event) => {
     setSpecificPeriodAppointment(undefined)
@@ -62,6 +64,8 @@ const AllBooking = () => {
     {
       const response = await axios.patch(`${url}/appointment/update_appointment`,{consultation,id})
       console.log(response, "resons of actiob")
+      setActionResposne(true)
+
 
     }
 
@@ -158,12 +162,20 @@ const AllBooking = () => {
                       {booking.name}
                     </p>
                     <p className="booking-time descrption-heading-detail">
+                      <span className="descrption-heading">Date:</span>
+                      {booking.date}
+                    </p>
+                    <p className="booking-time descrption-heading-detail">
                       <span className="descrption-heading">Timing:</span>
                       {booking.time}
                     </p>
                     <p className="patient-mobile descrption-heading-detail">
                       <span className="descrption-heading">Phone:</span>
                       {booking.contactNo}
+                    </p>
+                    <p className="patient-mobile descrption-heading-detail">
+                      <span className="descrption-heading">Description:</span>
+                      {booking.description}
                     </p>
                     {!booking.consultation &&
                        <div className="appointment-card-cancel-accept-box">
