@@ -14,17 +14,19 @@ const ScheduleAppointments = () => {
   const [holidayList, setHolidayList] = useState("");
   const [addHoliday, setAddHoliday] = useState(false);
 
+  
+  useEffect(() => {
+    const date = new Date().toISOString().split("T")[0];
+    setCurrentDate(date);
+    getAllHolidays();
+  }, []);
+
   const getAllHolidays = async () => {
     const response = await axios.get(`${url}/holidayList/get_all_holidayList`);
     setHolidayList(response.data.data);
   };
   console.log(holidayList, "holiday list");
 
-  useEffect(() => {
-    const date = new Date().toISOString().split("T")[0];
-    setCurrentDate(date);
-    getAllHolidays();
-  }, []);
 
   const handleHoliday = useMutation(
     async (data) => {
@@ -91,6 +93,9 @@ const ScheduleAppointments = () => {
                     handleHoliday.mutate(values, {
                       onSuccess: () => {
                         resetForm();
+                        getAllHolidays();
+                        setAddHoliday(false);
+
                       },
                     });
                   }}
