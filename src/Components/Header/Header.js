@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { signal, effect } from "@preact/signals";
 import Cookies from "js-cookie";
+import { useQuery } from "react-query";
 import TokenContext from "../../ContextAPi/TokenContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -89,6 +90,7 @@ const Header = () => {
     // Get the token from the cookie
     const token = Cookies.get("ddc_token");
     setToken(token);
+    refetch()
   }, []);
   effect(() => {
     const date = new Date().toISOString().split("T")[0];
@@ -180,6 +182,29 @@ const Header = () => {
       },
     }
   );
+
+  const fetchData = async (date) => {
+    const response = await fetch(`${url}/holidayList/get_upcoming_holidays/?date=${date}`);
+    const data = await response.json();
+    return data;
+  };
+
+  const { isLoading, error, data, refetch } = useQuery(['holidayList', currentDate], () =>
+  fetchData(currentDate), {
+  enabled: false,
+  }
+);
+console.log(data, "data of holidays")
+const disabledDates = data?.data.map((item) => item.date);
+console.log(disabledDates, "disableee")
+
+if (isLoading) {
+  return <div>Loading...</div>;
+}
+
+if (error) {
+  return <div>Error: {error.message}</div>;
+}
 
   return (
     <>
