@@ -131,11 +131,19 @@ const Header = () => {
     }
   );
 
+  useEffect(() =>{
+    if(selectedDay){
+      getSpecificDateAppointment.mutate(selectedDay)
+    }
+    
+  }, [selectedDay])
+
   const getSpecificDateAppointment = useMutation(
     async (date) => {
       setSelectedDate(date);
+      const formattedDate = await formatDate(date)
       const res = await fetch(
-        `${url}/appointment/get_specific_date_appointment_list/${date}`,
+        `${url}/appointment/get_specific_date_appointment_list/${formattedDate}`,
         {
           method: "GET",
           headers: {
@@ -216,7 +224,7 @@ data?.data.map((item)=>{
 })
 
 
-console.log(disabledDates, "disableee")
+// console.log(disabledDates, "disableee")
 
  // render regular HTML input element
  const renderCustomInput = ({ ref }) => (
@@ -236,6 +244,38 @@ if (isLoading) {
 if (error) {
   return <div>Error: {error.message}</div>;
 }
+
+const formatDate = async (dateObj) => {
+  const year = dateObj.year;
+  const month = dateObj.month.toString().padStart(2, '0');
+  const day = dateObj.day.toString().padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+const CustomDatePicker =  ({ field, form }) => {
+  const handleDateChange = async (date) => {
+    console.log(date, "insdie sutom")
+    const formattedDate = await formatDate(date)
+    console.log(formattedDate, "insdie formattedDate")
+    setSelectedDay(date)
+    form.setFieldValue(field.name, formattedDate);
+  };
+
+  return (
+    <DatePicker
+      selected={field.value}
+      onChange={handleDateChange}
+      onBlur={field.onBlur}
+      value={selectedDay}
+                              name="date"
+                              disabledDays={disabledDays}
+                              renderInput={renderCustomInput} // render a custom input
+                              calendarPopperPosition="bottom"                              
+                              minimumDate={utils().getToday()}
+                              shouldHighlightWeekends
+    />
+  );
+};
 
   return (
     <>
@@ -406,6 +446,7 @@ if (error) {
                     createAppointment.mutate(values, {
                       onSuccess: () => {
                         resetForm();
+                        setSelectedDay(null);
                       },
                     });
                   }}
@@ -461,15 +502,18 @@ if (error) {
                               }
                             /> */}
                             <div>
-                            <DatePicker
+                            <Field name="date" component={CustomDatePicker} />
+                              
+                            {/* <DatePicker
                               value={selectedDay}
+                              name="date"
                               disabledDays={disabledDays}
                               onChange={setSelectedDay}
                               renderInput={renderCustomInput} // render a custom input
-                              calendarPopperPosition="bottom"
+                              calendarPopperPosition="bottom"                              
                               minimumDate={utils().getToday()}
                               shouldHighlightWeekends
-                            />
+                            /> */}
                             </div>
                             <ErrorMessage
                               name="date"
