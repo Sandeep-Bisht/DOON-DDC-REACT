@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { signal, effect } from "@preact/signals";
 import Cookies from "js-cookie";
+import { useQuery } from "react-query";
 import TokenContext from "../../ContextAPi/TokenContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -13,17 +14,23 @@ import "../../Css/Common.css";
 import Images from "../../Util/Images";
 import { url } from "../../Util/url";
 import { useContext } from "react";
+import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
+import DatePicker, { utils } from '@hassanmojab/react-modern-calendar-datepicker';
 
 const responseMsg = signal(undefined);
 
 const Header = () => {
+
+  const [selectedDay, setSelectedDay] = useState(null);
+
+  const disabledDays = [];
+
   const [activeLink, setActiveLink] = useState("/");
   const { token, setToken } = useContext(TokenContext);
   const currentDate = signal(undefined);
   const options = { hour: "2-digit", minute: "2-digit", hour12: false };
-const [time] = useState(new Date().toLocaleTimeString([], options));
+  const [time] = useState(new Date().toLocaleTimeString([], options));
 
-  console.log("timeeee", time)
   const [selectedDate, setSelectedDate] = useState(undefined);
   const navigate = useNavigate();
   const location = useLocation();
@@ -90,6 +97,7 @@ const [time] = useState(new Date().toLocaleTimeString([], options));
     // Get the token from the cookie
     const token = Cookies.get("ddc_token");
     setToken(token);
+    refetch()
   }, []);
   effect(() => {
     const date = new Date().toISOString().split("T")[0];
@@ -123,11 +131,19 @@ const [time] = useState(new Date().toLocaleTimeString([], options));
     }
   );
 
+  useEffect(() =>{
+    if(selectedDay){
+      getSpecificDateAppointment.mutate(selectedDay)
+    }
+    
+  }, [selectedDay])
+
   const getSpecificDateAppointment = useMutation(
     async (date) => {
       setSelectedDate(date);
+      const formattedDate = await formatDate(date)
       const res = await fetch(
-        `${url}/appointment/get_specific_date_appointment_list/${date}`,
+        `${url}/appointment/get_specific_date_appointment_list/${formattedDate}`,
         {
           method: "GET",
           headers: {
@@ -181,6 +197,85 @@ const [time] = useState(new Date().toLocaleTimeString([], options));
       },
     }
   );
+
+  const fetchData = async (date) => {
+    const response = await fetch(`${url}/holidayList/get_upcoming_holidays/?date=${date}`);
+    const data = await response.json();
+    return data;
+  };
+
+  const { isLoading, error, data, refetch } = useQuery(['holidayList', currentDate], () =>
+  fetchData(currentDate), {
+  enabled: false,
+  }
+);
+console.log(data, "data of holidays")
+const disabledDates = data?.data.map((item) => item.date);
+
+
+data?.data.map((item)=>{
+  
+  var dateCopy = item.date.split('-');
+  disabledDays.push({
+    year:Number(dateCopy[0]),
+    month:Number(dateCopy[1]),
+    day:Number(dateCopy[2])
+  })
+})
+
+
+// console.log(disabledDates, "disableee")
+
+ // render regular HTML input element
+ const renderCustomInput = ({ ref }) => (
+  <input
+    readOnly
+    ref={ref} // necessary
+    placeholder="Select Date"
+    value={selectedDay ? `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}` : ''}
+    className="form-control" // a styling class
+  />
+)
+
+if (isLoading) {
+  return <div>Loading...</div>;
+}
+
+if (error) {
+  return <div>Error: {error.message}</div>;
+}
+
+const formatDate = async (dateObj) => {
+  const year = dateObj.year;
+  const month = dateObj.month.toString().padStart(2, '0');
+  const day = dateObj.day.toString().padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+const CustomDatePicker =  ({ field, form }) => {
+  const handleDateChange = async (date) => {
+    console.log(date, "insdie sutom")
+    const formattedDate = await formatDate(date)
+    console.log(formattedDate, "insdie formattedDate")
+    setSelectedDay(date)
+    form.setFieldValue(field.name, formattedDate);
+  };
+
+  return (
+    <DatePicker
+      selected={field.value}
+      onChange={handleDateChange}
+      onBlur={field.onBlur}
+      value={selectedDay}
+                              name="date"
+                              disabledDays={disabledDays}
+                              renderInput={renderCustomInput} // render a custom input
+                              calendarPopperPosition="bottom"                              
+                              minimumDate={utils().getToday()}
+                              shouldHighlightWeekends
+    />
+  );
+};
 
   return (
     <>
@@ -351,6 +446,7 @@ const [time] = useState(new Date().toLocaleTimeString([], options));
                     createAppointment.mutate(values, {
                       onSuccess: () => {
                         resetForm();
+                        setSelectedDay(null);
                       },
                     });
                   }}
@@ -394,7 +490,7 @@ const [time] = useState(new Date().toLocaleTimeString([], options));
                         <Col md={6}>
                           <div className="form-group">
                             <label htmlFor="date">Date:</label>
-                            <Field
+                            {/* <Field
                               name="date"
                               type="date"
                               className="form-control"
@@ -404,8 +500,21 @@ const [time] = useState(new Date().toLocaleTimeString([], options));
                                   e.target.value
                                 )
                               }
-                            />
-
+                            /> */}
+                            <div>
+                            <Field name="date" component={CustomDatePicker} />
+                              
+                            {/* <DatePicker
+                              value={selectedDay}
+                              name="date"
+                              disabledDays={disabledDays}
+                              onChange={setSelectedDay}
+                              renderInput={renderCustomInput} // render a custom input
+                              calendarPopperPosition="bottom"                              
+                              minimumDate={utils().getToday()}
+                              shouldHighlightWeekends
+                            /> */}
+                            </div>
                             <ErrorMessage
                               name="date"
                               component="div"
@@ -434,9 +543,9 @@ const [time] = useState(new Date().toLocaleTimeString([], options));
                                       {timeSlot}
                                     </option>
                                   ) : (
-                                    selectedDate && timeSlot > time &&
-                                    index <= 31 &&
-                                     (
+                                    selectedDate &&
+                                    timeSlot > time &&
+                                    index <= 31 && (
                                       <option key={index} value={timeSlot}>
                                         {timeSlot}
                                       </option>
@@ -474,16 +583,16 @@ const [time] = useState(new Date().toLocaleTimeString([], options));
                         className="common-submit  py-2 px-4 mt-4 border-0"
                         disabled={createAppointment.isLoading}
                       >
-                        {createAppointment.isLoading ? 'Loading...' : 'Submit'}
+                        {createAppointment.isLoading ? "Loading..." : "Submit"}
                       </button>
                     </Form>
                   )}
                 </Formik>
-                
+
                 {responseMsg && responseMsg.value ? (
                   <div className="text-success mt-3">
                     <p>{responseMsg.value}</p>
-                    </div>
+                  </div>
                 ) : (
                   ""
                 )}
@@ -570,8 +679,8 @@ const [time] = useState(new Date().toLocaleTimeString([], options));
                         type="submit"
                         className="common-submit  py-2 px-4 mt-4 border-0"
                         disabled={adminLoginHandler.isLoading}
-                        >
-                          {adminLoginHandler.isLoading ? 'Loading...' : 'Submit'}
+                      >
+                        {adminLoginHandler.isLoading ? "Loading..." : "Submit"}
                       </button>
                     </Form>
                   )}
