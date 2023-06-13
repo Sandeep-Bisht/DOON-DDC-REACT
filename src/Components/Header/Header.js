@@ -14,10 +14,17 @@ import "../../Css/Common.css";
 import Images from "../../Util/Images";
 import { url } from "../../Util/url";
 import { useContext } from "react";
+import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
+import DatePicker, { utils } from '@hassanmojab/react-modern-calendar-datepicker';
 
 const responseMsg = signal(undefined);
 
 const Header = () => {
+
+  const [selectedDay, setSelectedDay] = useState(null);
+
+  const disabledDays = [];
+
   const [activeLink, setActiveLink] = useState("/");
   const { token, setToken } = useContext(TokenContext);
   const currentDate = signal(undefined);
@@ -196,7 +203,31 @@ const Header = () => {
 );
 console.log(data, "data of holidays")
 const disabledDates = data?.data.map((item) => item.date);
+
+
+data?.data.map((item)=>{
+  
+  var dateCopy = item.date.split('-');
+  disabledDays.push({
+    year:Number(dateCopy[0]),
+    month:Number(dateCopy[1]),
+    day:Number(dateCopy[2])
+  })
+})
+
+
 console.log(disabledDates, "disableee")
+
+ // render regular HTML input element
+ const renderCustomInput = ({ ref }) => (
+  <input
+    readOnly
+    ref={ref} // necessary
+    placeholder="Select Date"
+    value={selectedDay ? `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}` : ''}
+    className="form-control" // a styling class
+  />
+)
 
 if (isLoading) {
   return <div>Loading...</div>;
@@ -418,7 +449,7 @@ if (error) {
                         <Col md={6}>
                           <div className="form-group">
                             <label htmlFor="date">Date:</label>
-                            <Field
+                            {/* <Field
                               name="date"
                               type="date"
                               className="form-control"
@@ -428,8 +459,18 @@ if (error) {
                                   e.target.value
                                 )
                               }
+                            /> */}
+                            <div>
+                            <DatePicker
+                              value={selectedDay}
+                              disabledDays={disabledDays}
+                              onChange={setSelectedDay}
+                              renderInput={renderCustomInput} // render a custom input
+                              calendarPopperPosition="bottom"
+                              minimumDate={utils().getToday()}
+                              shouldHighlightWeekends
                             />
-
+                            </div>
                             <ErrorMessage
                               name="date"
                               component="div"
