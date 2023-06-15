@@ -14,13 +14,14 @@ import "../../Css/Common.css";
 import Images from "../../Util/Images";
 import { url } from "../../Util/url";
 import { useContext } from "react";
-import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
-import DatePicker, { utils } from '@hassanmojab/react-modern-calendar-datepicker';
+import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
+import DatePicker, {
+  utils,
+} from "@hassanmojab/react-modern-calendar-datepicker";
 
 const responseMsg = signal(undefined);
 
 const Header = () => {
-
   const [selectedDay, setSelectedDay] = useState(null);
 
   const disabledDays = [];
@@ -79,7 +80,9 @@ const Header = () => {
 
   const appointmentSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
-    contactNo: Yup.string().required("Contact number is required"),
+    contactNo: Yup.string()
+      .required("Contact number is required")
+      .matches(/^[0-9]{10}$/, "Contact No must be a 10-digit number"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     date: Yup.string().required("Date is required"),
     time: Yup.string().required("Time is required"),
@@ -97,8 +100,9 @@ const Header = () => {
     // Get the token from the cookie
     const token = Cookies.get("ddc_token");
     setToken(token);
-    refetch()
+    // refetch();
   }, []);
+
   effect(() => {
     const date = new Date().toISOString().split("T")[0];
     currentDate.value = date;
@@ -131,17 +135,16 @@ const Header = () => {
     }
   );
 
-  useEffect(() =>{
-    if(selectedDay){
-      getSpecificDateAppointment.mutate(selectedDay)
+  useEffect(() => {
+    if (selectedDay) {
+      getSpecificDateAppointment.mutate(selectedDay);
     }
-    
-  }, [selectedDay])
+  }, [selectedDay]);
 
   const getSpecificDateAppointment = useMutation(
     async (date) => {
       setSelectedDate(date);
-      const formattedDate = await formatDate(date)
+      const formattedDate = await formatDate(date);
       const res = await fetch(
         `${url}/appointment/get_specific_date_appointment_list/${formattedDate}`,
         {
@@ -199,83 +202,83 @@ const Header = () => {
   );
 
   const fetchData = async (date) => {
-    const response = await fetch(`${url}/holidayList/get_upcoming_holidays/?date=${date}`);
+    const response = await fetch(
+      `${url}/holidayList/get_upcoming_holidays/?date=${date}`
+    );
     const data = await response.json();
     return data;
   };
 
-  const { isLoading, error, data, refetch } = useQuery(['holidayList', currentDate], () =>
-  fetchData(currentDate), {
-  enabled: false,
-  }
-);
-console.log(data, "data of holidays")
-const disabledDates = data?.data.map((item) => item.date);
+  const { isLoading, error, data, refetch } = useQuery(
+    ["holidayList", currentDate],
+    () => fetchData(currentDate),
+    {
+      enabled: false,
+    }
+  );
+  // const disabledDates = data?.data.map((item) => item.date);
 
+  data?.data.map((item) => {
+    var dateCopy = item.date.split("-");
+    disabledDays.push({
+      year: Number(dateCopy[0]),
+      month: Number(dateCopy[1]),
+      day: Number(dateCopy[2]),
+    });
+  });
 
-data?.data.map((item)=>{
-  
-  var dateCopy = item.date.split('-');
-  disabledDays.push({
-    year:Number(dateCopy[0]),
-    month:Number(dateCopy[1]),
-    day:Number(dateCopy[2])
-  })
-})
-
-
-// console.log(disabledDates, "disableee")
-
- // render regular HTML input element
- const renderCustomInput = ({ ref }) => (
-  <input
-    readOnly
-    ref={ref} // necessary
-    placeholder="Select Date"
-    value={selectedDay ? `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}` : ''}
-    className="form-control" // a styling class
-  />
-)
-
-if (isLoading) {
-  return <div>Loading...</div>;
-}
-
-if (error) {
-  return <div>Error: {error.message}</div>;
-}
-
-const formatDate = async (dateObj) => {
-  const year = dateObj.year;
-  const month = dateObj.month.toString().padStart(2, '0');
-  const day = dateObj.day.toString().padStart(2, '0');
-  return `${year}-${month}-${day}`;
-};
-
-const CustomDatePicker =  ({ field, form }) => {
-  const handleDateChange = async (date) => {
-    console.log(date, "insdie sutom")
-    const formattedDate = await formatDate(date)
-    console.log(formattedDate, "insdie formattedDate")
-    setSelectedDay(date)
-    form.setFieldValue(field.name, formattedDate);
-  };
-
-  return (
-    <DatePicker
-      selected={field.value}
-      onChange={handleDateChange}
-      onBlur={field.onBlur}
-      value={selectedDay}
-                              name="date"
-                              disabledDays={disabledDays}
-                              renderInput={renderCustomInput} // render a custom input
-                              calendarPopperPosition="bottom"                              
-                              minimumDate={utils().getToday()}
-                              shouldHighlightWeekends
+  // render regular HTML input element
+  const renderCustomInput = ({ ref }) => (
+    <input
+      readOnly
+      ref={ref} // necessary
+      placeholder="Select Date"
+      value={
+        selectedDay
+          ? `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}`
+          : ""
+      }
+      className="form-control" // a styling class
     />
   );
-};
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  const formatDate = async (dateObj) => {
+    const year = dateObj.year;
+    const month = dateObj.month.toString().padStart(2, "0");
+    const day = dateObj.day.toString().padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  const CustomDatePicker = ({ field, form }) => {
+    const handleDateChange = async (date) => {
+      const formattedDate = await formatDate(date);
+      setSelectedDay(date);
+      form.setFieldValue(field.name, formattedDate);
+    };
+
+    return (
+      <DatePicker
+        selected={field.value}
+        onChange={handleDateChange}
+        onBlur={field.onBlur}
+        value={selectedDay}
+        name="date"
+        disabledDays={disabledDays}
+        renderInput={renderCustomInput} // render a custom input
+        calendarPopperPosition="bottom"
+        minimumDate={utils().getToday()}
+        shouldHighlightWeekends
+      />
+    );
+  };
 
   return (
     <>
@@ -468,7 +471,20 @@ const CustomDatePicker =  ({ field, form }) => {
                         <Col md={6}>
                           <div className="form-group">
                             <label htmlFor="contactNo">Contact No:</label>
-                            <Field name="contactNo" className="form-control" />
+                            <Field
+                              name="contactNo"
+                              className="form-control"
+                              maxLength={10}
+                              onKeyPress={(e) => {
+                                const onlyDigits = /[0-9]/;
+                                const keyPressed = String.fromCharCode(
+                                  e.charCode
+                                );
+                                if (!onlyDigits.test(keyPressed)) {
+                                  e.preventDefault();
+                                }
+                              }}
+                            />
                             <ErrorMessage
                               name="contactNo"
                               component="div"
@@ -502,9 +518,9 @@ const CustomDatePicker =  ({ field, form }) => {
                               }
                             /> */}
                             <div>
-                            <Field name="date" component={CustomDatePicker} />
-                              
-                            {/* <DatePicker
+                              <Field name="date"  component={CustomDatePicker} />
+
+                              {/* <DatePicker
                               value={selectedDay}
                               name="date"
                               disabledDays={disabledDays}
