@@ -14,14 +14,18 @@ import "../../Css/Common.css";
 import Images from "../../Util/Images";
 import { url } from "../../Util/url";
 import { useContext } from "react";
-import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
-import DatePicker, { utils } from '@hassanmojab/react-modern-calendar-datepicker';
+import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
+import DatePicker, {
+  utils,
+} from "@hassanmojab/react-modern-calendar-datepicker";
 
 const responseMsg = signal(undefined);
+const allSlots = [];
 
 const Header = () => {
-
   const [selectedDay, setSelectedDay] = useState(null);
+  const appointmentFormRef = useRef();
+  // const [allSlots, setAllSlots] = useState([])
 
   const disabledDays = [];
 
@@ -35,51 +39,61 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const loginModalRef = useRef(null);
-  const timeRef = useRef();
-
-  const startTimeMorning = new Date();
-  startTimeMorning.setHours(9, 0, 0); // Set start time for the morning range (9 am)
-
-  const endTimeMorning = new Date();
-  endTimeMorning.setHours(13, 0, 0); // Set end time for the morning range (1 pm)
-
-  const startTimeAfternoon = new Date();
-  startTimeAfternoon.setHours(14, 0, 0); // Set start time for the afternoon range (2 pm)
-
-  const endTimeAfternoon = new Date();
-  endTimeAfternoon.setHours(18, 0, 0); // Set end time for the afternoon range (6 pm)
-
+  // const timeRef = useRef();
   const [timeSlots, setTimeSlots] = useState([]);
 
-  // Generate morning time slots
-  let currentTime = startTimeMorning;
-  while (currentTime < endTimeMorning) {
-    timeSlots.push(
-      currentTime.toLocaleTimeString([], {
+  useEffect(()=>{
+    const startTimeMorning = new Date();
+    startTimeMorning.setHours(9, 0, 0); // Set start time for the morning range (9 am)
+    
+    const endTimeMorning = new Date();
+    endTimeMorning.setHours(13, 0, 0); // Set end time for the morning range (1 pm)
+    
+    const startTimeAfternoon = new Date();
+    startTimeAfternoon.setHours(14, 0, 0); // Set start time for the afternoon range (2 pm)
+    
+    const endTimeAfternoon = new Date();
+    endTimeAfternoon.setHours(18, 0, 0); // Set end time for the afternoon range (6 pm)
+    
+    // Generate morning time slots
+    let currentTime = startTimeMorning;
+    while (currentTime < endTimeMorning) {
+      const timeSlot = currentTime.toLocaleTimeString([], {
         hour12: false,
         hour: "2-digit",
         minute: "2-digit",
-      })
-    );
-    currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
-  }
+      });
+      
+      if (!allSlots.includes(timeSlot)) {
+        allSlots.push(timeSlot);
+      }
+    
+      currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+    }
+    
+    // Generate afternoon time slots
+    currentTime = startTimeAfternoon;
+    while (currentTime < endTimeAfternoon) {
+      const timeSlot = currentTime.toLocaleTimeString([], {
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    
+      if (!allSlots.includes(timeSlot)) {
+        allSlots.push(timeSlot);
+      }
+    
+      currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+    }
+  },[])
 
-  // Generate afternoon time slots
-  currentTime = startTimeAfternoon;
-  while (currentTime < endTimeAfternoon) {
-    timeSlots.push(
-      currentTime.toLocaleTimeString([], {
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    );
-    currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
-  }
 
   const appointmentSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
-    contactNo: Yup.string().required("Contact number is required"),
+    contactNo: Yup.string()
+      .required("Contact number is required")
+      .matches(/^[0-9]{10}$/, "Contact No must be a 10-digit number"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     date: Yup.string().required("Date is required"),
     time: Yup.string().required("Time is required"),
@@ -97,8 +111,9 @@ const Header = () => {
     // Get the token from the cookie
     const token = Cookies.get("ddc_token");
     setToken(token);
-    refetch()
+    refetch();
   }, []);
+
   effect(() => {
     const date = new Date().toISOString().split("T")[0];
     currentDate.value = date;
@@ -109,6 +124,14 @@ const Header = () => {
       responseMsg.value = undefined;
     }, 2000);
   }, [responseMsg.value]);
+
+
+  useEffect(() => {
+    if (selectedDay) {   
+        
+      getSpecificDateAppointment.mutate(selectedDay);      
+    }
+  }, [selectedDay]);
 
   const createAppointment = useMutation(
     async (data) => {
@@ -131,17 +154,10 @@ const Header = () => {
     }
   );
 
-  useEffect(() =>{
-    if(selectedDay){
-      getSpecificDateAppointment.mutate(selectedDay)
-    }
-    
-  }, [selectedDay])
-
   const getSpecificDateAppointment = useMutation(
     async (date) => {
-      setSelectedDate(date);
-      const formattedDate = await formatDate(date)
+      const formattedDate = await formatDate(date);
+      setSelectedDate(formattedDate);
       const res = await fetch(
         `${url}/appointment/get_specific_date_appointment_list/${formattedDate}`,
         {
@@ -154,22 +170,49 @@ const Header = () => {
       return await res.json();
     },
     {
-      onSuccess: (res) => {
-        setTimeSlots("");
+      onSuccess: async(res) => {
+        // setTimeSlots([]);
         let appointmentSlot = res.data;
-        const availableSlots = timeSlots.filter((slot) => {
-          return !appointmentSlot.some(
+        let timeSlotsCopy = [...allSlots]
+        const availableSlots = timeSlotsCopy?.filter((slot) => {
+          return !appointmentSlot?.some(
             (appointmentSlot) => appointmentSlot.time === slot
           );
-        });
+        });       
+         
+        //  setTimeSlots(availableSlots);
+         getSelectedDayHoliday(selectedDay,availableSlots);
 
-        setTimeSlots(availableSlots);
       },
       onError: (error) => {
         responseMsg.value = error.msg;
       },
     }
   );
+
+  const getSelectedDayHoliday = async (date,timeSlotsCopy) => {
+    const formattedDate = await formatDate(date);
+    const response = await fetch(
+      `${url}/holidayList/get_currentday_schedule/?date=${formattedDate}`
+    );
+    if (response.ok) {
+      const data = await response.json();
+      const unavailableslot = data?.data[0]?.time;
+      if(!unavailableslot){
+        return setTimeSlots(timeSlotsCopy);
+      }
+
+      const availableSlots = timeSlotsCopy.filter(
+        (slot) => !JSON.parse(unavailableslot).includes(slot)
+      );
+
+      return setTimeSlots(availableSlots); // Assuming setTimeSlots is a function to update the timeSlots state
+      // Further processing of the response data
+    } else {
+      return console.log("Error fetching data:", response.status);
+    }
+  };
+  
 
   const adminLoginHandler = useMutation(
     async (data) => {
@@ -199,84 +242,97 @@ const Header = () => {
   );
 
   const fetchData = async (date) => {
-    const response = await fetch(`${url}/holidayList/get_upcoming_holidays/?date=${date}`);
+    const response = await fetch(
+      `${url}/holidayList/get_upcoming_holidays/?date=${date}`
+    );
     const data = await response.json();
     return data;
   };
 
-  const { isLoading, error, data, refetch } = useQuery(['holidayList', currentDate], () =>
-  fetchData(currentDate), {
-  enabled: false,
-  }
-);
-console.log(data, "data of holidays")
-const disabledDates = data?.data.map((item) => item.date);
+  const { isLoading, error, data, refetch } = useQuery(
+    ["holidayList", currentDate],
+    () => fetchData(currentDate),
+    {
+      enabled: false,
+    }
+  );
+  // const disabledDates = data?.data.map((item) => item.date);
 
+  data?.data.map((item) => {
+    const timeArray = JSON.parse(item.time);
 
-data?.data.map((item)=>{
-  
-  var dateCopy = item.date.split('-');
-  disabledDays.push({
-    year:Number(dateCopy[0]),
-    month:Number(dateCopy[1]),
-    day:Number(dateCopy[2])
-  })
-})
+    if (timeArray?.includes("fullday")) {
+      const dateCopy = item.date.split("-");
+      disabledDays.push({
+        year: Number(dateCopy[0]),
+        month: Number(dateCopy[1]),
+        day: Number(dateCopy[2]),
+      });
+    }
+  });
 
-
-// console.log(disabledDates, "disableee")
-
- // render regular HTML input element
- const renderCustomInput = ({ ref }) => (
-  <input
-    readOnly
-    ref={ref} // necessary
-    placeholder="Select Date"
-    value={selectedDay ? `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}` : ''}
-    className="form-control" // a styling class
-  />
-)
-
-if (isLoading) {
-  return <div>Loading...</div>;
-}
-
-if (error) {
-  return <div>Error: {error.message}</div>;
-}
-
-const formatDate = async (dateObj) => {
-  const year = dateObj.year;
-  const month = dateObj.month.toString().padStart(2, '0');
-  const day = dateObj.day.toString().padStart(2, '0');
-  return `${year}-${month}-${day}`;
-};
-
-const CustomDatePicker =  ({ field, form }) => {
-  const handleDateChange = async (date) => {
-    console.log(date, "insdie sutom")
-    const formattedDate = await formatDate(date)
-    console.log(formattedDate, "insdie formattedDate")
-    setSelectedDay(date)
-    form.setFieldValue(field.name, formattedDate);
-  };
-
-  return (
-    <DatePicker
-      selected={field.value}
-      onChange={handleDateChange}
-      onBlur={field.onBlur}
-      value={selectedDay}
-                              name="date"
-                              disabledDays={disabledDays}
-                              renderInput={renderCustomInput} // render a custom input
-                              calendarPopperPosition="bottom"                              
-                              minimumDate={utils().getToday()}
-                              shouldHighlightWeekends
+  // render regular HTML input element
+  const renderCustomInput = ({ ref }) => (
+    <input
+      readOnly
+      ref={ref} // necessary
+      placeholder="Select Date"
+      value={
+        selectedDay
+          ? `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}`
+          : ""
+      }
+      className="form-control" // a styling class
     />
   );
-};
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  const formatDate = async (dateObj) => {
+    const year = dateObj.year;
+    const month = dateObj.month.toString().padStart(2, "0");
+    const day = dateObj.day.toString().padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  const CustomDatePicker = ({ field, form }) => {
+    const handleDateChange = async (date) => {
+      const formattedDate = await formatDate(date);
+      setSelectedDay(date);
+      setSelectedDate(formattedDate);      
+      form.setFieldValue(field.name, formattedDate);
+      form.setFieldValue("time", null);
+    };
+
+    
+
+    return (
+      <DatePicker
+        selected={field.value}
+        onChange={handleDateChange}
+        onBlur={field.onBlur}
+        value={selectedDay}
+        name="date"
+        disabledDays={disabledDays}
+        renderInput={renderCustomInput} // render a custom input
+        calendarPopperPosition="bottom"
+        minimumDate={utils().getToday()}
+        // shouldHighlightWeekends
+      />
+    );
+  };
+  
+  const handleBookAppointmentClick = () => {
+    if (appointmentFormRef.current) {
+      appointmentFormRef.current.resetForm();
+    }
+  };
   return (
     <>
       <header>
@@ -370,6 +426,7 @@ const CustomDatePicker =  ({ field, form }) => {
                     </li>
                     <li className="nav-item">
                       <button
+                      onClick={handleBookAppointmentClick}
                         className="btn book-now nav-link"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
@@ -433,6 +490,7 @@ const CustomDatePicker =  ({ field, form }) => {
             <div className="modal-body">
               <div>
                 <Formik
+                  innerRef={appointmentFormRef}
                   initialValues={{
                     name: "",
                     contactNo: "",
@@ -468,7 +526,20 @@ const CustomDatePicker =  ({ field, form }) => {
                         <Col md={6}>
                           <div className="form-group">
                             <label htmlFor="contactNo">Contact No:</label>
-                            <Field name="contactNo" className="form-control" />
+                            <Field
+                              name="contactNo"
+                              className="form-control"
+                              maxLength={10}
+                              onKeyPress={(e) => {
+                                const onlyDigits = /[0-9]/;
+                                const keyPressed = String.fromCharCode(
+                                  e.charCode
+                                );
+                                if (!onlyDigits.test(keyPressed)) {
+                                  e.preventDefault();
+                                }
+                              }}
+                            />
                             <ErrorMessage
                               name="contactNo"
                               component="div"
@@ -490,30 +561,8 @@ const CustomDatePicker =  ({ field, form }) => {
                         <Col md={6}>
                           <div className="form-group">
                             <label htmlFor="date">Date:</label>
-                            {/* <Field
-                              name="date"
-                              type="date"
-                              className="form-control"
-                              min={currentDate.value}
-                              onBlur={(e) =>
-                                getSpecificDateAppointment.mutate(
-                                  e.target.value
-                                )
-                              }
-                            /> */}
-                            <div>
-                            <Field name="date" component={CustomDatePicker} />
-                              
-                            {/* <DatePicker
-                              value={selectedDay}
-                              name="date"
-                              disabledDays={disabledDays}
-                              onChange={setSelectedDay}
-                              renderInput={renderCustomInput} // render a custom input
-                              calendarPopperPosition="bottom"                              
-                              minimumDate={utils().getToday()}
-                              shouldHighlightWeekends
-                            /> */}
+                             <div>
+                              <Field name="date" component={CustomDatePicker} />
                             </div>
                             <ErrorMessage
                               name="date"
@@ -529,7 +578,7 @@ const CustomDatePicker =  ({ field, form }) => {
                               name="time"
                               type="time"
                               as="select"
-                              ref={timeRef}
+                              // ref={timeRef}
                               className="form-control"
                             >
                               <option value="" hidden>
@@ -537,18 +586,20 @@ const CustomDatePicker =  ({ field, form }) => {
                               </option>
                               {selectedDate ? (
                                 timeSlots.map((timeSlot, index) =>
-                                  selectedDate > currentDate.value &&
-                                  index <= 31 ? (
+                                  selectedDate > currentDate.value ?
+                                   (
                                     <option key={index} value={timeSlot}>
                                       {timeSlot}
                                     </option>
                                   ) : (
                                     selectedDate &&
                                     timeSlot > time &&
-                                    index <= 31 && (
-                                      <option key={index} value={timeSlot}>
-                                        {timeSlot}
-                                      </option>
+                                     (
+                                      <>
+                                        <option key={index} value={timeSlot}>
+                                          {timeSlot}
+                                        </option>
+                                      </>
                                     )
                                   )
                                 )
