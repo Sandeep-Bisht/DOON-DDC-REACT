@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { signal, effect } from "@preact/signals";
 import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
 import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
@@ -14,7 +14,6 @@ import { useMutation } from "react-query";
 import { url } from "../Util/url";
 import * as Yup from "yup";
 import "../Css/Schedule.css";
-import { restElement } from "@babel/types";
 
 const ScheduleAppointments = () => {
   // const [currentDate, setCurrentDate] = useState(undefined);
@@ -24,51 +23,58 @@ const ScheduleAppointments = () => {
   const [selectedDate, setSelectedDate] = useState(undefined);
   const [selectedDay, setSelectedDay] = useState(null);
   const disabledDays = [];
+  const addHolidayRef = useRef()
 
   const options = { hour: "2-digit", minute: "2-digit", hour12: false };
   const [time] = useState(new Date().toLocaleTimeString([], options));
-
-  console.log(time, "timeeeeeeeeeeee");
-
-  const startTimeMorning = new Date();
-  startTimeMorning.setHours(9, 0, 0); // Set start time for the morning range (9 am)
-
-  const endTimeMorning = new Date();
-  endTimeMorning.setHours(13, 0, 0); // Set end time for the morning range (1 pm)
-
-  const startTimeAfternoon = new Date();
-  startTimeAfternoon.setHours(14, 0, 0); // Set start time for the afternoon range (2 pm)
-
-  const endTimeAfternoon = new Date();
-  endTimeAfternoon.setHours(18, 0, 0); // Set end time for the afternoon range (6 pm)
-
   const [timeSlots, setTimeSlots] = useState([]);
 
-  // Generate morning time slots
-  let currentTime = startTimeMorning;
-  while (currentTime < endTimeMorning) {
-    timeSlots.push(
-      currentTime.toLocaleTimeString([], {
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    );
-    currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
-  }
 
-  // Generate afternoon time slots
-  currentTime = startTimeAfternoon;
-  while (currentTime < endTimeAfternoon) {
-    timeSlots.push(
-      currentTime.toLocaleTimeString([], {
+  useEffect(()=>{
+    const startTimeMorning = new Date();
+    startTimeMorning.setHours(9, 0, 0); // Set start time for the morning range (9 am)
+    
+    const endTimeMorning = new Date();
+    endTimeMorning.setHours(13, 0, 0); // Set end time for the morning range (1 pm)
+    
+    const startTimeAfternoon = new Date();
+    startTimeAfternoon.setHours(14, 0, 0); // Set start time for the afternoon range (2 pm)
+    
+    const endTimeAfternoon = new Date();
+    endTimeAfternoon.setHours(18, 0, 0); // Set end time for the afternoon range (6 pm)
+    
+    // Generate morning time slots
+    let currentTime = startTimeMorning;
+    while (currentTime < endTimeMorning) {
+      const timeSlot = currentTime.toLocaleTimeString([], {
         hour12: false,
         hour: "2-digit",
         minute: "2-digit",
-      })
-    );
-    currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
-  }
+      });
+      
+      if (!timeSlots.includes(timeSlot)) {
+        timeSlots.push(timeSlot);
+      }
+    
+      currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+    }
+    
+    // Generate afternoon time slots
+    currentTime = startTimeAfternoon;
+    while (currentTime < endTimeAfternoon) {
+      const timeSlot = currentTime.toLocaleTimeString([], {
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    
+      if (!timeSlots.includes(timeSlot)) {
+        timeSlots.push(timeSlot);
+      }
+    
+      currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+    }
+  },[])
 
   effect(() => {
     const date = new Date().toISOString().split("T")[0];
@@ -158,16 +164,10 @@ const ScheduleAppointments = () => {
       setSelectedDate(formattedDate);
       setSelectedDay(date);
       form.setFieldValue(field.name, formattedDate);
+      form.setFieldValue("time", null);
+
     };
 
-  //   const getSelectedDayHoliday = async (date) => {
-  //     const  response = await fetch(
-  //      `${url}/holidayList/get_currentday_schedule/?date=${date}`
-  //    );
- 
-  //    return response
-     
-  //  }
 
     return (
       <DatePicker
@@ -176,11 +176,11 @@ const ScheduleAppointments = () => {
         onBlur={field.onBlur}
         value={selectedDay}
         name="date"
+        
         disabledDays={disabledDays}
         renderInput={renderCustomInput} // render a custom input
         calendarPopperPosition="bottom"
         minimumDate={utils().getToday()}
-        // shouldHighlightWeekends
       />
     );
   };
@@ -188,7 +188,6 @@ const ScheduleAppointments = () => {
   //get upcoming holiday call
 
   const fetchData = async (date) => {
-    console.log(date, "current date");
     const response = await fetch(
       `${url}/holidayList/get_upcoming_holidays/?date=${date}`
     );
@@ -203,11 +202,8 @@ const ScheduleAppointments = () => {
       enabled: false,
     }
   );
-  // const disabledDates = data?.data.map((item) => item.date);
-  // console.log(data, "dataaaaaaaaaaaaaaaaaa");
 
   data?.data.map((item) => {
-    console.log(JSON.parse(item.time), "time in parse");
     const timeArray = JSON.parse(item.time);
 
     if (timeArray?.includes("fullday")) {
@@ -219,7 +215,6 @@ const ScheduleAppointments = () => {
       });
     }
   });
-  // console.log(disabledDays, "disabledDays");
 
   // render regular HTML input element
   const renderCustomInput = ({ ref }) => (
@@ -253,6 +248,15 @@ const ScheduleAppointments = () => {
     setFieldValue("time", selectedOptions); // Update the 'time' field value
   };
 
+
+  const handleAddHolidayClick = ()=> {
+    setAddHoliday(true)
+    if (addHolidayRef.current) {
+      
+      addHolidayRef.current.resetForm();
+    }
+  }
+
   return (
     <section className="container-fluid pt-5">
       {addHoliday ? (
@@ -267,8 +271,9 @@ const ScheduleAppointments = () => {
           </div>
           <div className="row">
             <div className="col-lg-6 mx-auto">
-              <div className="form-wrapper">
+              <div className="form-wrapper pt-lg-2">
                 <Formik
+                innerRef={addHolidayRef}
                   initialValues={{
                     date: "",
                     time: "",
@@ -276,7 +281,6 @@ const ScheduleAppointments = () => {
                   }}
                   validationSchema={holidaySchema}
                   onSubmit={(values, { resetForm }) => {
-                    console.log(values, "valuesss");
                     handleHoliday.mutate(values, {
                       onSuccess: () => {
                         resetForm();
@@ -342,8 +346,7 @@ const ScheduleAppointments = () => {
 
                               {selectedDate ? (
                                 timeSlots.map((timeSlot, index) =>
-                                  selectedDate > currentDate.value &&
-                                  index <= 31 ? (
+                                  selectedDate > currentDate.value ? (
                                     <>
                                       <option value="" hidden>
                                         Select a time
@@ -355,8 +358,7 @@ const ScheduleAppointments = () => {
                                     </>
                                   ) : (
                                     selectedDate &&
-                                    timeSlot > time &&
-                                    index <= 31 && (
+                                    timeSlot > time && (
                                       <>
                                         <option key={index} value={timeSlot}>
                                           {timeSlot}
@@ -378,12 +380,12 @@ const ScheduleAppointments = () => {
                         </Col>
 
                         <Col md={12}>
-                          <div className="form-group pt-3">
+                          <div className="form-group pt-1">
                             <label htmlFor="date">Reason:</label>
                             <Field
                               name="reason"
                               as="textarea"
-                              rows="3"
+                              rows="2"
                               className="form-control"
                             />
 
@@ -427,7 +429,8 @@ const ScheduleAppointments = () => {
                   <div>
                     <button
                       className="common-add"
-                      onClick={() => setAddHoliday(true)}
+                      onClick={handleAddHolidayClick}
+                      // onClick={() => setAddHoliday(true)}
                     >
                       <MdPlaylistAdd />
                       Add

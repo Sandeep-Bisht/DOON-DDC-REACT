@@ -173,9 +173,7 @@ const Header = () => {
       onSuccess: async(res) => {
         // setTimeSlots([]);
         let appointmentSlot = res.data;
-        console.log(appointmentSlot,'appointment slots')
         let timeSlotsCopy = [...allSlots]
-        console.log(allSlots,'time slot copy in appointment slot')
         const availableSlots = timeSlotsCopy?.filter((slot) => {
           return !appointmentSlot?.some(
             (appointmentSlot) => appointmentSlot.time === slot
@@ -201,7 +199,6 @@ const Header = () => {
       const data = await response.json();
       const unavailableslot = data?.data[0]?.time;
       if(!unavailableslot){
-        console.log(timeSlotsCopy,'time slots copy is this')
         return setTimeSlots(timeSlotsCopy);
       }
 
@@ -209,7 +206,6 @@ const Header = () => {
         (slot) => !JSON.parse(unavailableslot).includes(slot)
       );
 
-      console.log(availableSlots, "available");
       return setTimeSlots(availableSlots); // Assuming setTimeSlots is a function to update the timeSlots state
       // Further processing of the response data
     } else {
@@ -565,30 +561,8 @@ const Header = () => {
                         <Col md={6}>
                           <div className="form-group">
                             <label htmlFor="date">Date:</label>
-                            {/* <Field
-                              name="date"
-                              type="date"
-                              className="form-control"
-                              min={currentDate.value}
-                              onBlur={(e) =>
-                                getSpecificDateAppointment.mutate(
-                                  e.target.value
-                                )
-                              }
-                            /> */}
-                            <div>
+                             <div>
                               <Field name="date" component={CustomDatePicker} />
-
-                              {/* <DatePicker
-                              value={selectedDay}
-                              name="date"
-                              disabledDays={disabledDays}
-                              onChange={setSelectedDay}
-                              renderInput={renderCustomInput} // render a custom input
-                              calendarPopperPosition="bottom"                              
-                              minimumDate={utils().getToday()}
-                              shouldHighlightWeekends
-                            /> */}
                             </div>
                             <ErrorMessage
                               name="date"
