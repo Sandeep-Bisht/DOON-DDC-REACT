@@ -14,6 +14,7 @@ import { useMutation } from "react-query";
 import { url } from "../Util/url";
 import * as Yup from "yup";
 import "../Css/Schedule.css";
+import { restElement } from "@babel/types";
 
 const ScheduleAppointments = () => {
   // const [currentDate, setCurrentDate] = useState(undefined);
@@ -143,14 +144,30 @@ const ScheduleAppointments = () => {
     return `${year}-${month}-${day}`;
   };
 
-  const CustomDatePicker = ({ field, form }) => {
+ 
+  
+
+  const CustomDatePicker = ({ field, form }) => {    
+   
     const handleDateChange = async (date) => {
+      
       form.setFieldValue(field.time, "");
       const formattedDate = await formatDate(date);
+      // const getHoliday =  getSelectedDayHoliday(formattedDate)
+      
       setSelectedDate(formattedDate);
       setSelectedDay(date);
       form.setFieldValue(field.name, formattedDate);
     };
+
+  //   const getSelectedDayHoliday = async (date) => {
+  //     const  response = await fetch(
+  //      `${url}/holidayList/get_currentday_schedule/?date=${date}`
+  //    );
+ 
+  //    return response
+     
+  //  }
 
     return (
       <DatePicker
@@ -187,12 +204,12 @@ const ScheduleAppointments = () => {
     }
   );
   // const disabledDates = data?.data.map((item) => item.date);
-  console.log(data, "dataaaaaaaaaaaaaaaaaa");
+  // console.log(data, "dataaaaaaaaaaaaaaaaaa");
 
   data?.data.map((item) => {
     console.log(JSON.parse(item.time), "time in parse");
     const timeArray = JSON.parse(item.time);
-  
+
     if (timeArray?.includes("fullday")) {
       const dateCopy = item.date.split("-");
       disabledDays.push({
@@ -202,7 +219,7 @@ const ScheduleAppointments = () => {
       });
     }
   });
-  console.log(disabledDays, "disabledDays");
+  // console.log(disabledDays, "disabledDays");
 
   // render regular HTML input element
   const renderCustomInput = ({ ref }) => (
@@ -318,34 +335,29 @@ const ScheduleAppointments = () => {
                               <option value="" hidden>
                                 Select a time
                               </option>
-                              {selectedDate &&  selectedDate > currentDate.value &&
-                              <option value="fullday">
-                                          Full Day
-                              </option> 
-                                }
-                              
+                              {selectedDate &&
+                                selectedDate > currentDate.value && (
+                                  <option value="fullday">Full Day</option>
+                                )}
 
                               {selectedDate ? (
                                 timeSlots.map((timeSlot, index) =>
                                   selectedDate > currentDate.value &&
-                                  
                                   index <= 31 ? (
                                     <>
                                       <option value="" hidden>
                                         Select a time
-                                      </option>                                    
+                                      </option>
 
                                       <option key={index} value={timeSlot}>
                                         {timeSlot}
                                       </option>
                                     </>
-                                    
-                                  )  : (
-                                    
+                                  ) : (
                                     selectedDate &&
                                     timeSlot > time &&
                                     index <= 31 && (
-                                      <>                                        
+                                      <>
                                         <option key={index} value={timeSlot}>
                                           {timeSlot}
                                         </option>

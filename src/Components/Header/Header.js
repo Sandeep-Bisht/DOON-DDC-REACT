@@ -20,9 +20,12 @@ import DatePicker, {
 } from "@hassanmojab/react-modern-calendar-datepicker";
 
 const responseMsg = signal(undefined);
+const allSlots = [];
 
 const Header = () => {
   const [selectedDay, setSelectedDay] = useState(null);
+  const appointmentFormRef = useRef();
+  // const [allSlots, setAllSlots] = useState([])
 
   const disabledDays = [];
 
@@ -36,47 +39,55 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const loginModalRef = useRef(null);
-  const timeRef = useRef();
-
-  const startTimeMorning = new Date();
-  startTimeMorning.setHours(9, 0, 0); // Set start time for the morning range (9 am)
-
-  const endTimeMorning = new Date();
-  endTimeMorning.setHours(13, 0, 0); // Set end time for the morning range (1 pm)
-
-  const startTimeAfternoon = new Date();
-  startTimeAfternoon.setHours(14, 0, 0); // Set start time for the afternoon range (2 pm)
-
-  const endTimeAfternoon = new Date();
-  endTimeAfternoon.setHours(18, 0, 0); // Set end time for the afternoon range (6 pm)
-
+  // const timeRef = useRef();
   const [timeSlots, setTimeSlots] = useState([]);
 
-  // Generate morning time slots
-  let currentTime = startTimeMorning;
-  while (currentTime < endTimeMorning) {
-    timeSlots.push(
-      currentTime.toLocaleTimeString([], {
+  useEffect(()=>{
+    const startTimeMorning = new Date();
+    startTimeMorning.setHours(9, 0, 0); // Set start time for the morning range (9 am)
+    
+    const endTimeMorning = new Date();
+    endTimeMorning.setHours(13, 0, 0); // Set end time for the morning range (1 pm)
+    
+    const startTimeAfternoon = new Date();
+    startTimeAfternoon.setHours(14, 0, 0); // Set start time for the afternoon range (2 pm)
+    
+    const endTimeAfternoon = new Date();
+    endTimeAfternoon.setHours(18, 0, 0); // Set end time for the afternoon range (6 pm)
+    
+    // Generate morning time slots
+    let currentTime = startTimeMorning;
+    while (currentTime < endTimeMorning) {
+      const timeSlot = currentTime.toLocaleTimeString([], {
         hour12: false,
         hour: "2-digit",
         minute: "2-digit",
-      })
-    );
-    currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
-  }
+      });
+      
+      if (!allSlots.includes(timeSlot)) {
+        allSlots.push(timeSlot);
+      }
+    
+      currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+    }
+    
+    // Generate afternoon time slots
+    currentTime = startTimeAfternoon;
+    while (currentTime < endTimeAfternoon) {
+      const timeSlot = currentTime.toLocaleTimeString([], {
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    
+      if (!allSlots.includes(timeSlot)) {
+        allSlots.push(timeSlot);
+      }
+    
+      currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+    }
+  },[])
 
-  // Generate afternoon time slots
-  currentTime = startTimeAfternoon;
-  while (currentTime < endTimeAfternoon) {
-    timeSlots.push(
-      currentTime.toLocaleTimeString([], {
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-      })
-    );
-    currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
-  }
 
   const appointmentSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -100,7 +111,7 @@ const Header = () => {
     // Get the token from the cookie
     const token = Cookies.get("ddc_token");
     setToken(token);
-    // refetch();
+    refetch();
   }, []);
 
   effect(() => {
@@ -113,6 +124,14 @@ const Header = () => {
       responseMsg.value = undefined;
     }, 2000);
   }, [responseMsg.value]);
+
+
+  useEffect(() => {
+    if (selectedDay) {   
+        
+      getSpecificDateAppointment.mutate(selectedDay);      
+    }
+  }, [selectedDay]);
 
   const createAppointment = useMutation(
     async (data) => {
@@ -135,16 +154,10 @@ const Header = () => {
     }
   );
 
-  useEffect(() => {
-    if (selectedDay) {
-      getSpecificDateAppointment.mutate(selectedDay);
-    }
-  }, [selectedDay]);
-
   const getSpecificDateAppointment = useMutation(
     async (date) => {
-      setSelectedDate(date);
       const formattedDate = await formatDate(date);
+      setSelectedDate(formattedDate);
       const res = await fetch(
         `${url}/appointment/get_specific_date_appointment_list/${formattedDate}`,
         {
@@ -157,22 +170,53 @@ const Header = () => {
       return await res.json();
     },
     {
-      onSuccess: (res) => {
-        setTimeSlots("");
+      onSuccess: async(res) => {
+        // setTimeSlots([]);
         let appointmentSlot = res.data;
-        const availableSlots = timeSlots.filter((slot) => {
-          return !appointmentSlot.some(
+        console.log(appointmentSlot,'appointment slots')
+        let timeSlotsCopy = [...allSlots]
+        console.log(allSlots,'time slot copy in appointment slot')
+        const availableSlots = timeSlotsCopy?.filter((slot) => {
+          return !appointmentSlot?.some(
             (appointmentSlot) => appointmentSlot.time === slot
           );
-        });
+        });       
+         
+        //  setTimeSlots(availableSlots);
+         getSelectedDayHoliday(selectedDay,availableSlots);
 
-        setTimeSlots(availableSlots);
       },
       onError: (error) => {
         responseMsg.value = error.msg;
       },
     }
   );
+
+  const getSelectedDayHoliday = async (date,timeSlotsCopy) => {
+    const formattedDate = await formatDate(date);
+    const response = await fetch(
+      `${url}/holidayList/get_currentday_schedule/?date=${formattedDate}`
+    );
+    if (response.ok) {
+      const data = await response.json();
+      const unavailableslot = data?.data[0]?.time;
+      if(!unavailableslot){
+        console.log(timeSlotsCopy,'time slots copy is this')
+        return setTimeSlots(timeSlotsCopy);
+      }
+
+      const availableSlots = timeSlotsCopy.filter(
+        (slot) => !JSON.parse(unavailableslot).includes(slot)
+      );
+
+      console.log(availableSlots, "available");
+      return setTimeSlots(availableSlots); // Assuming setTimeSlots is a function to update the timeSlots state
+      // Further processing of the response data
+    } else {
+      return console.log("Error fetching data:", response.status);
+    }
+  };
+  
 
   const adminLoginHandler = useMutation(
     async (data) => {
@@ -219,12 +263,16 @@ const Header = () => {
   // const disabledDates = data?.data.map((item) => item.date);
 
   data?.data.map((item) => {
-    var dateCopy = item.date.split("-");
-    disabledDays.push({
-      year: Number(dateCopy[0]),
-      month: Number(dateCopy[1]),
-      day: Number(dateCopy[2]),
-    });
+    const timeArray = JSON.parse(item.time);
+
+    if (timeArray?.includes("fullday")) {
+      const dateCopy = item.date.split("-");
+      disabledDays.push({
+        year: Number(dateCopy[0]),
+        month: Number(dateCopy[1]),
+        day: Number(dateCopy[2]),
+      });
+    }
   });
 
   // render regular HTML input element
@@ -261,8 +309,12 @@ const Header = () => {
     const handleDateChange = async (date) => {
       const formattedDate = await formatDate(date);
       setSelectedDay(date);
+      setSelectedDate(formattedDate);      
       form.setFieldValue(field.name, formattedDate);
+      form.setFieldValue("time", null);
     };
+
+    
 
     return (
       <DatePicker
@@ -275,11 +327,16 @@ const Header = () => {
         renderInput={renderCustomInput} // render a custom input
         calendarPopperPosition="bottom"
         minimumDate={utils().getToday()}
-        shouldHighlightWeekends
+        // shouldHighlightWeekends
       />
     );
   };
-
+  
+  const handleBookAppointmentClick = () => {
+    if (appointmentFormRef.current) {
+      appointmentFormRef.current.resetForm();
+    }
+  };
   return (
     <>
       <header>
@@ -373,6 +430,7 @@ const Header = () => {
                     </li>
                     <li className="nav-item">
                       <button
+                      onClick={handleBookAppointmentClick}
                         className="btn book-now nav-link"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
@@ -436,6 +494,7 @@ const Header = () => {
             <div className="modal-body">
               <div>
                 <Formik
+                  innerRef={appointmentFormRef}
                   initialValues={{
                     name: "",
                     contactNo: "",
@@ -518,7 +577,7 @@ const Header = () => {
                               }
                             /> */}
                             <div>
-                              <Field name="date"  component={CustomDatePicker} />
+                              <Field name="date" component={CustomDatePicker} />
 
                               {/* <DatePicker
                               value={selectedDay}
@@ -545,7 +604,7 @@ const Header = () => {
                               name="time"
                               type="time"
                               as="select"
-                              ref={timeRef}
+                              // ref={timeRef}
                               className="form-control"
                             >
                               <option value="" hidden>
@@ -553,18 +612,20 @@ const Header = () => {
                               </option>
                               {selectedDate ? (
                                 timeSlots.map((timeSlot, index) =>
-                                  selectedDate > currentDate.value &&
-                                  index <= 31 ? (
+                                  selectedDate > currentDate.value ?
+                                   (
                                     <option key={index} value={timeSlot}>
                                       {timeSlot}
                                     </option>
                                   ) : (
                                     selectedDate &&
                                     timeSlot > time &&
-                                    index <= 31 && (
-                                      <option key={index} value={timeSlot}>
-                                        {timeSlot}
-                                      </option>
+                                     (
+                                      <>
+                                        <option key={index} value={timeSlot}>
+                                          {timeSlot}
+                                        </option>
+                                      </>
                                     )
                                   )
                                 )
