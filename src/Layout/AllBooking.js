@@ -21,7 +21,6 @@ const AllBooking = () => {
       `${url}/appointment/get_specific_date_appointment_list/${date}`
     );
     const data = await response.json();
-    console.log(data, "dataaaaaaaaaaaaa");
     return data.data;
   };
 
@@ -53,17 +52,14 @@ const AllBooking = () => {
   const findAppointments = async (fromDate, tillDate) => {
     if (fromDate && tillDate) {
       const response = await axios.get(`${url}/appointment/get_specific_period_date_appointment_list/from/${fromDate}/to/${tillDate}`)
-      console.log(response, "inisde response")
       setSpecificPeriodAppointment(response.data.data);
     }
   };
 
  const handleAction = async (consultation,id) =>{
-    console.log(consultation,"action aaya kya", id);
     if(consultation)
     {
       const response = await axios.patch(`${url}/appointment/update_appointment`,{consultation,id})
-      console.log(response, "resons of actiob")
       setActionResposne(true)
 
 

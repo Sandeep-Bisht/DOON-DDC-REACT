@@ -30,7 +30,6 @@ while (currentTime < endTimeAfternoon) {
   currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
 }
 
-console.log(timeSlots);
 
 
   return (

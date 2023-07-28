@@ -18,7 +18,6 @@ const People = () => {
     setPatientList(response.data.data)
   }
 
-  console.log(patientList, "patientListpatientList")
 
   const onChangeHandler = (e) => {
     setSearchVal(e.target.value);

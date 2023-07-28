@@ -22,7 +22,6 @@ const Patient = () => {
     setBlog(response.data)
   }
 
-  console.log(blog, "blog ")
 
 
   return (

@@ -20,7 +20,6 @@ import AddBlog from "../Layout/AddBlog";
 import ScheduleAppointments from "../Layout/ScheduleAppointments";
 
 const Authanticated = (props) => {
-      console.log(props,)
      let token = Cookies.get("ddc_token");
 
      if(!token) {
