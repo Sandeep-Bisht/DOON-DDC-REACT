@@ -403,15 +403,26 @@ const Header = () => {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link
+                      <div className="dropdown">
+                        <Link
                         to="/patient-corner"
                         onClick={() => setActiveLink("/patient-corner")}
-                        className={`nav-link ${
+                        className={`nav-link dropdown-toggle ${
                           activeLink === "/patient-corner" ? "current" : ""
                         }`}
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false"
                       >
                         Patient corner
-                      </Link>
+                         </Link>
+                          <ul className="dropdown-menu common-dropdown">
+                             <li><Link className="dropdown-item nav-link" to='/'>Clinical</Link></li>
+                             <li><Link className="dropdown-item nav-link" to='/'>Ongoing Clinical Trial</Link></li>
+                             <li><Link className="dropdown-item nav-link" to='/patient-corner' >Blogs</Link></li>
+                             <li><Link className="dropdown-item nav-link" to='/'>Recent Activities </Link></li>
+                          </ul>
+
+                      </div>
+                     
                     </li>
                     <li className="nav-item">
                       <Link

@@ -18,6 +18,7 @@ import Cookies from "js-cookie";
 import TimeSlotSelection from "../Components/TimeSlot/TimeSlot";
 import AddBlog from "../Layout/AddBlog";
 import ScheduleAppointments from "../Layout/ScheduleAppointments";
+import CoreValueDetail from "../Components/CoreValueDetail/CoreValueDetail"
 
 const Authanticated = (props) => {
      let token = Cookies.get("ddc_token");
@@ -52,6 +53,7 @@ const ApplicationRoutes = () => {
                 <Route path="/dashboard/schedule-appointments" element={< ScheduleAppointments/>} />
                 </Route>
             <Route path="book-appointment" element={<TimeSlotSelection />} /> 
+            <Route path="/core-value-detail" element={<CoreValueDetail/>}></Route>
             
         </Routes>
         

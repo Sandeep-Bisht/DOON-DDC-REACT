@@ -84,22 +84,34 @@ header .navbar-brand  img{
 }
 @media only screen and (max-width : 1265px){
     header nav .nav-link{
-        padding: 5px 15px!important;
+        padding: 5px 12px!important;
     }
 }
+
+@media only screen and (max-width : 1235px){
+    header nav .nav-link {
+        padding: 5px 10px!important;
+    }
+}
+
+
+
+
+
 
 @media only screen and (max-width : 1199px){
     header nav .nav-link{
         font-size: 14px;
     }
 }
-@media only screen and (max-width : 1035px){
+@media only screen and (max-width : 1041px){
     header nav .nav-link{
-        padding: 5px 15px!important;
+        padding: 5px 10px!important;
     }
     header nav .nav-link{
         font-size: 13px;
     }
+   
 }
 @media only screen and (max-width : 1024px) {
   

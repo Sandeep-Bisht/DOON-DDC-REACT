@@ -456,6 +456,16 @@
     }
 }
 
+@media only screen and (max-width : 1041px)
+{
+    header .navbar-brand img
+    {
+        height: 45px;
+    }
+}
+
+
+
 @media only screen and (max-width : 1024px) {
   
 }
