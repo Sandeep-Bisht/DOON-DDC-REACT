@@ -82,9 +82,15 @@ header .navbar-brand  img{
 @media only screen and (max-width : 1399px){
   
 }
-@media only screen and (max-width : 1265px){
+@media only screen and (max-width : 1266px){
     header nav .nav-link{
         padding: 5px 12px!important;
+    }
+}
+@media only screen and (max-width : 1246px)
+{
+    header nav .nav-link {
+        padding: 5px 10px!important;
     }
 }
 
@@ -94,6 +100,11 @@ header .navbar-brand  img{
     }
 }
 
+@media only screen and (max-width : 1207px){
+    header nav .nav-link {
+        padding: 5px 7px!important;
+    }
+}
 
 
 
@@ -104,7 +115,7 @@ header .navbar-brand  img{
         font-size: 14px;
     }
 }
-@media only screen and (max-width : 1041px){
+@media only screen and (max-width : 1058px){
     header nav .nav-link{
         padding: 5px 10px!important;
     }
@@ -116,6 +127,12 @@ header .navbar-brand  img{
 @media only screen and (max-width : 1024px) {
   
 }
+@media only screen and (max-width : 1007px) {
+    header nav .nav-link {
+        padding: 5px 7px!important;
+    }
+}
+
 
 @media only screen and (max-width :991px) {
     header nav .nav-link{
