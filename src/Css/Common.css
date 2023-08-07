@@ -366,7 +366,6 @@ border-radius: 0;
 {
    margin-right:5px;
 }
-
 .DatePicker__calendarContainer {
     position: absolute;
     top: 50%!important;
@@ -375,6 +374,30 @@ border-radius: 0;
   }
 
 
+
+.DatePicker__calendarContainer {
+    position: absolute;
+    top: 50%!important;
+    left: 50%;
+    transform: translate(-50%,-50%)!important;
+  }
+
+  .common-dropdown .nav-link
+  {
+     color: #002A53;
+     font-weight: 400;
+
+  }
+  .common-dropdown .nav-link:hover
+  {
+    background-color: #009DCE;
+    color: #fff;
+  }
+  .common-dropdown .nav-link.dropdown-item:focus
+  {
+    background-color:transparent;
+    color: #002A53!important;
+  }
  /* -----common responsive css---- */
  @media only screen and (max-width : 1399px){
   
