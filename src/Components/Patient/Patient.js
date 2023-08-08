@@ -23,7 +23,7 @@ const Patient = () => {
     setBlog(response.data)
   }
 
-
+console.log("blogssssssssss", blog)
 
   return (
     <>
@@ -139,7 +139,8 @@ const Patient = () => {
                         alt=""
                         className="img-fluid"
                       />
-                      <div className="top-heading-box-1 common-overlay">                     
+                      <div className="top-heading-box-1 common-overlay">  
+                      <p>Sandeep</p>                   
                         <p className="blog-title">{item.title}</p>
                         <p className="blog-para">{item.description}</p>
                       </div>
@@ -291,14 +292,20 @@ const Patient = () => {
                                 <span className="bar one"></span>Blog<span className="bar two"></span></h1>
                         </div>
                     </div>
+
+                    
                     <div className="row">
+                    { blog && blog.length > 0 && blog.map((item, index) => {
+                      return (
                         <div className="col-lg-12">
                           <Link to="/blog-detail" className="text-decoration-none">
                             <div className="related-card">
                                 <div className="row">
                                     <div className="col-lg-3">
                                         <div className="realted-card-pic">
-                                            <img src={Images.singleBlogPic} className="img-fluid " alt="" />
+                                            <img 
+                                            src={`${url}/${item.featuredImage.path}`}
+                                            className="img-fluid " alt="" />
                                         </div>
                                     </div>
                                     <div className="col-lg-9">
@@ -308,10 +315,10 @@ const Patient = () => {
                                             </div>
                                             <div className="middle">
                                                 <p className="middle-title">
-                                                    Your most unhappy customers are your greatest source of learning.
+                                                    {item.title}
                                                 </p>
                                                 <p className="middle-subtitle">
-                                                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                                                {item.description}
                                                 </p>
                                             </div>
                                             <div className="lower">
@@ -331,90 +338,13 @@ const Patient = () => {
                                     </div>
                                 </div>
                             </div>
-                            </Link>
-                            <Link to="/blog-detail" className="text-decoration-none">
-                            <div className="related-card">
-                                <div className="row">
-                                    <div className="col-lg-3">
-                                        <div className="realted-card-pic">
-                                            <img
-                                                src={Images.scope1}
-                                                className="img-fluid"
-                                                alt="scope-pic"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-9">
-                                        <div className="related-card-content">
-                                            <div className="top">
-                                                <p>Business, Travel<span>— July 2, 2020</span></p>
-                                            </div>
-                                            <div className="middle">
-                                                <p className="middle-title">
-                                                    Your most unhappy customers are your greatest source of learning.
-                                                </p>
-                                                <p className="middle-subtitle">
-                                                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-                                                </p>
-                                            </div>
-                                            <div className="lower">
-                                                <div className="published-pic">
-                                                    <img src={Images.blogPic} className="img-fluid" alt="" />
-
-                                                </div>
-                                                <div className="published-content">
-                                                    <p className="published-title">
-                                                        Sergy Campbell   111
-                                                    </p>
-                                                    <p className="published-date">
-                                                        Author, 26 published post
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></Link>
-                            <Link to="/blog-detail" className="text-decoration-none">
-                            <div className="related-card">
-                                <div className="row">
-                                    <div className="col-lg-3">
-                                        <div className="realted-card-pic">
-                                            <img src={Images.singleBlogPic} className="img-fluid " alt="" />
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-9">
-                                        <div className="related-card-content">
-                                            <div className="top">
-                                                <p>Business, Travel<span>— July 2, 2020</span></p>
-                                            </div>
-                                            <div className="middle">
-                                                <p className="middle-title">
-                                                    Your most unhappy customers are your greatest source of learning.
-                                                </p>
-                                                <p className="middle-subtitle">
-                                                    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-                                                </p>
-                                            </div>
-                                            <div className="lower">
-                                                <div className="published-pic">
-                                                    <img src={Images.blogPic} className="img-fluid" alt="" />
-                                                </div>
-                                                <div className="published-content">
-                                                    <p className="published-title">
-                                                        Sergy Campbell
-                                                    </p>
-                                                    <p className="published-date">
-                                                        Author, 26 published post
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></Link>
+                            </Link>                            
                         </div>
+                         )
+                        } 
+                      )}
                     </div>
+                     
                 </div>
             </section>
     
