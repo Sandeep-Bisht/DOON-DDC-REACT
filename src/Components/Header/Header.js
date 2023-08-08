@@ -415,10 +415,10 @@ const Header = () => {
                         Patient corner
                          </Link>
                           <ul className="dropdown-menu common-dropdown">
-                             <li><Link className="dropdown-item nav-link" to='/'>Clinical</Link></li>
-                             <li><Link className="dropdown-item nav-link" to='/'>Ongoing Clinical Trial</Link></li>
+                             <li><Link className="dropdown-item nav-link" to='/clinical'>Clinical</Link></li>
+                             <li><Link className="dropdown-item nav-link" to='/ongoing-clinical-trial'>Ongoing Clinical Trial</Link></li>
                              <li><Link className="dropdown-item nav-link" to='/patient-corner' >Blogs</Link></li>
-                             <li><Link className="dropdown-item nav-link" to='/'>Recent Activities </Link></li>
+                             <li><Link className="dropdown-item nav-link" to='/recent-activities'>Recent Activities </Link></li>
                           </ul>
 
                       </div>
