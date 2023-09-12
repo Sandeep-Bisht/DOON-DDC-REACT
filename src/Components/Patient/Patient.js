@@ -321,7 +321,7 @@ console.log("blogssssssssss", blog)
                                                 {item.description}
                                                 </p>
                                             </div>
-                                            <div className="lower">
+                                            <div className="lower d-none">
                                                 <div className="published-pic">
                                                     <img src={Images.blogPic} className="img-fluid" alt="" />
                                                 </div>
