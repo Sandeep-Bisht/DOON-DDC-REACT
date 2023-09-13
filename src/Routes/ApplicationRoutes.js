@@ -22,6 +22,7 @@ import CoreValueDetail from "../Components/CoreValueDetail/CoreValueDetail"
 import Clinical from "../Components/Clinical/Clinical";
 import OngoingClinicalTrial from "../Components/OngoingClinicalTrial/OngoingClinicalTrial";
 import  RecentActivities  from "../Components/RecentActivities/RecentActivities"
+import Error from "../Components/ErrorPage/Error";
 
 const Authanticated = (props) => {
      let token = Cookies.get("ddc_token");
@@ -45,7 +46,7 @@ const ApplicationRoutes = () => {
             <Route path="/our-services" element={<Services />} />
             <Route path="/service-details" element={< ServiceDetail/>} />
             <Route path="/blog-detail" element={<BlogDetail/>}/>
-            <Route path="*" element={< Homepage />} />
+            <Route path="*" element={<Error />} />
             <Route path="/dashboard"  element={<Authanticated component= {<AdminDashboard />} /> } >
                 <Route index element={< Dashboard/>} />
                 <Route path="/dashboard/patient" element={< People/>} />
@@ -62,7 +63,6 @@ const ApplicationRoutes = () => {
             <Route path="/ongoing-clinical-trial" element={<OngoingClinicalTrial/>}></Route>
             
             <Route path="/recent-activities" element={< RecentActivities/>}></Route>
-            
         </Routes>
         
         </>
