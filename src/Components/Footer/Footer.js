@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FiMail } from 'react-icons/fi'
 import "../../Css/Common.css";
 import "../../Css/Footer.css";
-
+import Images from "../../Images/logo1.png";
 
 const Footer = () => {
   return (
@@ -174,14 +174,16 @@ const Footer = () => {
           </div>
         </div>
         <div className="copyright">
-          <p className="mb-0">
-            Designed & Developed By{" "}
-            <span className="developed-by">
-              <Link to="https://giksindia.com/" target="_blank">
-                GIKS India Pvt Ltd
-              </Link>
-            </span>
-          </p>
+              <div className="copyright-link">
+                    Powered by {" "}
+                 <Link to="https://giksindia.com" target="_blank" className="mb-0">
+                    <img
+                      src={Images}
+                      className="img-fluid"
+                      alt="logo"
+                    />   
+          </Link>
+          </div>
         </div>
       </footer>
     </>
