@@ -196,17 +196,37 @@
 .home-scope-services .scope-service-card{
     position: relative;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #ededed;
   cursor: pointer;
-
+  height: 257px;
 }
-.home-scope-services .scope-service-card img{
-  
+
+.home-scope-services .scope-service-card svg{
+    font-size: 170px;
+    font-size: 200px;
+    padding-top: 60px;
+    transition: all 1s ease-in-out;
+    color: #009DCE;
+}
+/* .home-scope-services .scope-service-card img{
+    width: 100%;
+    object-fit: cover;
+    height:500px;
+    transition: all 1s ease-in-out;
+} */
+.home-scope-services .scope-service-card .service-icon{
     width: 100%;
     object-fit: cover;
     height:500px;
     transition: all 1s ease-in-out;
 }
+.service-icon{
+    width: 100%;
+    object-fit: cover;
+    height:500px;
+    transition: all 1s ease-in-out;
+}
+
 .home-scope-services .scope-service-card a{
     position: absolute;
     top: 50%;
@@ -225,7 +245,8 @@
 
 }
 
-.home-scope-services .scope-service-card:hover img{
+.home-scope-services .scope-service-card:hover img,
+.home-scope-services .scope-service-card:hover svg{
     transform: scale(1.3);
     opacity: 0.3;
 }
@@ -289,9 +310,7 @@
     height: 60%;
     background: linear-gradient(89.29deg, #020224 0.57%, #000E30 53.1%, #000F30 100.44%);
 }
-.home-research-pic-box img{
 
-}
 .clinical-trail-box-inner-wrapper{
     position: absolute;
     top: 50%;

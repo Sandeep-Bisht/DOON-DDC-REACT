@@ -2,9 +2,11 @@ import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {BsGlobe} from "react-icons/bs"
-
+import { GiMedicines } from 'react-icons/gi';
 import "../../Css/Homepage.css";
 import "../../Css/Common.css";
+import { GiStomach } from 'react-icons/gi';
+import { GiLiver } from 'react-icons/gi';
 
 import Images from "../../Util/Images";
 
@@ -597,48 +599,55 @@ const Homepage = () => {
           <div className="row card-row g-0">
             <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <Link to="/service-details">
-                <div className="scope-service-card">
-                  <img
+              {/* <div className="service-icon">
+                      
+                  </div> */}
+                <div className="scope-service-card d-flex justify-content-center">
+                  {/* <img
                     src={Images.scope1}
                     className="img-fluid"
                     alt="scope-pic"
-                  />
+                  /> */}
+                  <GiMedicines/>
                   <a href="#">General Medicine</a>
                 </div>
               </Link>
             </div>
             <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <Link to="/service-details">
-                <div className="scope-service-card">
-                  <img
+              <div className="scope-service-card d-flex justify-content-center">
+                  {/* <img
                     src={Images.scope2}
                     className="img-fluid"
                     alt="scope-pic"
-                  />
+                  /> */}
+                   <GiLiver/>
                   <a href="#">Gastroenterology</a>
                 </div>
               </Link>
             </div>
             <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <Link to="/service-details">
-                <div className="scope-service-card">
-                  <img
+              <div className="scope-service-card d-flex justify-content-center">
+                  {/* <img
                     src={Images.scope4}
                     className="img-fluid"
                     alt="scope-pic"
-                  />
+                  /> */}
+                   <GiMedicines/>
                   <a href="#">Cardiology</a>
                 </div>
               </Link>
             </div>
             <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <Link to="/service-details">
-                <div className="scope-service-card">
-                  <img
+              <div className="scope-service-card d-flex justify-content-center">
+                  {/* <img
                     src={Images.scope3}
                     className="img-fluid"
                     alt="scope-pic"
-                  />
+                  /> */}
+                    <GiStomach/>
                   <a href="#">Hepatology</a>
                 </div>
               </Link>

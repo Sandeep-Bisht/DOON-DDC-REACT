@@ -182,7 +182,7 @@ const Footer = () => {
                       className="img-fluid"
                       alt="logo"
                     />   
-          </Link>
+                 </Link>
           </div>
         </div>
       </footer>
