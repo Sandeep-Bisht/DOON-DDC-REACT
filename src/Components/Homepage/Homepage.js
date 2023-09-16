@@ -855,7 +855,7 @@ const Homepage = () => {
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3234.031780120001!2d78.01209227394212!3d30.316209142573676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39092a217c7f5be7%3A0x1f456d474de72e23!2s52%2F2%2C%20Ankit%20Puram%2C%20Shakti%20Enclave%2C%20Kaonli%2C%20Dehradun%2C%20Uttarakhand%20248001!5e0!3m2!1sen!2sin!4v1678688176177!5m2!1sen!2sin"
                   width="100%"
-                  height="400"
+                  height="395"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
@@ -868,7 +868,7 @@ const Homepage = () => {
                 <form>
                   <div className="input-wrapper">
                     <input
-                      type="text"
+                      type="text "
                       className="form-control"
                       placeholder="Name"
                     />
@@ -896,7 +896,7 @@ const Homepage = () => {
                   </div>
 
                   <div className="input-wrapper">
-                    <button type="submit" className="common-submit">
+                    <button type="submit" className="common-submit py-2 px-4 mt-4 border-0">
                       Submit
                     </button>
                   </div>
