@@ -42,51 +42,107 @@ const Header = () => {
   // const timeRef = useRef();
   const [timeSlots, setTimeSlots] = useState([]);
 
-  useEffect(()=>{
+  // useEffect(()=>{
+  //   const startTimeMorning = new Date();
+  //   startTimeMorning.setHours(9, 0, 0); // Set start time for the morning range (9 am)
+    
+  //   const endTimeMorning = new Date();
+  //   endTimeMorning.setHours(13, 0, 0); // Set end time for the morning range (1 pm)
+    
+  //   const startTimeAfternoon = new Date();
+  //   startTimeAfternoon.setHours(14, 0, 0); // Set start time for the afternoon range (2 pm)
+    
+  //   const endTimeAfternoon = new Date();
+  //   endTimeAfternoon.setHours(18, 0, 0); // Set end time for the afternoon range (6 pm)
+    
+  //   // Generate morning time slots
+  //   let currentTime = startTimeMorning;
+  //   while (currentTime < endTimeMorning) {
+  //     const timeSlot = currentTime.toLocaleTimeString([], {
+  //       hour12: false,
+  //       hour: "2-digit",
+  //       minute: "2-digit",
+  //     });
+      
+  //     if (!allSlots.includes(timeSlot)) {
+  //       allSlots.push(timeSlot);
+  //     }
+    
+  //     currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+  //   }
+    
+  //   // Generate afternoon time slots
+  //   currentTime = startTimeAfternoon;
+  //   while (currentTime < endTimeAfternoon) {
+  //     const timeSlot = currentTime.toLocaleTimeString([], {
+  //       hour12: false,
+  //       hour: "2-digit",
+  //       minute: "2-digit",
+  //     });
+    
+  //     if (!allSlots.includes(timeSlot)) {
+  //       allSlots.push(timeSlot);
+  //     }
+    
+  //     currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+  //   }
+  // },[])
+
+  console.log(allSlots,"alll",timeSlots,"check time slots")
+
+  useEffect(() => {
+    // const allSlots = [];
+  
+    // Generate morning time slots (10:30 am to 2:30 pm)
     const startTimeMorning = new Date();
-    startTimeMorning.setHours(9, 0, 0); // Set start time for the morning range (9 am)
-    
+    startTimeMorning.setHours(10, 30, 0); // Set start time for the morning range (10:30 am)
+  
     const endTimeMorning = new Date();
-    endTimeMorning.setHours(13, 0, 0); // Set end time for the morning range (1 pm)
-    
-    const startTimeAfternoon = new Date();
-    startTimeAfternoon.setHours(14, 0, 0); // Set start time for the afternoon range (2 pm)
-    
-    const endTimeAfternoon = new Date();
-    endTimeAfternoon.setHours(18, 0, 0); // Set end time for the afternoon range (6 pm)
-    
-    // Generate morning time slots
+    endTimeMorning.setHours(14, 30, 0); // Set end time for the morning range (2:30 pm)
+  
     let currentTime = startTimeMorning;
     while (currentTime < endTimeMorning) {
-      const timeSlot = currentTime.toLocaleTimeString([], {
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-      
+      const hour = currentTime.getHours();
+      const minute = currentTime.getMinutes();
+      const period = hour >= 12 ? "PM" : "AM";
+      const formattedHour = hour > 12 ? hour - 12 : hour;
+      const timeSlot = `${formattedHour}:${minute < 10 ? "0" : ""}${minute} ${period}`;
+  
       if (!allSlots.includes(timeSlot)) {
         allSlots.push(timeSlot);
       }
-    
-      currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+  
+      // Add 15 minutes
+      currentTime = new Date(currentTime.getTime() + 15 * 60000);
     }
-    
-    // Generate afternoon time slots
+  
+    // Generate afternoon time slots (4:30 pm to 7:45 pm)
+    const startTimeAfternoon = new Date();
+    startTimeAfternoon.setHours(16, 30, 0); // Set start time for the afternoon range (4:30 pm)
+  
+    const endTimeAfternoon = new Date();
+    endTimeAfternoon.setHours(20, 0, 0); // Set end time for the afternoon range (7:45 pm)
+  
     currentTime = startTimeAfternoon;
     while (currentTime < endTimeAfternoon) {
-      const timeSlot = currentTime.toLocaleTimeString([], {
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-    
+      const hour = currentTime.getHours();
+      const minute = currentTime.getMinutes();
+      const period = hour >= 12 ? "PM" : "AM";
+      const formattedHour = hour > 12 ? hour - 12 : hour;
+      const timeSlot = `${formattedHour}:${minute < 10 ? "0" : ""}${minute} ${period}`;
+  
       if (!allSlots.includes(timeSlot)) {
         allSlots.push(timeSlot);
       }
-    
-      currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+  
+      // Add 15 minutes
+      currentTime = new Date(currentTime.getTime() + 15 * 60000);
     }
-  },[])
+  
+    // console.log(allSlots);
+  
+  }, []);
+  
 
 
   const appointmentSchema = Yup.object().shape({
@@ -415,10 +471,11 @@ const Header = () => {
                         Patient corner
                          </Link>
                           <ul className="dropdown-menu common-dropdown">
-                             <li><Link className="dropdown-item nav-link" to='/clinical'>Clinical</Link></li>
-                             <li><Link className="dropdown-item nav-link" to='/ongoing-clinical-trial'>Ongoing Clinical Trial</Link></li>
+                          <li><Link className="dropdown-item nav-link" to='/PatientSpeaks' >Our Patient Speaks</Link></li>
+                             <li><Link className="dropdown-item nav-link" to='/clinical'>Clinical Trial</Link></li>
                              <li><Link className="dropdown-item nav-link" to='/patient-corner' >Blogs</Link></li>
                              <li><Link className="dropdown-item nav-link" to='/recent-activities'>Recent Activities </Link></li>
+                           
                           </ul>
 
                       </div>
