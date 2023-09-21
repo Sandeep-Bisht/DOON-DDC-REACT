@@ -22,8 +22,8 @@ const Patient = () => {
     const response = await axios.get(`${url}/blog/find_all_blog`);
     setBlog(response.data)
   }
+  console.log("mai yahah hu")
 
-console.log("blogssssssssss", blog)
 
   return (
     <>
@@ -296,9 +296,14 @@ console.log("blogssssssssss", blog)
                     
                     <div className="row">
                     { blog && blog.length > 0 && blog.map((item, index) => {
+                      console.log("check blog", item)
                       return (
-                        <div className="col-lg-12">
-                          <Link to="/blog-detail" className="text-decoration-none">
+                        <div className="col-lg-12"  key={index}>
+                          <Link
+                          //  to="/blog-detail" 
+                           to={`/blog-detail/${item.slug}`}
+                           className="text-decoration-none">
+
                             <div className="related-card">
                                 <div className="row">
                                     <div className="col-lg-3">
@@ -310,9 +315,9 @@ console.log("blogssssssssss", blog)
                                     </div>
                                     <div className="col-lg-9">
                                         <div className="related-card-content">
-                                            <div className="top">
-                                                <p>Business, Travel<span>— July 2, 2020</span></p>
-                                            </div>
+                                            {/* <div className="top">
+                                                <p>Publish date<span>— July 2, 2020</span></p>
+                                            </div> */}
                                             <div className="middle">
                                                 <p className="middle-title">
                                                     {item.title}

@@ -1,14 +1,42 @@
 
 import "../../Css/Common.css";
 import "../../Css/BlogDetail.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import axios from "axios";
 import Images from '../../Util/Images'
 import { url } from "../../Util/url";
+import { useEffect } from "react";
 
 const BlogDetail = () => {
+    const param = useParams()
 
     const location = useLocation();
-  const state = location.state;
+    const state = location.state;
+  
+    
+  useEffect(()=> {
+    if(param.id){
+        getBlogDetailBySlug(param.id);
+    }
+  }, [])
+
+  const getBlogDetailBySlug = async(slug) => {
+    // let url = "http://localhost:4000/api/blog/get_blog_by_slug";
+    let url = "http://185.239.209.106:4800/api/blog/get_blog_by_slug";
+    
+    let payload = {
+        slug : slug
+    }    
+    try {
+        let response = await axios.post( url, payload);
+        if(response){
+            console.log(response, "api responseeeeee")
+        }
+        
+    } catch (error) {
+        console.log("error", error)
+    }
+  }
 
     return (
         <>
