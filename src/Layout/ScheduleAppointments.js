@@ -78,7 +78,6 @@ const ScheduleAppointments = () => {
     }
   
     // Now, the timeSlots array contains the desired time slots
-    console.log("time slots check",timeSlots)
     setTimeSlots(timeSlots)
   }, []);
   
@@ -108,6 +107,8 @@ const ScheduleAppointments = () => {
 
   const handleHoliday = useMutation(
     async (data) => {
+      console.log(data, "check data before api")
+
       const res = await fetch(`${url}/holidayList/mark_holiday`, {
         method: "POST",
         headers: {
@@ -295,6 +296,15 @@ const ScheduleAppointments = () => {
                         resetForm();
                         getAllHolidays();
                         setAddHoliday(false);
+                      },
+                      onError: (error) => {
+                        // Check if the error status code is 500
+                        if (error.response && error.response.status === 500) {
+                          // Display the error message from the response
+                          const errorMessage = error.response.data.error || "Failed to mark holiday";
+                          // You can handle the error message as needed, e.g., show it in a toast or alert
+                          alert(errorMessage);
+                        }
                       },
                     });
                   }}

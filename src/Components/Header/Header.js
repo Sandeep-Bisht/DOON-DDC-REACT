@@ -88,7 +88,6 @@ const Header = () => {
   //   }
   // },[])
 
-  console.log(allSlots,"alll",timeSlots,"check time slots")
 
   useEffect(() => {
     // const allSlots = [];
@@ -473,7 +472,7 @@ const Header = () => {
                           <ul className="dropdown-menu common-dropdown">
                           <li><Link className="dropdown-item nav-link" to='/PatientSpeaks' >Our Patient Speaks</Link></li>
                              <li><Link className="dropdown-item nav-link" to='/clinical'>Clinical Trial</Link></li>
-                             <li><Link className="dropdown-item nav-link" to='/patient-corner' >Blogs</Link></li>
+                             <li><Link className="dropdown-item nav-link" to='/patient-corner-blogs' >Blogs</Link></li>
                              <li><Link className="dropdown-item nav-link" to='/recent-activities'>Recent Activities </Link></li>
                            
                           </ul>
