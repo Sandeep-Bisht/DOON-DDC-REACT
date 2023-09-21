@@ -1,5 +1,4 @@
 /* -------------service single page--------------------------- */
-
 .service-single-page{
     /* padding: 60px 0 100px 0; */
 }
@@ -132,10 +131,50 @@
     font-size: 16px;
     font-weight: 500;
     text-align: center;
-    
 }
 
- /* -----common responsive css---- */
+/* Start from this section  */
+.service-ppt .common-heading {
+    font-size:30px;
+    margin-bottom: 15px;
+}
+
+.service-ppt ol{
+    font-size: large;
+    color: #000;
+}
+.service-ppt ol li{
+    padding: 5px 0;
+}
+.service-gestro li {
+    margin-bottom: -24px;
+}
+
+.service-gestro .gestro-link{
+    color: red;
+}
+ .gestro-data{
+    margin: 20px;
+}
+.service-ppt {
+    padding: 50px 0;
+}
+
+.service-medic ol{
+    line-height: 2.5;
+}
+.service-medic span{
+    color: red;
+}
+
+.service-ppt ul{
+    list-style: none;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+/* -----common responsive css---- */
  @media only screen and (max-width : 1399px){
   
  }

@@ -208,12 +208,12 @@
     transition: all 1s ease-in-out;
     color: #009DCE;
 }
-/* .home-scope-services .scope-service-card img{
+.home-scope-services .scope-service-card img{   
     width: 100%;
     object-fit: cover;
     height:500px;
-    transition: all 1s ease-in-out;
-} */
+    transition: all 1s ease-in-out; 
+} 
 .home-scope-services .scope-service-card .service-icon{
     width: 100%;
     object-fit: cover;
@@ -229,7 +229,7 @@
 
 .home-scope-services .scope-service-card a{
     position: absolute;
-    top: 50%;
+    top: 90%;
     left: 50%;
     font-size: 18px;
     transform: translate(-50%,-50%);

@@ -599,9 +599,6 @@ const Homepage = () => {
           <div className="row card-row g-0">
             <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <Link to="/service-details">
-              {/* <div className="service-icon">
-                      
-                  </div> */}
                 <div className="scope-service-card d-flex justify-content-center">
                   {/* <img
                     src={Images.scope1}
@@ -616,6 +613,7 @@ const Homepage = () => {
             <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <Link to="/service-details">
               <div className="scope-service-card d-flex justify-content-center">
+                
                   {/* <img
                     src={Images.scope2}
                     className="img-fluid"
@@ -623,25 +621,29 @@ const Homepage = () => {
                   /> */}
                    <GiLiver/>
                   <a href="#">Gastroenterology</a>
+                  
                 </div>
               </Link>
             </div>
             <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <Link to="/service-details">
               <div className="scope-service-card d-flex justify-content-center">
+                 
                   {/* <img
-                    src={Images.scope4}
+                    src={Images.cardio}
                     className="img-fluid"
                     alt="scope-pic"
                   /> */}
                    <GiMedicines/>
                   <a href="#">Cardiology</a>
+                
                 </div>
               </Link>
             </div>
             <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <Link to="/service-details">
               <div className="scope-service-card d-flex justify-content-center">
+                 
                   {/* <img
                     src={Images.scope3}
                     className="img-fluid"
@@ -649,6 +651,7 @@ const Homepage = () => {
                   /> */}
                     <GiStomach/>
                   <a href="#">Hepatology</a>
+        
                 </div>
               </Link>
             </div>
