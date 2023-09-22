@@ -24,6 +24,11 @@ const Patient = () => {
   }
   console.log("mai yahah hu")
 
+const blogDetailsHandler=(item,slug)=>{
+  console.log("check the item inside the blog details function",item)
+  
+    navigate(`/blog-detail/${slug}`, { state :{ ...item }})
+}
 
   return (
     <>
@@ -42,7 +47,7 @@ const Patient = () => {
             </div>
         </div>
     </div>
-     <section className='training-content d-none'>
+     {/* <section className='training-content d-none'>
       <div className='container'>
         <div className='row'>
             <div className='col-md-12'>
@@ -121,9 +126,9 @@ const Patient = () => {
 
         </div>
       </div>
-    </section>
+    </section> */}
 
-    <section className="blog-page">
+    {/* <section className="blog-page">
       <div className="container m-auto d-none">
         <div className="row">
           <div className="col-md-12">
@@ -133,7 +138,7 @@ const Patient = () => {
                   { blog && blog.length > 0 && blog.map((item, index) => {
                     if(index < 1){
                     return(
-                      <div className="left-blog-image-wrap" key={index} onClick={() => navigate("/blog-detail", { state : item })}>
+                      <div className="left-blog-image-wrap" key={index} onClick={() =>blogDetailsHandler(item)}>
                       <img                     
                         src={`${url}/${item.featuredImage.path}`}
                         alt=""
@@ -282,7 +287,7 @@ const Patient = () => {
            
         </div>
       </div>
-    </section>
+    </section> */}
     
     <section className="blog-detail-related">
                 <div className="container">
@@ -299,13 +304,13 @@ const Patient = () => {
                       console.log("check blog", item)
                       return (
                         <div className="col-lg-12"  key={index}>
-                          <Link
-                          //  to="/blog-detail" 
-                           to={`/blog-detail/${item.slug}`}
-                           className="text-decoration-none">
+          
 
-                            <div className="related-card">
+                            <div className="related-card"
+                            style={{cursor:"pointer"}}
+                            onClick={()=>blogDetailsHandler(item,item.slug)}>
                                 <div className="row">
+
                                     <div className="col-lg-3">
                                         <div className="realted-card-pic">
                                             <img 
@@ -343,7 +348,7 @@ const Patient = () => {
                                     </div>
                                 </div>
                             </div>
-                            </Link>                            
+                                                       
                         </div>
                          )
                         } 

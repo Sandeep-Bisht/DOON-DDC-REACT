@@ -12,7 +12,7 @@ const BlogDetail = () => {
 
     const location = useLocation();
     const state = location.state;
-  
+   console.log(url, 'sajnfkjlsfksaf')
     
   useEffect(()=> {
     if(param.id){
@@ -43,19 +43,22 @@ const BlogDetail = () => {
             <section className="blog-detail">
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-lg-8 mx-auto">
+                        <div className="col-lg-4 mx-auto">
                             <div className="blog-detail-wrapper">
                                 <div className="blog-detail-pic-box">
-                                    <img src={Images.blogPic} className="img-fluid" alt="" />
-                                    <p className="blog-pic-name">Ketty Perry</p>
+                                    <img src={`${url}/${state.featuredImage.path}`} className="img-fluid" alt="" />
+                                    <p className="blog-pic-name">{state.title}</p>
                                     <p className="blog-pic-date">
                                         July 2, 2020
                                     </p>
+                                    </div>
                                 </div>
+                                </div>
+                                <div className="col-lg-8">
                                 <p className="blog-detail-title">
                                     {state?.title}
                                 </p>
-                                <p className="blog-detail-subtitle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                                {/* <p className="blog-detail-subtitle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                     there live the blind texts.</p>
                                 <img src={`http://localhost:400/${state?.featuredImage.path}`} className="img-fluid single-blog-pic" alt="" />
                                 <p className="blog-detail-subtitle my-2 text-start">
@@ -72,12 +75,15 @@ const BlogDetail = () => {
                                     almost unorthographic life One day however a small line of blind text by the name of Lorem
                                     Ipsum decided to leave for the far World of Grammar.</p>
                                 <p className="blog-detail-subtitle my-2 text-start">
-                                    When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+                                    When she reached th
+                                    e first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p> */}
 
+                                    <p>{state.content}</p>
+                               
                             </div>
                         </div>
                     </div>
-                </div>
+                
             </section>
             <section className="blog-detail-related">
                 <div className="container">
