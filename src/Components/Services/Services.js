@@ -375,33 +375,148 @@ const Services = () => {
                 </h5>
               </div>
             </div>
-            <div class="col-md-12 mt-lg-5">
-            <h5 class="common-heading text-dark">PAEDIATRIC PROCEDURES</h5>
-          </div>
-          <div class="col-md-12">
-            <ul>
-              <li>Foreign Body removel</li>
-              <li>Endoscopy</li>
-              <li>Colonoscopy</li>
-              <li>Stricture Dilatation</li>
-              <li>Hemostatic procedures</li>
-            </ul>
 
             <div class="col-md-12 mt-lg-5">
-              <h5 class="common-heading text-dark">EMERGENCY PROCEDURES</h5>
+              <h5 class="common-heading text-dark">HEPATOLOGY PROCEDURES</h5>
             </div>
-            <ul>
-              <li>Diagnostic Endoscopy</li>
-              <li>Foreign Body Removel</li>
-              <li>Hemostatic Endoscopy</li>
-              <li>RT / NJFT Placement</li>
-            </ul>
-          </div>
+            <div class="col-md-12">
+              <ul className="list-circle">
+                <li>Elastography</li>
+                <li>Liver Biopsy </li>
+                <li>Portal pressure gradient measurement</li>
+                <li>Management of gastric varices</li>
+                <li>Management of esophageal varices</li>
+              </ul>
+            </div>
+
+            <div class="col-md-12 mt-lg-5">
+              <h5 class="common-heading text-dark">PAEDIATRIC PROCEDURES</h5>
+            </div>
+            <div class="col-md-12">
+              <ul>
+                <li>Foreign Body removel</li>
+                <li>Endoscopy</li>
+                <li>Colonoscopy</li>
+                <li>Stricture Dilatation</li>
+                <li>Hemostatic procedures</li>
+              </ul>
+
+              <div class="col-md-12 mt-lg-5">
+                <h5 class="common-heading text-dark">EMERGENCY PROCEDURES</h5>
+              </div>
+              <ul>
+                <li>Diagnostic Endoscopy</li>
+                <li>Foreign Body Removel</li>
+                <li>Hemostatic Endoscopy</li>
+                <li>RT / NJFT Placement</li>
+              </ul>
+            </div>
+
+            <div class="col-md-12 mt-lg-5">
+              <h5 class="common-heading text-dark">ADULT PROCEDURES</h5>
+            </div>
+            <h4>Endoscopy / Diagnostic / Emergency </h4>
+            <div class="col-md-12">
+              <h3>Therapeutic procedure</h3>
+              <ul className="list-circle">
+                <li>Endscopic sclerotherapy (EST)</li>
+                <li>Endscopic Band ligation Endscopic </li>
+                <li>Glue injection</li>
+                <li>Endoscopic Loop Ligation</li>
+                <li>Laser eradication of varices</li>
+                <li>Argon plasma photocoagulation</li>
+                <li>Gold probe Coagulation</li>
+                <li>Endoclip</li>
+                <li>
+                  Esophageal Stricture dilatation Edder Puestos and SG dilators
+                </li>
+                <li>Balloon dilatation</li>
+                <li>
+                  Stenting of esophageal stricture Plastic and Metallic (SEMS)
+                </li>
+                <li>Endoscopic Polypectomy</li>
+                <li>Endoscopic RT placement & NJFT placement</li>
+                <li>Percutaneous Endoscopic Gastrostmy (PEG)</li>
+              </ul>
+            </div>
+
+            <div class="col-md-12 mt-lg-5">
+              <h5 class="common-heading text-dark">
+                COLONOSCOPY AND RELATED PROCEDURES
+              </h5>
+            </div>
+            <div class="col-md-12">
+              <ul className="list-circle">
+                <li>Colonoscopy diagnostic /Hemostatic colonoscopy</li>
+                <li>Polypectomy </li>
+                <li>
+                  Retrograde endoscopic sclerotherapy (REST) of Hemorrhoids
+                </li>
+                <li>Argon plasma photocoagulation of bleeding vessels</li>
+                <li>Laser eradication of Hemorrhoids</li>
+                <li>Laser treatment of anal fistula</li>
+                <li>Angiodysplasia management</li>
+              </ul>
+            </div>
+
+            <div class="col-md-12 mt-lg-5">
+              <h5 class="common-heading text-dark">DUODENOSCOPY AND RELATED</h5>
+            </div>
+            <div class="col-md-12">
+              <ul className="list-circle">
+                <li>Side view scopy</li>
+                <li>ERCP </li>
+                <li>Endoscopic sphinctorotmy</li>
+                <li>Balloon dilation of papilla</li>
+                <li>Stone extraction &lt; 10mm </li>
+                <li>Stenting (Plastic) Stenting (SEMS)</li>
+                <li>
+                  Side view scopy Stent removel Stent removel + cholangiogram
+                </li>
+                <li>CBD dilatation</li>
+              </ul>
+            </div>
+
+            <div class="col-md-12 mt-lg-5">
+              <h5 class="common-heading text-dark">Research:</h5>
+            </div>
+            <div class="col-md-12">
+              <ul className="list-circle">
+                <li>Centre has its own Ethics Committee</li>
+                <li>
+                  Authorized by DCGI to carrry out in-house and outsourced drug
+                  trials
+                </li>
+              </ul>
+              <h3>Current Trials:</h3>
+            </div>
+
+            <div class="col-md-12 mt-lg-5">
+              <h5 class="common-heading text-dark">
+                Admission and Day Care Services
+              </h5>
+            </div>
+            <div class="col-md-12">
+              <ul>
+                <li>
+                  Total Beds = 30 <span>(50 bed layout passed by MDDA)</span>
+                </li>
+                <li>General Wards Beds = 18</li>
+                <li>Semiprivate Ward = 6</li>
+                <li>Private Ward = 2</li>
+                <li>HDU / ICU = 4</li>
+              </ul>
+              <ul>
+                <li>
+                  <span className="text-dark">Staff Ratio</span>:
+                </li>
+                <li>General Ward = 6:1</li>
+                <li>HDU / ICU = 2:1</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
-
-      
     </>
   );
 };

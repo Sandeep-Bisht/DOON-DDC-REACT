@@ -1,7 +1,7 @@
 /* -------------service single page--------------------------- */
-.service-single-page{
+/* .service-single-page{ */
     /* padding: 60px 0 100px 0; */
-}
+/* } */
 .service-single-page-left{
    background-image: url("../Images/service-single.jpg");
    background-size: cover;
@@ -133,10 +133,13 @@
     text-align: center;
 }
 
-/* Start from this section  */
+/* Start from this section   Abhishek singh */ 
+
+
 .service-ppt .common-heading {
-    font-size:30px;
+    font-size:26px;
     margin-bottom: 15px;
+    font-family: serif;
 }
 
 .service-ppt ol{
@@ -166,12 +169,28 @@
 .service-medic span{
     color: red;
 }
+.service-medic .common-heading{
+    font-family: serif;
+}
 
 .service-ppt ul{
     list-style: none;
     font-size: 20px;
     font-weight: 500;
 }
+.service-ppt h3{
+    font-size: 18px;
+}
+.service-ppt span{
+    color: red;
+    font-style: italic;
+}
+ul.list-circle
+{
+    list-style-type: disc;
+}
+
+
 
 
 /* -----common responsive css---- */
