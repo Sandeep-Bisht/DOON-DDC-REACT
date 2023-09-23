@@ -10,8 +10,8 @@
     text-align: center;
 }
 .blog-detail-wrapper .blog-detail-pic-box img{
-    height: 100px;
-    width: 100px;
+    height: 300px;
+    width: 334px;
     /* border-radius: 50%;
     border: 4px solid #009DCE; */
 }
@@ -30,6 +30,11 @@
     margin-top: 35px;
     font-size: 32px;
     font-weight: 700;
+}
+
+.blog-detail-title{
+    font-size: 37px;
+    font-weight: 600;
 }
 .blog-detail-wrapper .blog-detail-subtitle
 {

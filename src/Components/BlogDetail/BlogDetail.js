@@ -49,7 +49,7 @@ const BlogDetail = () => {
                                     <img src={`${url}/${state.featuredImage.path}`} className="img-fluid" alt="" />
                                     <p className="blog-pic-name">{state.title}</p>
                                     <p className="blog-pic-date">
-                                        July 2, 2020
+                                        {/* July 2, 2020 */}
                                     </p>
                                     </div>
                                 </div>
@@ -58,6 +58,9 @@ const BlogDetail = () => {
                                 <p className="blog-detail-title">
                                     {state?.title}
                                 </p>
+                                <p className="blog-pic-date">
+                                        September 23, 2023
+                                    </p>
                                 {/* <p className="blog-detail-subtitle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                     there live the blind texts.</p>
                                 <img src={`http://localhost:400/${state?.featuredImage.path}`} className="img-fluid single-blog-pic" alt="" />
