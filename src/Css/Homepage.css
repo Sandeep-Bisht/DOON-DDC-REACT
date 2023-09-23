@@ -204,10 +204,16 @@
 .home-scope-services .scope-service-card svg{
     font-size: 170px;
     font-size: 200px;
-    padding-top: 60px;
+    /* padding-top: 60px; */
     transition: all 1s ease-in-out;
     color: #009DCE;
+    padding: 40px;
+    margin-left: 57px;
 }
+.home-scope-services .scope-service-card .card-title{
+    text-align: center;
+}
+
 .home-scope-services .scope-service-card img{   
     width: 100%;
     object-fit: cover;
@@ -242,7 +248,6 @@
     width: 100%;
     display: block;
     text-align: center;
-
 }
 
 .home-scope-services .scope-service-card:hover img,
@@ -434,6 +439,14 @@
 }
 
 @media only screen and (max-width : 1199px){
+    .home-scope-services .scope-service-card svg {
+        font-size: 170px;
+        font-size: 200px;
+        transition: all 1s ease-in-out;
+        color: #009DCE;
+        padding: 40px;
+        margin-left: -14px;
+    }
     .common-container-fluid-adjust-padding{
         padding: 0 40px;
     }
@@ -491,7 +504,7 @@
 
 @media only screen and (max-width :991px) {
     .home-scope-services .scope-service-card img{
-        height: 300px;
+        height: 200px;
     }
     .home-faculty .home-faculty-card{
         width: 60%;
@@ -542,6 +555,14 @@
     .home-appointment{
         height: auto;
         padding: 60px 0;
+    }
+    .home-scope-services .scope-service-card svg {
+        font-size: 170px;
+        font-size: 200px;
+        transition: all 1s ease-in-out;
+        color: #009DCE;
+        padding: 40px;
+        margin-left: -14px;
     }
     .home-appointment-pic-box{
 
@@ -726,6 +747,7 @@
 }
 @media only screen and (max-width : 430px)
 { 
+    
     .common-core-values .common-container-fluid-adjust-padding{
 
         padding: 0 10px;
@@ -752,6 +774,7 @@
 
   @media only screen and (max-width : 380px) {
 
+    
     .common-submit {
         padding: 8px 30px;
         border: 0;

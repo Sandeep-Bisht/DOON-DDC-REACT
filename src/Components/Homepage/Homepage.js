@@ -1,18 +1,16 @@
 import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import {BsGlobe} from "react-icons/bs"
-import { GiMedicines } from 'react-icons/gi';
+import { BsGlobe } from "react-icons/bs";
+import { GiMedicines } from "react-icons/gi";
 import "../../Css/Homepage.css";
 import "../../Css/Common.css";
-import { GiStomach } from 'react-icons/gi';
-import { GiLiver } from 'react-icons/gi';
+import { GiStomach } from "react-icons/gi";
+import { GiLiver } from "react-icons/gi";
 
 import Images from "../../Util/Images";
 
 const Homepage = () => {
-  
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -28,7 +26,11 @@ const Homepage = () => {
                   <br /> doctor’s appointment
                 </p>
                 <p className="common-para">
-                The Doon Digestive Diseases Center has top notch infrastructure with state-of-the-art and sophisticated technology. And apart from being equipped with the best medical facilities, it is Human Touch & Care by which the hospital has been able to gain trust of people.
+                  The Doon Digestive Diseases Center has top notch
+                  infrastructure with state-of-the-art and sophisticated
+                  technology. And apart from being equipped with the best
+                  medical facilities, it is Human Touch & Care by which the
+                  hospital has been able to gain trust of people.
                 </p>
                 <a
                   href="#"
@@ -69,7 +71,9 @@ const Homepage = () => {
                     <div className="col-lg-10">
                       <div className="direction-wrapper">
                         <p className="common-para">
-                        To Be a Centre of Excellence for various Gastrointestinal and Liver Disorders, Affordable and Quality Healthcare Centre.
+                          To Be a Centre of Excellence for various
+                          Gastrointestinal and Liver Disorders, Affordable and
+                          Quality Healthcare Centre.
                         </p>
                         <span className="direction">
                           <svg
@@ -99,7 +103,9 @@ const Homepage = () => {
                     <div className="col-lg-10">
                       <div className="direction-wrapper">
                         <p className="common-para">
-                        To Achieve our Vision through Constant Technology Upgradation, Research and Innovations, Compassionate Patient Care, and Dissemination of Information.
+                          To Achieve our Vision through Constant Technology
+                          Upgradation, Research and Innovations, Compassionate
+                          Patient Care, and Dissemination of Information.
                         </p>
                         <span className="direction">
                           <svg
@@ -161,104 +167,105 @@ const Homepage = () => {
       </section>
       <section className="common-core-values">
         <div className="container-fluid common-container-fluid-adjust-padding">
-           <div className="row">
-              <div className="col-md-12 d-flex justify-content-center">
+          <div className="row">
+            <div className="col-md-12 d-flex justify-content-center">
               <h1 className="common-heading d-flex align-items-center ">
                 <span className="bar one"></span> Core Values
                 <span className="bar two"></span>
               </h1>
-              </div>
-             </div>  
-             <div className="row g-0 d-none">
-                <div className="col-md-12">
-                     <ul className="core-value-card-wrapper">
-                        <li className="core-value-card one">
-                           <div className="core-value-pic">
-                           <img src={Images.globe} className="img-fluid" alt="" />
-                           </div>
-                           <div className="core-value-title">
-                               <p>Responsibility</p>
-                           </div>
-                        </li>
-                        
-                        <li className="core-value-card three">
-                           <div className="core-value-pic">
-                           <img src={Images.user} className="img-fluid" alt="" />
-                           </div>
-                           <div className="core-value-title">
-                               <p>Coaching</p>
-                           </div>
-                        </li>
-                        <li className="core-value-card four">
-                           <div className="core-value-pic">
-                           <img src={Images.bulb} className="img-fluid" alt="" />
-                           </div>
-                           <div className="core-value-title">
-                               <p>Innovation</p>
-                           </div>
-                        </li>
-                        <li className="core-value-card two">
-                           <div className="core-value-pic"> <img src={Images.balance} className="img-fluid" alt="" /></div>
-                           <div className="core-value-title">
-                               <p>Ethics</p>
-                           </div>
-                        </li>
-                     </ul>
-                </div>
-                <div className="col-md-12">
-                    <p className="core-value-heading">
-                      Core Values
-                    </p>
-                </div>
-                <div className="col-md-12">
-                     <ul className="core-value-card-wrapper invert">
-                        <li className="core-value-card one">
-                           <div className="core-value-pic">
-                           <img src={Images.honesty} className="img-fluid" alt="" />
-                           </div>
-                           <div className="core-value-title">
-                               <p>Trust</p>
-                           </div>
-                        </li>
-                        
-                        <li className="core-value-card three">
-                           <div className="core-value-pic">
-                           <img src={Images.group} className="img-fluid" alt="" />
-                           </div>
-                           <div className="core-value-title">
-                               <p>Customers</p>
-                           </div>
-                        </li>
-                        <li className="core-value-card four">
-                           <div className="core-value-pic">
-                           <img src={Images.team} className="img-fluid" alt="" />
-                           </div>
-                           <div className="core-value-title">
-                               <p>Teamwork</p>
-                           </div>
-                        </li>
-                        <li className="core-value-card two">
-                           <div className="core-value-pic"> <img src={Images. target} className="img-fluid" alt="" /></div>
-                           <div className="core-value-title">
-                               <p>Goals</p>
-                           </div>
-                        </li>
-                     </ul>
-                </div>
-              </div> 
-              <div className="row">
-                 <div className="col-md-12">
-                  <div className="core-values-singlepic-box"> 
-                 <Link
-                        to="/core-value-detail"
-                        >
-                                      <img src={Images.coreValue} className="img-fluid" alt="" />
+            </div>
+          </div>
+          <div className="row g-0 d-none">
+            <div className="col-md-12">
+              <ul className="core-value-card-wrapper">
+                <li className="core-value-card one">
+                  <div className="core-value-pic">
+                    <img src={Images.globe} className="img-fluid" alt="" />
+                  </div>
+                  <div className="core-value-title">
+                    <p>Responsibility</p>
+                  </div>
+                </li>
 
+                <li className="core-value-card three">
+                  <div className="core-value-pic">
+                    <img src={Images.user} className="img-fluid" alt="" />
+                  </div>
+                  <div className="core-value-title">
+                    <p>Coaching</p>
+                  </div>
+                </li>
+                <li className="core-value-card four">
+                  <div className="core-value-pic">
+                    <img src={Images.bulb} className="img-fluid" alt="" />
+                  </div>
+                  <div className="core-value-title">
+                    <p>Innovation</p>
+                  </div>
+                </li>
+                <li className="core-value-card two">
+                  <div className="core-value-pic">
+                    {" "}
+                    <img src={Images.balance} className="img-fluid" alt="" />
+                  </div>
+                  <div className="core-value-title">
+                    <p>Ethics</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="col-md-12">
+              <p className="core-value-heading">Core Values</p>
+            </div>
+            <div className="col-md-12">
+              <ul className="core-value-card-wrapper invert">
+                <li className="core-value-card one">
+                  <div className="core-value-pic">
+                    <img src={Images.honesty} className="img-fluid" alt="" />
+                  </div>
+                  <div className="core-value-title">
+                    <p>Trust</p>
+                  </div>
+                </li>
 
-                        </Link></div>
-                 </div>
+                <li className="core-value-card three">
+                  <div className="core-value-pic">
+                    <img src={Images.group} className="img-fluid" alt="" />
+                  </div>
+                  <div className="core-value-title">
+                    <p>Customers</p>
+                  </div>
+                </li>
+                <li className="core-value-card four">
+                  <div className="core-value-pic">
+                    <img src={Images.team} className="img-fluid" alt="" />
+                  </div>
+                  <div className="core-value-title">
+                    <p>Teamwork</p>
+                  </div>
+                </li>
+                <li className="core-value-card two">
+                  <div className="core-value-pic">
+                    {" "}
+                    <img src={Images.target} className="img-fluid" alt="" />
+                  </div>
+                  <div className="core-value-title">
+                    <p>Goals</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-12">
+              <div className="core-values-singlepic-box">
+                <Link to="/core-value-detail">
+                  <img src={Images.coreValue} className="img-fluid" alt="" />
+                </Link>
               </div>
-        </div> 
+            </div>
+          </div>
+        </div>
       </section>
       <section className="home-faculty ">
         <div className="container-fluid common-container-fluid-adjust-padding">
@@ -271,7 +278,10 @@ const Homepage = () => {
             </div>
             <div className="col-md-10 col-lg-10 mx-auto">
               <p className="common-para text-center">
-              The chief consultant, Dr. Sanjay Gupta, is an alumnus of the Internationally renowned Institution – Christian Medical College Vellore and has more than 20 years experience in management of various Gastrointestinal and liver related disorders.
+                The chief consultant, Dr. Sanjay Gupta, is an alumnus of the
+                Internationally renowned Institution – Christian Medical College
+                Vellore and has more than 20 years experience in management of
+                various Gastrointestinal and liver related disorders.
               </p>
             </div>
           </div>
@@ -590,72 +600,56 @@ const Homepage = () => {
             </div>
             <div className="col-md-10 col-lg-10 mx-auto">
               <p className="common-para text-center mb-0">
-               Main objective of the foundation is to provide insight about the various GI disorders in simplified way, for better understanding of the disease process and the available modalities of treatment.
+                Main objective of the foundation is to provide insight about the
+                various GI disorders in simplified way, for better understanding
+                of the disease process and the available modalities of
+                treatment.
               </p>
             </div>
           </div>
         </div>
-        <div className="container-fluid px-0">
+        <div className="container">
           <div className="row card-row g-0">
-            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-              <Link to="/service-details">
-                <div className="scope-service-card d-flex justify-content-center">
-                  {/* <img
-                    src={Images.scope1}
-                    className="img-fluid"
-                    alt="scope-pic"
-                  /> */}
-                  <GiMedicines/>
-                  <a href="#">General Medicine</a>
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                <div class="card">
+                  <div class="card-body scope-service-card justify-content-center">
+                        <GiMedicines />
+                    <h5 class="card-title">General Medicine</h5>
+                    <Link to="/service-details"></Link>
+                    {/* <a href="#">General Medicine</a> */}
+                  </div>
                 </div>
-              </Link>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-              <Link to="/service-details">
-              <div className="scope-service-card d-flex justify-content-center">
-                
-                  {/* <img
-                    src={Images.scope2}
-                    className="img-fluid"
-                    alt="scope-pic"
-                  /> */}
-                   <GiLiver/>
-                  <a href="#">Gastroenterology</a>
-                  
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                <div class="card">
+                  <div class="card-body scope-service-card justify-content-center">
+                    <GiLiver />
+                    <h5 class="card-title">Gastroenterology</h5>
+                    <Link to="/service-details"></Link>
+                  </div>
                 </div>
-              </Link>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-              <Link to="/service-details">
-              <div className="scope-service-card d-flex justify-content-center">
-                 
-                  {/* <img
-                    src={Images.cardio}
-                    className="img-fluid"
-                    alt="scope-pic"
-                  /> */}
-                   <GiMedicines/>
-                  <a href="#">Cardiology</a>
-                
+              </div>
+
+              <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                <div class="card">
+                  <div class="card-body scope-service-card justify-content-center">
+                    <GiMedicines />
+                    <h5 class="card-title">Cardiology</h5>
+                    <Link to="/service-details"></Link>
+                  </div>
                 </div>
-              </Link>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
-              <Link to="/service-details">
-              <div className="scope-service-card d-flex justify-content-center">
-                 
-                  {/* <img
-                    src={Images.scope3}
-                    className="img-fluid"
-                    alt="scope-pic"
-                  /> */}
-                    <GiStomach/>
-                  <a href="#">Hepatology</a>
-        
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+                <div class="card">
+                  <div class="card-body scope-service-card justify-content-center">
+                    <GiStomach />
+                    <h5 class="card-title">Hepatology</h5>
+                    <Link to="/service-details"></Link>
+                  </div>
                 </div>
-              </Link>
+              </div>
             </div>
-       
           </div>
         </div>
       </section>
@@ -671,8 +665,9 @@ const Homepage = () => {
               <div className="right">
                 <h2 className="common-heading">Training</h2>
                 <p className="common-para">
-                The aim of the centre is to provide the cutting edge technology in the 
-                field of Gastroenterology under one roof at an affordable cost and pragmatic approach.
+                  The aim of the centre is to provide the cutting edge
+                  technology in the field of Gastroenterology under one roof at
+                  an affordable cost and pragmatic approach.
                 </p>
               </div>
             </div>
@@ -708,7 +703,13 @@ const Homepage = () => {
                       </div>
                     </div>
                     <p className="common-para">
-                    The chief consultant, Dr. Sanjay Gupta, is an alumnus of the Internationally renowned Institution – Christian Medical College Vellore and has more than 20 years experience in management of various Gastrointestinal and liver related disorders. He has many national accreditations and has worked at top position at various leading Medical institutes in India.
+                      The chief consultant, Dr. Sanjay Gupta, is an alumnus of
+                      the Internationally renowned Institution – Christian
+                      Medical College Vellore and has more than 20 years
+                      experience in management of various Gastrointestinal and
+                      liver related disorders. He has many national
+                      accreditations and has worked at top position at various
+                      leading Medical institutes in India.
                     </p>
                     <a href="#" className="common-btn mt-4">
                       Learn more
@@ -899,7 +900,10 @@ const Homepage = () => {
                   </div>
 
                   <div className="input-wrapper">
-                    <button type="submit" className="common-submit py-2 px-4 mt-4 border-0">
+                    <button
+                      type="submit"
+                      className="common-submit py-2 px-4 mt-4 border-0"
+                    >
                       Submit
                     </button>
                   </div>
@@ -909,7 +913,6 @@ const Homepage = () => {
           </div>
         </div>
       </section>
-    
     </>
   );
 };
