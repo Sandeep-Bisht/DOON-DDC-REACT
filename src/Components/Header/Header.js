@@ -92,38 +92,46 @@ const Header = () => {
   useEffect(() => {
     // const allSlots = [];
   
-    // Generate morning time slots (10:30 am to 2:30 pm)
-    const startTimeMorning = new Date();
-    startTimeMorning.setHours(10, 30, 0); // Set start time for the morning range (10:30 am)
+    // Get the selected date (replace this with your logic to obtain the selected date)
+    // const selectedDate = new Date(); // Replace this with your selected date logic
   
-    const endTimeMorning = new Date();
-    endTimeMorning.setHours(14, 30, 0); // Set end time for the morning range (2:30 pm)
+    // Get the current date and time
+    const currentDate = new Date();
   
-    let currentTime = startTimeMorning;
-    while (currentTime < endTimeMorning) {
-      const hour = currentTime.getHours();
-      const minute = currentTime.getMinutes();
-      const period = hour >= 12 ? "PM" : "AM";
-      const formattedHour = hour > 12 ? hour - 12 : hour;
-      const timeSlot = `${formattedHour}:${minute < 10 ? "0" : ""}${minute} ${period}`;
+    // Check if the selected date is today
+    const isToday = selectedDate && selectedDate.getDate() === currentDate.getDate() &&
+    selectedDate && selectedDate.getMonth() === currentDate.getMonth() &&
+    selectedDate && selectedDate.getFullYear() === currentDate.getFullYear();
   
-      if (!allSlots.includes(timeSlot)) {
-        allSlots.push(timeSlot);
-      }
+    // Set the start time based on whether it's today or not
+    let startTime = new Date();
+    if (isToday) {
+      // If today's date is selected, set the start time to the current time
+      startTime.setTime(currentDate.getTime());
   
-      // Add 15 minutes
-      currentTime = new Date(currentTime.getTime() + 15 * 60000);
+      // Calculate the minutes remaining until the next 15-minute interval
+      const currentMinute = startTime.getMinutes();
+      const minutesRemaining = 15 - (currentMinute % 15);
+  
+      // Adjust the start time by adding the remaining minutes
+      startTime.setMinutes(currentMinute + minutesRemaining);
+    } else {
+      // If it's not today's date, set the start time to 10:30 am
+      startTime.setHours(10, 30, 0);
     }
   
-    // Generate afternoon time slots (4:30 pm to 7:45 pm)
-    const startTimeAfternoon = new Date();
-    startTimeAfternoon.setHours(16, 30, 0); // Set start time for the afternoon range (4:30 pm)
+    // Set the end time (8:00 pm for other dates, or 7:45 pm for today)
+    const endTime = new Date();
+    
+      endTime.setHours(19, 45, 0) // Set end time to 8:00 pm for other dates
+    
   
-    const endTimeAfternoon = new Date();
-    endTimeAfternoon.setHours(20, 0, 0); // Set end time for the afternoon range (7:45 pm)
+    // Align the start time to the nearest 15-minute interval
+    const roundedStartTime = new Date(Math.ceil(startTime.getTime() / (15 * 60000)) * (15 * 60000));
   
-    currentTime = startTimeAfternoon;
-    while (currentTime < endTimeAfternoon) {
+    let currentTime = roundedStartTime;
+    const interval = 15 * 60000; // 15 minutes in milliseconds
+    while (currentTime < endTime) {
       const hour = currentTime.getHours();
       const minute = currentTime.getMinutes();
       const period = hour >= 12 ? "PM" : "AM";
@@ -135,12 +143,13 @@ const Header = () => {
       }
   
       // Add 15 minutes
-      currentTime = new Date(currentTime.getTime() + 15 * 60000);
+      currentTime.setTime(currentTime.getTime() + interval);
     }
   
     // console.log(allSlots);
   
   }, []);
+  
   
 
 
