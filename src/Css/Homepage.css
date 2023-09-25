@@ -196,20 +196,46 @@
 .home-scope-services .scope-service-card{
     position: relative;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #ededed;
   cursor: pointer;
-
+  height: 257px;
 }
-.home-scope-services .scope-service-card img{
-  
+
+.home-scope-services .scope-service-card svg{
+    font-size: 170px;
+    font-size: 200px;
+    /* padding-top: 60px; */
+    transition: all 1s ease-in-out;
+    color: #009DCE;
+    padding: 40px;
+    margin-left: 57px;
+}
+.home-scope-services .scope-service-card .card-title{
+    text-align: center;
+}
+
+.home-scope-services .scope-service-card img{   
+    width: 100%;
+    object-fit: cover;
+    height:500px;
+    transition: all 1s ease-in-out; 
+} 
+.home-scope-services .scope-service-card .service-icon{
     width: 100%;
     object-fit: cover;
     height:500px;
     transition: all 1s ease-in-out;
 }
+.service-icon{
+    width: 100%;
+    object-fit: cover;
+    height:500px;
+    transition: all 1s ease-in-out;
+}
+
 .home-scope-services .scope-service-card a{
     position: absolute;
-    top: 50%;
+    top: 90%;
     left: 50%;
     font-size: 18px;
     transform: translate(-50%,-50%);
@@ -222,10 +248,10 @@
     width: 100%;
     display: block;
     text-align: center;
-
 }
 
-.home-scope-services .scope-service-card:hover img{
+.home-scope-services .scope-service-card:hover img,
+.home-scope-services .scope-service-card:hover svg{
     transform: scale(1.3);
     opacity: 0.3;
 }
@@ -289,9 +315,7 @@
     height: 60%;
     background: linear-gradient(89.29deg, #020224 0.57%, #000E30 53.1%, #000F30 100.44%);
 }
-.home-research-pic-box img{
 
-}
 .clinical-trail-box-inner-wrapper{
     position: absolute;
     top: 50%;
@@ -387,7 +411,7 @@
      padding: 4px;
  }
  .contact-us .contact-form-wrapper{
-     padding: 30px 30px;
+     padding: 15px 30px;
  }
  .contact-us .contact-form-wrapper form input{
      border: 0;
@@ -415,6 +439,14 @@
 }
 
 @media only screen and (max-width : 1199px){
+    .home-scope-services .scope-service-card svg {
+        font-size: 170px;
+        font-size: 200px;
+        transition: all 1s ease-in-out;
+        color: #009DCE;
+        padding: 40px;
+        margin-left: -14px;
+    }
     .common-container-fluid-adjust-padding{
         padding: 0 40px;
     }
@@ -472,7 +504,7 @@
 
 @media only screen and (max-width :991px) {
     .home-scope-services .scope-service-card img{
-        height: 300px;
+        height: 200px;
     }
     .home-faculty .home-faculty-card{
         width: 60%;
@@ -523,6 +555,14 @@
     .home-appointment{
         height: auto;
         padding: 60px 0;
+    }
+    .home-scope-services .scope-service-card svg {
+        font-size: 170px;
+        font-size: 200px;
+        transition: all 1s ease-in-out;
+        color: #009DCE;
+        padding: 40px;
+        margin-left: -14px;
     }
     .home-appointment-pic-box{
 
@@ -707,6 +747,7 @@
 }
 @media only screen and (max-width : 430px)
 { 
+    
     .common-core-values .common-container-fluid-adjust-padding{
 
         padding: 0 10px;
@@ -733,6 +774,7 @@
 
   @media only screen and (max-width : 380px) {
 
+    
     .common-submit {
         padding: 8px 30px;
         border: 0;

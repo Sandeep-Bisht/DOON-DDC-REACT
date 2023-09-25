@@ -49,7 +49,7 @@
     text-align: center;
     color: #FFFFFF;
     font-weight: 400;
-    font-size: 10px;
+    font-size: 12px;
     margin: 70px 0 0 0;
     padding: 10px 0;
     background: linear-gradient(89.29deg, #020224 0.57%, #000E30 53.1%, #000F30 100.44%);
@@ -57,7 +57,6 @@
 .footer-page .copyright .developed-by {
     color: #009DCE;
 }
-
 .timing-box{
   display: flex;
   margin-bottom: 5px;
@@ -74,6 +73,12 @@
   font-size: 11px;
   display: block;
 }
+.footer-page .copyright img{
+  width: 60px;
+  margin-left: 18px;
+}
+
+
 
  /* -----common responsive css---- */
  @media only screen and (max-width : 1399px){
