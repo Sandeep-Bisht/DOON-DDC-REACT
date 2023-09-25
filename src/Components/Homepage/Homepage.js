@@ -7,6 +7,12 @@ import "../../Css/Homepage.css";
 import "../../Css/Common.css";
 import { GiStomach } from "react-icons/gi";
 import { GiLiver } from "react-icons/gi";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Row, Col } from "react-bootstrap";
+import * as Yup from "yup";
+import { url } from "../../Util/url";
+import { signal, effect } from "@preact/signals";
+import { useMutation } from "react-query";
 
 import Images from "../../Util/Images";
 
@@ -14,6 +20,33 @@ const Homepage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const contactSchema = Yup.object().shape({
+    adminEmail: Yup.string()
+      .email("Invalid email")
+      .required("Email is required"),
+    email: Yup.string().required("Email is required"),
+    name: Yup.string().required("Name is required"),
+    number: Yup.string().required("Number is required"),
+  });
+
+  const contactHandler = useMutation(
+    async (data) => {
+     
+    },
+    {
+      onSuccess: (res) => {
+        responseMsg.value = res.msg;
+        if (res.status === 200) {
+        }
+      },
+      onError: (error) => {
+        responseMsg.value = error.msg;
+      },
+    }
+  );
+
+  const responseMsg = signal(undefined);
+
   return (
     <>
       <section className="home-appointment">
@@ -869,7 +902,92 @@ const Homepage = () => {
             </div>
             <div className="col-lg-6 col-md-6">
               <div className="contact-form-wrapper">
-                <form>
+              <Formik
+                  initialValues={{
+                    name: "",
+                    email: "",
+                    contact: "",
+                  }}
+                  validationSchema={contactSchema}
+                  onSubmit={(values, { resetForm }) => {
+                    contactHandler.mutate(values, {
+                      onSuccess: () => {
+                        resetForm();
+                      },
+                    });
+                  }}
+                >
+                  {({ errors, touched }) => (
+                    <Form>
+                      <Row>
+                      <div className="form-group my-2">
+                          <label htmlFor="name">Name:</label>
+                          <Field
+                            name="name"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="name"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="form-group my-2">
+                          <label htmlFor="email">Email:</label>
+                          <Field
+                            name="email"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="email"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="form-group my-2">
+                          <label htmlFor="number">Contact:</label>
+                          <Field
+                            name="number"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="number"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="form-group my-2">
+                          <label htmlFor="message">Message:</label>
+                          <Field
+                            name="message"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="message"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+                      </Row>
+
+                      <button
+                        type="submit"
+                        className="common-submit  py-2 px-4 mt-4 border-0"
+                        disabled={contactHandler.isLoading}
+                      >
+                        {contactHandler.isLoading ? "Loading..." : "Submit"}
+                      </button>
+                    </Form>
+                  )}
+                </Formik>
+                {/* <form>
                   <div className="input-wrapper">
                     <input
                       type="text "
@@ -907,7 +1025,7 @@ const Homepage = () => {
                       Submit
                     </button>
                   </div>
-                </form>
+                </form> */}
               </div>
             </div>
           </div>

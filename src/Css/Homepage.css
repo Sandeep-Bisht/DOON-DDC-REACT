@@ -413,9 +413,12 @@
  .contact-us .contact-form-wrapper{
      padding: 15px 30px;
  }
+ .contact-us .form-group label{
+    color: white;
+ }
  .contact-us .contact-form-wrapper form input{
      border: 0;
-     background: transparent;
+     background:#aeaeae;
      border-bottom: 1px solid #D4D4D4;
      border-radius: 0;
  }
