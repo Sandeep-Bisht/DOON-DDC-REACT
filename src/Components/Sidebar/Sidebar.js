@@ -47,13 +47,7 @@ const Sidebar = () => {
                     <RxDashboard />
                   </span>
                   <Link to="/dashboard/allbooking">All Booking</Link>
-                </div>
-                <div className="sidebar-nav">
-                  <span className="px-3">
-                    <RxDashboard />
-                  </span>
-                  <Link to="/dashboard/test">Test</Link>
-                </div>
+                </div>                
                 <div className="sidebar-nav">
                   <span className="px-3">
                     <RxDashboard />

@@ -198,18 +198,48 @@
   overflow: hidden;
   background-color: #fff;
   cursor: pointer;
-
-}
-.home-scope-services .scope-service-card img{
+  padding: 30px 0;
   
+}
+
+.home-scope-services .scope-service-card svg{
+    font-size: 120px;
+   
+    transition: all 1s ease-in-out;
+    color: #009DCE;
+    
+}
+.home-scope-services .scope-service-card .card-title{
+   
+    text-align: center;
+    
+    font-weight: 600;
+    font-size: 20px;
+    padding-top: 30px;
+}
+
+.home-scope-services .scope-service-card img{   
+    width: 100%;
+    object-fit: cover;
+    height:500px;
+    transition: all 1s ease-in-out; 
+} 
+.home-scope-services .scope-service-card .service-icon{
     width: 100%;
     object-fit: cover;
     height:500px;
     transition: all 1s ease-in-out;
 }
+.service-icon{
+    width: 100%;
+    object-fit: cover;
+    height:500px;
+    transition: all 1s ease-in-out;
+}
+
 .home-scope-services .scope-service-card a{
     position: absolute;
-    top: 50%;
+    top: 90%;
     left: 50%;
     font-size: 18px;
     transform: translate(-50%,-50%);
@@ -222,16 +252,27 @@
     width: 100%;
     display: block;
     text-align: center;
-
 }
 
-.home-scope-services .scope-service-card:hover img{
+.home-scope-services .scope-service-card:hover img
+{
     transform: scale(1.3);
     opacity: 0.3;
 }
 .home-scope-services .scope-service-card:hover a{
     opacity: 1;
 }
+
+.home-scope-services .single-icon-card
+{
+    margin: 30px 0;
+    text-align: center;
+}
+.single-icon-card-row
+{
+    padding: 50px 0 70px 0;
+}
+
 
 /* ---------------------------home-training css--------------------- */
 .home-training{
@@ -289,9 +330,7 @@
     height: 60%;
     background: linear-gradient(89.29deg, #020224 0.57%, #000E30 53.1%, #000F30 100.44%);
 }
-.home-research-pic-box img{
 
-}
 .clinical-trail-box-inner-wrapper{
     position: absolute;
     top: 50%;
@@ -387,7 +426,7 @@
      padding: 4px;
  }
  .contact-us .contact-form-wrapper{
-     padding: 30px 30px;
+     padding: 15px 30px;
  }
  .contact-us .contact-form-wrapper form input{
      border: 0;
@@ -415,6 +454,7 @@
 }
 
 @media only screen and (max-width : 1199px){
+   
     .common-container-fluid-adjust-padding{
         padding: 0 40px;
     }
@@ -472,7 +512,7 @@
 
 @media only screen and (max-width :991px) {
     .home-scope-services .scope-service-card img{
-        height: 300px;
+        height: 200px;
     }
     .home-faculty .home-faculty-card{
         width: 60%;
@@ -524,6 +564,14 @@
         height: auto;
         padding: 60px 0;
     }
+    .home-scope-services .scope-service-card svg {
+        font-size: 160px;
+        
+        transition: all 1s ease-in-out;
+        color: #009DCE;
+        padding: 20px;
+        margin-left: -14px;
+    }
     .home-appointment-pic-box{
 
         display: none;
@@ -563,7 +611,21 @@
     .clinical-trail-box-inner-wrapper .common-btn {
         margin-top: 5px!important;
     }
+    .home-scope-services .scope-service-card
+
+    {
+        padding: 20px;
+    }
+    .home-scope-services .scope-service-card .card-title {
+        font-size: 18px;
+    }
+
+
+
 }
+
+
+
 
 @media only screen and (max-width : 645px){
     .clinical-trail-box{
@@ -624,6 +686,19 @@
       .home-about .about-us-single-card .common-para{
         padding: 0 20px;
       }
+      .home-scope-services .scope-service-card svg {
+        font-size: 100px;
+        transition: all 1s ease-in-out;
+        color: #009DCE;
+        padding: 20px;
+    
+        padding: 0;
+    }
+    .home-scope-services .scope-service-card .card-title
+    {
+        padding-top: 15px;
+        font-size: 16px;
+    }
 
 }
 
@@ -707,6 +782,7 @@
 }
 @media only screen and (max-width : 430px)
 { 
+    
     .common-core-values .common-container-fluid-adjust-padding{
 
         padding: 0 10px;
@@ -728,11 +804,21 @@
     .clinical-trail-box{
         width: 90%;
     }
+    .home-scope-services .scope-service-card svg
+    {
+        font-size: 60px;
+    }
+    .home-scope-services .scope-service-card .card-title
+    {
+        font-size: 13px;
+        margin-bottom: 0;
+    }
   }
 
 
   @media only screen and (max-width : 380px) {
 
+    
     .common-submit {
         padding: 8px 30px;
         border: 0;

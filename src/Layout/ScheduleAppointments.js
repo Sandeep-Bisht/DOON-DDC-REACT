@@ -30,51 +30,59 @@ const ScheduleAppointments = () => {
   const [timeSlots, setTimeSlots] = useState([]);
 
 
-  useEffect(()=>{
-    const startTimeMorning = new Date();
-    startTimeMorning.setHours(9, 0, 0); // Set start time for the morning range (9 am)
-    
-    const endTimeMorning = new Date();
-    endTimeMorning.setHours(13, 0, 0); // Set end time for the morning range (1 pm)
-    
-    const startTimeAfternoon = new Date();
-    startTimeAfternoon.setHours(14, 0, 0); // Set start time for the afternoon range (2 pm)
-    
-    const endTimeAfternoon = new Date();
-    endTimeAfternoon.setHours(18, 0, 0); // Set end time for the afternoon range (6 pm)
-    
-    // Generate morning time slots
-    let currentTime = startTimeMorning;
-    while (currentTime < endTimeMorning) {
+  useEffect(() => {
+    const startTimeMorning1 = new Date();
+    startTimeMorning1.setHours(10, 30, 0); // Set start time for the first morning range (10:30 am)
+  
+    const endTimeMorning1 = new Date();
+    endTimeMorning1.setHours(14, 30, 0); // Set end time for the first morning range (2:30 pm)
+  
+    const startTimeMorning2 = new Date();
+    startTimeMorning2.setHours(16, 30, 0); // Set start time for the second morning range (4:30 pm)
+  
+    const endTimeMorning2 = new Date();
+    endTimeMorning2.setHours(19, 45, 0); // Set end time for the second morning range (7:45 pm)
+  
+    const timeSlots = [];
+  
+    // Generate first morning time slots
+    let currentTime = startTimeMorning1;
+    while (currentTime < endTimeMorning1) {
       const timeSlot = currentTime.toLocaleTimeString([], {
         hour12: false,
         hour: "2-digit",
         minute: "2-digit",
       });
-      
+  
       if (!timeSlots.includes(timeSlot)) {
         timeSlots.push(timeSlot);
       }
-    
+  
       currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
     }
-    
-    // Generate afternoon time slots
-    currentTime = startTimeAfternoon;
-    while (currentTime < endTimeAfternoon) {
+  
+    // Generate second morning time slots
+    currentTime = startTimeMorning2;
+    while (currentTime < endTimeMorning2) {
       const timeSlot = currentTime.toLocaleTimeString([], {
         hour12: false,
         hour: "2-digit",
         minute: "2-digit",
       });
-    
+  
       if (!timeSlots.includes(timeSlot)) {
         timeSlots.push(timeSlot);
       }
-    
+  
       currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
     }
-  },[])
+  
+    // Now, the timeSlots array contains the desired time slots
+    setTimeSlots(timeSlots)
+  }, []);
+  
+
+  
 
   effect(() => {
     const date = new Date().toISOString().split("T")[0];
@@ -99,6 +107,8 @@ const ScheduleAppointments = () => {
 
   const handleHoliday = useMutation(
     async (data) => {
+      console.log(data, "check data before api")
+
       const res = await fetch(`${url}/holidayList/mark_holiday`, {
         method: "POST",
         headers: {
@@ -286,6 +296,15 @@ const ScheduleAppointments = () => {
                         resetForm();
                         getAllHolidays();
                         setAddHoliday(false);
+                      },
+                      onError: (error) => {
+                        // Check if the error status code is 500
+                        if (error.response && error.response.status === 500) {
+                          // Display the error message from the response
+                          const errorMessage = error.response.data.error || "Failed to mark holiday";
+                          // You can handle the error message as needed, e.g., show it in a toast or alert
+                          alert(errorMessage);
+                        }
                       },
                     });
                   }}

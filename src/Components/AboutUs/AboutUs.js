@@ -44,27 +44,35 @@ const AboutUs = () => {
                     The Best Medics, Doctor & Physicians
                     </h2>
                     <p className="common-para mb-4">
-                    Digestive disease centre has been started with sole objective to provide a possible one stop solution for most Gastrointestinal and liver related disorders under one roof. In the past 10 years, Gastroenterology has made tremendous progress in the fields of both diagnostics and treatment. However, the fruits of development have not been reaped in our region , mainly because of inadequate diagnostic and management facilities, available in the region. Hence the aim of the centre is to provide the cutting edge technology in the field of Gastroenterology under one roof at an affordable cost and pragmatic approach.
+                    Digestive disease centre has been started with sole objective to provide 
+                    a possible one stop solution for most Gastrointestinal and liver related disorders 
+                    under one roof. In the past 10 years, Gastroenterology has made tremendous progress 
+                    in the fields of both diagnostics and treatment. However, the fruits of development 
+                    have not been reaped in our region , mainly because of inadequate diagnostic and
+                     management facilities, available in the region. Hence the aim of the centre is 
+                     to provide the cutting edge technology in the field of Gastroenterology under 
+                     one roof at an affordable cost and pragmatic approach.
                     </p>
                     
-                    <p className="common-para mb-4">
-                      Other main objective of the foundation is to provide insight about the various GI disorders in simplified way, for better understanding of the disease process and the available modalities of treatment.
-                      </p>
-                      <p className='common-para mb-0'>
-                      The chief consultant, Dr. Sanjay Gupta, is an alumnus of the Internationally renowned Institution – Christian Medical College Vellore and has more than 20 years experience in management of various Gastrointestinal and liver related disorders. He has many national accreditations and has worked at top position at various leading Medical institutes in India.
-                      </p>
-                      <a href="#" class="common-btn mt-4">read more</a>
+                    
+                      <a  class="common-btn mt-4"
+                      data-bs-toggle="collapse" 
+                      href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"
+                      
+                      >Read more</a>
                    
                 </div>
             </div>
-             <div className='col-md-12 mt-lg-5'>
-             <p className="common-para mb-4">
+            <div className='col-md-12 mt-lg-5'>
+            <div className="collapse" id="collapseExample">
+            <p className="common-para mb-4 text-dark">
                       Other main objective of the foundation is to provide insight about the various GI disorders in simplified way, for better understanding of the disease process and the available modalities of treatment.
                       </p>
-                      <p className='common-para mb-0'>
+                      <p className='common-para mb-0 text-dark'>
                       The chief consultant, Dr. Sanjay Gupta, is an alumnus of the Internationally renowned Institution – Christian Medical College Vellore and has more than 20 years experience in management of various Gastrointestinal and liver related disorders. He has many national accreditations and has worked at top position at various leading Medical institutes in India.
                       </p>
-             </div>
+            </div></div>
+           
         </div>
     </div>
 </section>
