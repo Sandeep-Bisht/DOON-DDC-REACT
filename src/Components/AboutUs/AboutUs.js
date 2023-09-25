@@ -53,10 +53,18 @@ const AboutUs = () => {
                       <p className='common-para mb-0'>
                       The chief consultant, Dr. Sanjay Gupta, is an alumnus of the Internationally renowned Institution – Christian Medical College Vellore and has more than 20 years experience in management of various Gastrointestinal and liver related disorders. He has many national accreditations and has worked at top position at various leading Medical institutes in India.
                       </p>
+                      <a href="#" class="common-btn mt-4">read more</a>
                    
                 </div>
             </div>
-           
+             <div className='col-md-12 mt-lg-5'>
+             <p className="common-para mb-4">
+                      Other main objective of the foundation is to provide insight about the various GI disorders in simplified way, for better understanding of the disease process and the available modalities of treatment.
+                      </p>
+                      <p className='common-para mb-0'>
+                      The chief consultant, Dr. Sanjay Gupta, is an alumnus of the Internationally renowned Institution – Christian Medical College Vellore and has more than 20 years experience in management of various Gastrointestinal and liver related disorders. He has many national accreditations and has worked at top position at various leading Medical institutes in India.
+                      </p>
+             </div>
         </div>
     </div>
 </section>
