@@ -22,7 +22,6 @@ const Patient = () => {
     const response = await axios.get(`${url}/blog/find_all_blog`);
     setBlog(response.data)
   }
-  console.log("mai yahah hu")
 
 
   return (
@@ -296,7 +295,6 @@ const Patient = () => {
                     
                     <div className="row">
                     { blog && blog.length > 0 && blog.map((item, index) => {
-                      console.log("check blog", item)
                       return (
                         <div className="col-lg-12"  key={index}>
                           <Link
