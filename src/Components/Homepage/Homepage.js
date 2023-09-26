@@ -906,7 +906,8 @@ const Homepage = () => {
                   initialValues={{
                     name: "",
                     email: "",
-                    contact: "",
+                     number: "",
+                    message: "",
                   }}
                   validationSchema={contactSchema}
                   onSubmit={(values, { resetForm }) => {

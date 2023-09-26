@@ -414,11 +414,11 @@
      padding: 15px 30px;
  }
  .contact-us .form-group label{
-    color: white;
+    color: #9E9E9E;
  }
  .contact-us .contact-form-wrapper form input{
      border: 0;
-     background:#aeaeae;
+     background:transparent;
      border-bottom: 1px solid #D4D4D4;
      border-radius: 0;
  }

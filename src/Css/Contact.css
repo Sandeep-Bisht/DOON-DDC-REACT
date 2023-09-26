@@ -33,6 +33,7 @@
 
 .contact-single .contact-form-wrapper
 {
+    /* padding: 5px 10px 20px 30p ; */
      padding: 40px 50px 40px 50px;
      background: linear-gradient(130deg, rgba(0,8,41,1) 0%, rgba(2,19,73,1) 100%);
   
@@ -42,6 +43,9 @@
     border: 1px solid #6D6D6D;
     padding: 20px;
     color: #fff;
+}
+.contact-single label{
+    color: #9E9E9E;
 }
 .contact-single.shop-description form .cover input:focus, .contact-single.shop-description form .cover textarea:focus 
 {
@@ -70,7 +74,7 @@
     transition: border-color .5s linear 0s;
     vertical-align: middle;
     padding: 0 20px;
-    height: 50px;
+    height: 30px;
     position: relative;
     resize: none;
 }

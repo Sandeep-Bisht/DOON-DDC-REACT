@@ -1,11 +1,44 @@
 import React from "react";
 import { useEffect } from "react";
 import "../../Css/Contact.css";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Row, Col } from "react-bootstrap";
+import * as Yup from "yup";
+import { url } from "../../Util/url";
+import { signal, effect } from "@preact/signals";
+import { useMutation } from "react-query";
+
 
 const Contact = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const contactSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    name: Yup.string().required("Name is required"),
+    number: Yup.string().required("Number is required"),
+  });
+
+  const contactusHandler = useMutation(
+    async (data) => {
+     
+    },
+    {
+      onSuccess: (res) => {
+        responseMsg.value = res.msg;
+        if (res.status === 200) {
+        }
+      },
+      onError: (error) => {
+        responseMsg.value = error.msg;
+      },
+    }
+  );
+
+  const responseMsg = signal(undefined);
+
+
   return (
     <>
       <div className="common-redirect-banner">
@@ -93,7 +126,7 @@ const Contact = () => {
             </div>
             <div className="col-md-6">
               <div className="contact-form-wrapper">
-                <form className="mt-4">
+                <div className="mt-2">
                   <div className="row">
                     <div className="col-md-12 text-center">
                       {/* <svg className="svg-inline--fa fa-envelope fa-w-16 fa-5x text-white" aria-hidden="true" focusable="false" data-prefix="fal" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M464 64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM48 96h416c8.8 0 16 7.2 16 16v41.4c-21.9 18.5-53.2 44-150.6 121.3-16.9 13.4-50.2 45.7-73.4 45.3-23.2.4-56.6-31.9-73.4-45.3C85.2 197.4 53.9 171.9 32 153.4V112c0-8.8 7.2-16 16-16zm416 320H48c-8.8 0-16-7.2-16-16V195c22.8 18.7 58.8 47.6 130.7 104.7 20.5 16.4 56.7 52.5 93.3 52.3 36.4.3 72.3-35.5 93.3-52.3 71.9-57.1 107.9-86 130.7-104.7v205c0 8.8-7.2 16-16 16z"></path></svg><!-- <i className="fal fa-envelope fa-5x text-white"></i> Font Awesome fontawesome.com --> */}
@@ -104,42 +137,95 @@ const Contact = () => {
                   </div>
                   <div className="row">
                     <div className="col-md-12 d-flex flex-column">
+                    <Formik
+                  initialValues={{
+                    name: "",
+                    email: "",
+                     number: "",
+                     message:""
+                  }}
+                  validationSchema={contactSchema}
+                  onSubmit={(values, { resetForm }) => {
+                    contactusHandler.mutate(values, {
+                      onSuccess: () => {
+                        resetForm();
+                      },
+                    });
+                  }}
+                >
+                  {({ errors, touched }) => (
+                    <Form>
+                      <Row>
                       <div className="mb-3 cover">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="name"
-                          placeholder="Your Name*"
-                        />
-                      </div>
-                      <div className="mb-3 cover">
-                        <input
-                          type="email"
-                          className="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Email"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-md-12">
-                      <div className="mb-3 cover">
-                        <textarea
-                          name="your-message"
-                          cols="40"
-                          rows="3"
-                          className="w-100 h-100"
-                          aria-invalid="false"
-                          placeholder="Your Comment*"
-                        ></textarea>
-                      </div>
-                      <div className="mt-5">
-                        <button className="add-to-cart common-submit border-0">
-                          Submit
-                        </button>
-                      </div>
+                          <label htmlFor="name">Name:</label>
+                          <Field
+                            name="name"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="name"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="mb-3 cover">
+                          <label htmlFor="email">Email:</label>
+                          <Field
+                            name="email"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="email"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="mb-3 cover">
+                          <label htmlFor="number">Contact:</label>
+                          <Field
+                            name="number"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="number"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="mb-3 cover">
+                          <label htmlFor="message">Message:</label>
+                          <Field
+                            name="message"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="message"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+                      </Row>
+
+                      <button
+                        type="submit"
+                        className="common-submit  py-2 px-4 mt-4 border-0"
+                        disabled={contactusHandler.isLoading}
+                      >
+                        {contactusHandler.isLoading ? "Loading..." : "Submit"}
+                      </button>
+                    </Form>
+                  )}
+                </Formik>    
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
