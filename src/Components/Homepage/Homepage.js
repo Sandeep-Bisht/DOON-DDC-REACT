@@ -654,10 +654,10 @@ const Homepage = () => {
           </div>
         </div>
         <div className="container">
-          <div className="row card-row g-0">
-            <div class="row">
+         
+            <div class="row single-icon-card-row">
               <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                <div class="card">
+                <div class="card single-icon-card">
                   <div class="card-body scope-service-card justify-content-center">
                         <GiMedicines />
                     <h5 class="card-title">General Medicine</h5>
@@ -667,7 +667,7 @@ const Homepage = () => {
                 </div>
               </div>
               <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                <div class="card">
+                <div class="card single-icon-card">
                   <div class="card-body scope-service-card justify-content-center">
                     <GiLiver />
                     <h5 class="card-title">Gastroenterology</h5>
@@ -677,7 +677,7 @@ const Homepage = () => {
               </div>
 
               <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                <div class="card">
+                <div class="card single-icon-card">
                   <div class="card-body scope-service-card justify-content-center">
                     <GiMedicines />
                     <h5 class="card-title">Cardiology</h5>
@@ -686,7 +686,7 @@ const Homepage = () => {
                 </div>
               </div>
               <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                <div class="card">
+                <div class="card single-icon-card">
                   <div class="card-body scope-service-card justify-content-center">
                     <GiStomach />
                     <h5 class="card-title">Hepatology</h5>
@@ -695,7 +695,7 @@ const Homepage = () => {
                 </div>
               </div>
             </div>
-          </div>
+       
         </div>
       </section>
       <section className="home-training">
