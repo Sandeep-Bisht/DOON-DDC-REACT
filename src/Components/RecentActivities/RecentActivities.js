@@ -23,7 +23,25 @@ const RecentActivities= () => {
         </div>
     </div>
   </div>
-  
+  <div className='container'>
+        <div className='patientSpeaks-text'>
+            <p className='common-para'><div className='container'>
+        <div className='recentActivities-text'>
+            <p className='common-para'>The processes of digestion include 
+            six activities: ingestion, propulsion, mechanical or physical 
+            digestion, chemical digestion, absorption, and defecation. 
+            The first of these processes, ingestion, refers to the entry 
+            of food into the alimentary canal through the mouth.
+
+</p>
+        </div>
+
+      </div>
+
+</p>
+        </div>
+
+      </div>
       
 </>
   )

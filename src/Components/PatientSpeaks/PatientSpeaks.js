@@ -23,7 +23,20 @@ const PatientSpeaks= () => {
         </div>
     </div>
      </div>
-      
+      <div className='container'>
+        <div className='patientSpeaks-text'>
+            <p className='common-para'>Healthcare is a trillion dollar industry worldwide. With so many 
+                investments in time and money, coupled with the tremendous responsibility 
+                of managing, aiding, and saving lives, it’s no wonder that one of 
+                healthcare’s greatest areas of focus is selecting the most effective new 
+                technologies to support cost-saving measures, increase efficiency, and 
+                provide better access to care. At the end of the day, it’s crucial that 
+                technological advances improve patient outcomes.
+
+</p>
+        </div>
+
+      </div>
       
 </>
   )
