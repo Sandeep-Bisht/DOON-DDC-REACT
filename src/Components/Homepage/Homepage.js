@@ -7,13 +7,58 @@ import "../../Css/Homepage.css";
 import "../../Css/Common.css";
 import { GiStomach } from "react-icons/gi";
 import { GiLiver } from "react-icons/gi";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Row, Col } from "react-bootstrap";
+import * as Yup from "yup";
+import { signal, effect } from "@preact/signals";
+import { useMutation } from "react-query";
+
 
 import Images from "../../Util/Images";
+
+const responseMsg = signal(undefined);
 
 const Homepage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  
+
+
+  const contactSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    name: Yup.string().required("Name is required"),
+    number: Yup.string().required("Number is required"),
+  });
+
+  const contactUsHandler = useMutation(
+    async (data) => {
+      // let url;
+      // const res = await fetch(`${url}/authantication/login`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(data),
+      // });
+      // return await res.json();
+      console.log("my form values before api hit",data )
+    },
+    {
+      onSuccess: (res) => {
+        responseMsg.value = res.msg;
+        if (res.status === 200) {
+        console.log(res, "this is my respinse")
+        }
+      },
+      onError: (error) => {
+        responseMsg.value = error.msg;
+      },
+    }
+  );
+
+
   return (
     <>
       <section className="home-appointment">
@@ -869,7 +914,102 @@ const Homepage = () => {
             </div>
             <div className="col-lg-6 col-md-6">
               <div className="contact-form-wrapper">
-                <form>
+              <div>
+                <Formik
+                  initialValues={{
+                    name: "",
+                    email: "",
+                    number:"",
+                    message:""
+                  }}
+                  validationSchema={contactSchema}
+                  onSubmit={(values, { resetForm }) => {
+                    contactUsHandler.mutate(values, {
+                      onSuccess: () => {
+                        resetForm();
+                      },
+                    });
+                  }}
+                >
+                  {({ errors, touched }) => (
+                    <Form>
+                      <Row>
+                      <div className="form-group">
+                          <label htmlFor="name">Name:</label>
+                          <Field
+                            name="name"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="name"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="form-group">
+                          <label htmlFor="email">Email:</label>
+                          <Field
+                            name="email"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="email"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="form-group">
+                          <label htmlFor="number">Contact:</label>
+                          <Field
+                            name="number"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="number"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="form-group">
+                          <label htmlFor="message">Message:</label>
+                          <Field
+                            name="message"
+                            className="form-control"
+                            autoComplete="new-email" /* Set a unique value */
+                          />
+                          <ErrorMessage
+                            name="message"
+                            component="div"
+                            className="text-danger"
+                          />
+                        </div>
+
+                      
+                      </Row>
+
+                      <button
+                        type="submit"
+                        className="common-submit  py-2 px-4 mt-4 border-0"
+                        disabled={contactUsHandler.isLoading}
+                      >
+                        {contactUsHandler.isLoading ? "Loading..." : "Submit"}
+                      </button>
+                    </Form>
+                  )}
+                </Formik>
+                {responseMsg && responseMsg.value ? (
+                  <p>{responseMsg.value}</p>
+                ) : (
+                  ""
+                )}
+              </div>
+                {/* <form>
                   <div className="input-wrapper">
                     <input
                       type="text "
@@ -907,7 +1047,7 @@ const Homepage = () => {
                       Submit
                     </button>
                   </div>
-                </form>
+                </form> */}
               </div>
             </div>
           </div>
