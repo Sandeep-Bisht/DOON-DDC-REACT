@@ -21,7 +21,8 @@ import ScheduleAppointments from "../Layout/ScheduleAppointments";
 import CoreValueDetail from "../Components/CoreValueDetail/CoreValueDetail"
 import Clinical from "../Components/Clinical/Clinical";
 import  RecentActivities  from "../Components/RecentActivities/RecentActivities"
-import PatientSpeaks from "../Components/PatientSpeaks/PatientSpeaks";
+import Error from "../Components/ErrorPage/Error";
+import PatientSpeaks from "../Components/PatientSpeaks/PatientSpeaks"
 
 const Authanticated = (props) => {
      let token = Cookies.get("ddc_token");
@@ -40,12 +41,12 @@ const ApplicationRoutes = () => {
             <Route path="/" element={<Homepage />} />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/patient-corner" element={<Patient />} />
+            <Route path="/patient-corner-blogs" element={<Patient />} />
             <Route path="/training" element={<Training />} />
             <Route path="/our-services" element={<Services />} />
             <Route path="/service-details" element={< ServiceDetail/>} />
             <Route path="/blog-detail" element={<BlogDetail/>}/>
-            <Route path="*" element={< Homepage />} />
+            <Route path="*" element={<Error />} />
             <Route path="/dashboard"  element={<Authanticated component= {<AdminDashboard />} /> } >
                 <Route index element={< Dashboard/>} />
                 <Route path="/dashboard/patient" element={< People/>} />
@@ -62,7 +63,6 @@ const ApplicationRoutes = () => {
             <Route path="/PatientSpeaks" element={<PatientSpeaks/>}></Route>
             
             <Route path="/recent-activities" element={< RecentActivities/>}></Route>
-            
         </Routes>
         
         </>

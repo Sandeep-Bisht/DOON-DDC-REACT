@@ -71,6 +71,29 @@ const AboutUs = () => {
                       <p className='common-para mb-0 text-dark'>
                       The chief consultant, Dr. Sanjay Gupta, is an alumnus of the Internationally renowned Institution – Christian Medical College Vellore and has more than 20 years experience in management of various Gastrointestinal and liver related disorders. He has many national accreditations and has worked at top position at various leading Medical institutes in India.
                       </p>
+                      <p className='common-para mb-0 text-dark'>
+                        Founder and Head of Gastroenterology at SGRR Medical College sept. 2019
+                        to dec.2022
+                      </p>
+                      <p className='common-para mb-0 text-dark'>
+                        Started 1st ever DM course in Gastroenterology in Uttarakhand 
+                        at SGRR Mc Mar2022
+                      </p>
+                      <p className='common-para mb-0 text-dark'>
+                        Head of Gastroenterology at Christian Medical College Ludhiana,Punjab.
+                        2007-09 
+
+                      </p>
+                      <p className='common-para mb-0 text-dark'>
+                        Established Gastroenterology services at MAX Hospital Dehradun 2012-2013
+                      </p>
+                      <p className='common-para mb-0 text-dark'>
+                        Honorary president of Indian Society of Gastroenterology Uttarakhand chapter
+                        2017 
+                      </p>
+                      <p className='common-para mb-0 text-dark'>
+                        Recipient of Brand Icon award by Times of India Group 
+                      </p>
             </div></div>
            
         </div>
