@@ -20,9 +20,9 @@ import AddBlog from "../Layout/AddBlog";
 import ScheduleAppointments from "../Layout/ScheduleAppointments";
 import CoreValueDetail from "../Components/CoreValueDetail/CoreValueDetail"
 import Clinical from "../Components/Clinical/Clinical";
-import OngoingClinicalTrial from "../Components/OngoingClinicalTrial/OngoingClinicalTrial";
 import  RecentActivities  from "../Components/RecentActivities/RecentActivities"
 import Error from "../Components/ErrorPage/Error";
+import PatientSpeaks from "../Components/PatientSpeaks/PatientSpeaks"
 
 const Authanticated = (props) => {
      let token = Cookies.get("ddc_token");
@@ -41,7 +41,7 @@ const ApplicationRoutes = () => {
             <Route path="/" element={<Homepage />} />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/patient-corner" element={<Patient />} />
+            <Route path="/patient-corner-blogs" element={<Patient />} />
             <Route path="/training" element={<Training />} />
             <Route path="/our-services" element={<Services />} />
             <Route path="/service-details" element={< ServiceDetail/>} />
@@ -60,7 +60,7 @@ const ApplicationRoutes = () => {
             <Route path="/core-value-detail" element={<CoreValueDetail/>}></Route>
             <Route path="/clinical" element={<Clinical/>}></Route>
             
-            <Route path="/ongoing-clinical-trial" element={<OngoingClinicalTrial/>}></Route>
+            <Route path="/PatientSpeaks" element={<PatientSpeaks/>}></Route>
             
             <Route path="/recent-activities" element={< RecentActivities/>}></Route>
         </Routes>

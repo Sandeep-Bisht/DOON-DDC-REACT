@@ -11,32 +11,47 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Row, Col } from "react-bootstrap";
 import * as Yup from "yup";
 import { url } from "../../Util/url";
-import { signal, effect } from "@preact/signals";
 import { useMutation } from "react-query";
+import { signal, effect } from "@preact/signals";
+
+
 
 import Images from "../../Util/Images";
+
+const responseMsg = signal(undefined);
 
 const Homepage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  
+
+
   const contactSchema = Yup.object().shape({
-    adminEmail: Yup.string()
-      .email("Invalid email")
-      .required("Email is required"),
-    email: Yup.string().required("Email is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
     name: Yup.string().required("Name is required"),
     number: Yup.string().required("Number is required"),
   });
 
-  const contactHandler = useMutation(
+  const contactUsHandler = useMutation(
     async (data) => {
-     
+      // let url;
+      // const res = await fetch(`${url}/authantication/login`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(data),
+      // });
+      // return await res.json();
+      console.log("my form values before api hit",data )
     },
     {
       onSuccess: (res) => {
         responseMsg.value = res.msg;
         if (res.status === 200) {
+        console.log(res, "this is my respinse")
         }
       },
       onError: (error) => {
@@ -45,7 +60,6 @@ const Homepage = () => {
     }
   );
 
-  const responseMsg = signal(undefined);
 
   return (
     <>
@@ -642,10 +656,10 @@ const Homepage = () => {
           </div>
         </div>
         <div className="container">
-          <div className="row card-row g-0">
-            <div class="row">
+         
+            <div class="row single-icon-card-row">
               <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                <div class="card">
+                <div class="card single-icon-card">
                   <div class="card-body scope-service-card justify-content-center">
                         <GiMedicines />
                     <h5 class="card-title">General Medicine</h5>
@@ -655,7 +669,7 @@ const Homepage = () => {
                 </div>
               </div>
               <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                <div class="card">
+                <div class="card single-icon-card">
                   <div class="card-body scope-service-card justify-content-center">
                     <GiLiver />
                     <h5 class="card-title">Gastroenterology</h5>
@@ -665,7 +679,7 @@ const Homepage = () => {
               </div>
 
               <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                <div class="card">
+                <div class="card single-icon-card">
                   <div class="card-body scope-service-card justify-content-center">
                     <GiMedicines />
                     <h5 class="card-title">Cardiology</h5>
@@ -674,7 +688,7 @@ const Homepage = () => {
                 </div>
               </div>
               <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-                <div class="card">
+                <div class="card single-icon-card">
                   <div class="card-body scope-service-card justify-content-center">
                     <GiStomach />
                     <h5 class="card-title">Hepatology</h5>
@@ -683,7 +697,7 @@ const Homepage = () => {
                 </div>
               </div>
             </div>
-          </div>
+       
         </div>
       </section>
       <section className="home-training">
@@ -902,16 +916,17 @@ const Homepage = () => {
             </div>
             <div className="col-lg-6 col-md-6">
               <div className="contact-form-wrapper">
-              <Formik
+              <div>
+                <Formik
                   initialValues={{
                     name: "",
                     email: "",
-                     number: "",
-                    message: "",
+                    number:"",
+                    message:""
                   }}
                   validationSchema={contactSchema}
                   onSubmit={(values, { resetForm }) => {
-                    contactHandler.mutate(values, {
+                    contactUsHandler.mutate(values, {
                       onSuccess: () => {
                         resetForm();
                       },
@@ -921,7 +936,7 @@ const Homepage = () => {
                   {({ errors, touched }) => (
                     <Form>
                       <Row>
-                      <div className="form-group my-2">
+                      <div className="form-group">
                           <label htmlFor="name">Name:</label>
                           <Field
                             name="name"
@@ -935,7 +950,7 @@ const Homepage = () => {
                           />
                         </div>
 
-                        <div className="form-group my-2">
+                        <div className="form-group">
                           <label htmlFor="email">Email:</label>
                           <Field
                             name="email"
@@ -949,7 +964,7 @@ const Homepage = () => {
                           />
                         </div>
 
-                        <div className="form-group my-2">
+                        <div className="form-group">
                           <label htmlFor="number">Contact:</label>
                           <Field
                             name="number"
@@ -963,7 +978,7 @@ const Homepage = () => {
                           />
                         </div>
 
-                        <div className="form-group my-2">
+                        <div className="form-group">
                           <label htmlFor="message">Message:</label>
                           <Field
                             name="message"
@@ -976,18 +991,26 @@ const Homepage = () => {
                             className="text-danger"
                           />
                         </div>
+
+                      
                       </Row>
 
                       <button
                         type="submit"
                         className="common-submit  py-2 px-4 mt-4 border-0"
-                        disabled={contactHandler.isLoading}
+                        disabled={contactUsHandler.isLoading}
                       >
-                        {contactHandler.isLoading ? "Loading..." : "Submit"}
+                        {contactUsHandler.isLoading ? "Loading..." : "Submit"}
                       </button>
                     </Form>
                   )}
                 </Formik>
+                {responseMsg && responseMsg.value ? (
+                  <p>{responseMsg.value}</p>
+                ) : (
+                  ""
+                )}
+              </div>
                 {/* <form>
                   <div className="input-wrapper">
                     <input

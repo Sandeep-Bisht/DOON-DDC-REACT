@@ -44,18 +44,57 @@ const AboutUs = () => {
                     The Best Medics, Doctor & Physicians
                     </h2>
                     <p className="common-para mb-4">
-                    Digestive disease centre has been started with sole objective to provide a possible one stop solution for most Gastrointestinal and liver related disorders under one roof. In the past 10 years, Gastroenterology has made tremendous progress in the fields of both diagnostics and treatment. However, the fruits of development have not been reaped in our region , mainly because of inadequate diagnostic and management facilities, available in the region. Hence the aim of the centre is to provide the cutting edge technology in the field of Gastroenterology under one roof at an affordable cost and pragmatic approach.
+                    Digestive disease centre has been started with sole objective to provide 
+                    a possible one stop solution for most Gastrointestinal and liver related disorders 
+                    under one roof. In the past 10 years, Gastroenterology has made tremendous progress 
+                    in the fields of both diagnostics and treatment. However, the fruits of development 
+                    have not been reaped in our region , mainly because of inadequate diagnostic and
+                     management facilities, available in the region. Hence the aim of the centre is 
+                     to provide the cutting edge technology in the field of Gastroenterology under 
+                     one roof at an affordable cost and pragmatic approach.
                     </p>
                     
-                    <p className="common-para mb-4">
-                      Other main objective of the foundation is to provide insight about the various GI disorders in simplified way, for better understanding of the disease process and the available modalities of treatment.
-                      </p>
-                      <p className='common-para mb-0'>
-                      The chief consultant, Dr. Sanjay Gupta, is an alumnus of the Internationally renowned Institution – Christian Medical College Vellore and has more than 20 years experience in management of various Gastrointestinal and liver related disorders. He has many national accreditations and has worked at top position at various leading Medical institutes in India.
-                      </p>
+                    
+                      <a  class="common-btn mt-4"
+                      data-bs-toggle="collapse" 
+                      href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"
+                      
+                      >Read more</a>
                    
                 </div>
             </div>
+            <div className='col-md-12 mt-lg-5'>
+            <div className="collapse" id="collapseExample">
+            <p className="common-para mb-4 text-dark">
+                      Other main objective of the foundation is to provide insight about the various GI disorders in simplified way, for better understanding of the disease process and the available modalities of treatment.
+                      </p>
+                      <p className='common-para mb-0 text-dark'>
+                      The chief consultant, Dr. Sanjay Gupta, is an alumnus of the Internationally renowned Institution – Christian Medical College Vellore and has more than 20 years experience in management of various Gastrointestinal and liver related disorders. He has many national accreditations and has worked at top position at various leading Medical institutes in India.
+                      </p>
+                      <p className='common-para mb-0 text-dark'>
+                        Founder and Head of Gastroenterology at SGRR Medical College sept. 2019
+                        to dec.2022
+                      </p>
+                      <p className='common-para mb-0 text-dark'>
+                        Started 1st ever DM course in Gastroenterology in Uttarakhand 
+                        at SGRR Mc Mar2022
+                      </p>
+                      <p className='common-para mb-0 text-dark'>
+                        Head of Gastroenterology at Christian Medical College Ludhiana,Punjab.
+                        2007-09 
+
+                      </p>
+                      <p className='common-para mb-0 text-dark'>
+                        Established Gastroenterology services at MAX Hospital Dehradun 2012-2013
+                      </p>
+                      <p className='common-para mb-0 text-dark'>
+                        Honorary president of Indian Society of Gastroenterology Uttarakhand chapter
+                        2017 
+                      </p>
+                      <p className='common-para mb-0 text-dark'>
+                        Recipient of Brand Icon award by Times of India Group 
+                      </p>
+            </div></div>
            
         </div>
     </div>

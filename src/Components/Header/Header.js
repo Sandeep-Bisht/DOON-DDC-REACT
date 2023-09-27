@@ -42,51 +42,115 @@ const Header = () => {
   // const timeRef = useRef();
   const [timeSlots, setTimeSlots] = useState([]);
 
-  useEffect(()=>{
-    const startTimeMorning = new Date();
-    startTimeMorning.setHours(9, 0, 0); // Set start time for the morning range (9 am)
+  // useEffect(()=>{
+  //   const startTimeMorning = new Date();
+  //   startTimeMorning.setHours(9, 0, 0); // Set start time for the morning range (9 am)
     
-    const endTimeMorning = new Date();
-    endTimeMorning.setHours(13, 0, 0); // Set end time for the morning range (1 pm)
+  //   const endTimeMorning = new Date();
+  //   endTimeMorning.setHours(13, 0, 0); // Set end time for the morning range (1 pm)
     
-    const startTimeAfternoon = new Date();
-    startTimeAfternoon.setHours(14, 0, 0); // Set start time for the afternoon range (2 pm)
+  //   const startTimeAfternoon = new Date();
+  //   startTimeAfternoon.setHours(14, 0, 0); // Set start time for the afternoon range (2 pm)
     
-    const endTimeAfternoon = new Date();
-    endTimeAfternoon.setHours(18, 0, 0); // Set end time for the afternoon range (6 pm)
+  //   const endTimeAfternoon = new Date();
+  //   endTimeAfternoon.setHours(18, 0, 0); // Set end time for the afternoon range (6 pm)
     
-    // Generate morning time slots
-    let currentTime = startTimeMorning;
-    while (currentTime < endTimeMorning) {
-      const timeSlot = currentTime.toLocaleTimeString([], {
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-      });
+  //   // Generate morning time slots
+  //   let currentTime = startTimeMorning;
+  //   while (currentTime < endTimeMorning) {
+  //     const timeSlot = currentTime.toLocaleTimeString([], {
+  //       hour12: false,
+  //       hour: "2-digit",
+  //       minute: "2-digit",
+  //     });
       
+  //     if (!allSlots.includes(timeSlot)) {
+  //       allSlots.push(timeSlot);
+  //     }
+    
+  //     currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+  //   }
+    
+  //   // Generate afternoon time slots
+  //   currentTime = startTimeAfternoon;
+  //   while (currentTime < endTimeAfternoon) {
+  //     const timeSlot = currentTime.toLocaleTimeString([], {
+  //       hour12: false,
+  //       hour: "2-digit",
+  //       minute: "2-digit",
+  //     });
+    
+  //     if (!allSlots.includes(timeSlot)) {
+  //       allSlots.push(timeSlot);
+  //     }
+    
+  //     currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+  //   }
+  // },[])
+
+
+  useEffect(() => {
+    // const allSlots = [];
+  
+    // Get the selected date (replace this with your logic to obtain the selected date)
+    // const selectedDate = new Date(); // Replace this with your selected date logic
+  
+    // Get the current date and time
+    const currentDate = new Date();
+  
+    // Check if the selected date is today
+    const isToday = selectedDate && selectedDate.getDate() === currentDate.getDate() &&
+    selectedDate && selectedDate.getMonth() === currentDate.getMonth() &&
+    selectedDate && selectedDate.getFullYear() === currentDate.getFullYear();
+  
+    // Set the start time based on whether it's today or not
+    let startTime = new Date();
+    if (isToday) {
+      // If today's date is selected, set the start time to the current time
+      startTime.setTime(currentDate.getTime());
+  
+      // Calculate the minutes remaining until the next 15-minute interval
+      const currentMinute = startTime.getMinutes();
+      const minutesRemaining = 60 + (currentMinute % 15);
+  
+      // Adjust the start time by adding the remaining minutes
+      startTime.setMinutes(currentMinute + minutesRemaining);
+    } else {
+      // If it's not today's date, set the start time to 10:30 am
+      startTime.setHours(10, 30, 0);
+    }
+  
+    // Set the end time (8:00 pm for other dates, or 7:45 pm for today)
+    const endTime = new Date();
+    
+      endTime.setHours(19, 45, 0) // Set end time to 8:00 pm for other dates
+    
+  
+    // Align the start time to the nearest 15-minute interval
+    const roundedStartTime = new Date(Math.ceil(startTime.getTime() / (15 * 60000)) * (15 * 60000));
+  
+    let currentTime = roundedStartTime;
+    const interval = 15 * 60000; // 15 minutes in milliseconds
+    while (currentTime < endTime) {
+      const hour = currentTime.getHours();
+      const minute = currentTime.getMinutes();
+      const period = hour >= 12 ? "PM" : "AM";
+      const formattedHour = hour > 12 ? hour - 12 : hour;
+      const timeSlot = `${formattedHour}:${minute < 10 ? "0" : ""}${minute} ${period}`;
+  
       if (!allSlots.includes(timeSlot)) {
         allSlots.push(timeSlot);
       }
-    
-      currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
+  
+      // Add 15 minutes
+      currentTime.setTime(currentTime.getTime() + interval);
     }
-    
-    // Generate afternoon time slots
-    currentTime = startTimeAfternoon;
-    while (currentTime < endTimeAfternoon) {
-      const timeSlot = currentTime.toLocaleTimeString([], {
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-    
-      if (!allSlots.includes(timeSlot)) {
-        allSlots.push(timeSlot);
-      }
-    
-      currentTime = new Date(currentTime.getTime() + 15 * 60000); // Add 15 minutes
-    }
-  },[])
+  
+    // console.log(allSlots);
+  
+  }, []);
+  
+  
 
 
   const appointmentSchema = Yup.object().shape({
@@ -415,10 +479,11 @@ const Header = () => {
                         Patient corner
                          </Link>
                           <ul className="dropdown-menu common-dropdown">
-                             <li><Link className="dropdown-item nav-link" to='/clinical'>Clinical</Link></li>
-                             <li><Link className="dropdown-item nav-link" to='/ongoing-clinical-trial'>Ongoing Clinical Trial</Link></li>
-                             <li><Link className="dropdown-item nav-link" to='/patient-corner' >Blogs</Link></li>
+                          <li><Link className="dropdown-item nav-link" to='/PatientSpeaks' >Our Patient Speaks</Link></li>
+                             <li><Link className="dropdown-item nav-link" to='/clinical'>Clinical Trial</Link></li>
+                             <li><Link className="dropdown-item nav-link" to='/patient-corner-blogs' >Blogs</Link></li>
                              <li><Link className="dropdown-item nav-link" to='/recent-activities'>Recent Activities </Link></li>
+                           
                           </ul>
 
                       </div>
