@@ -24,7 +24,6 @@ const Patient = () => {
   }
 
 const blogDetailsHandler=(item,slug)=>{
-  console.log("check the item inside the blog details function",item)
   
     navigate(`/blog-detail/${slug}`, { state :{ ...item }})
 }
