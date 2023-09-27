@@ -111,7 +111,7 @@ const Header = () => {
   
       // Calculate the minutes remaining until the next 15-minute interval
       const currentMinute = startTime.getMinutes();
-      const minutesRemaining = 15 - (currentMinute % 15);
+      const minutesRemaining = 60 + (currentMinute % 15);
   
       // Adjust the start time by adding the remaining minutes
       startTime.setMinutes(currentMinute + minutesRemaining);
