@@ -45,7 +45,7 @@ const ApplicationRoutes = () => {
             <Route path="/training" element={<Training />} />
             <Route path="/our-services" element={<Services />} />
             <Route path="/service-details" element={< ServiceDetail/>} />
-            <Route path="/blog-detail" element={<BlogDetail/>}/>
+            <Route path="/blog-detail/:blog" element={<BlogDetail/>}/>
             <Route path="*" element={<Error />} />
             <Route path="/dashboard"  element={<Authanticated component= {<AdminDashboard />} /> } >
                 <Route index element={< Dashboard/>} />

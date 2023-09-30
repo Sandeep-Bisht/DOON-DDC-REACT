@@ -42,7 +42,7 @@ const BlogDetail = () => {
             <section className="blog-detail">
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-lg-4 mx-auto">
+                        <div className="col-lg-5 mx-auto">
                             <div className="blog-detail-wrapper">
                                 <div className="blog-detail-pic-box">
                                     <img src={`${url}/${state.featuredImage.path}`} className="img-fluid" alt="" />
@@ -53,7 +53,7 @@ const BlogDetail = () => {
                                     </div>
                                 </div>
                                 </div>
-                                <div className="col-lg-8">
+                                <div className="col-lg-7">
                                 <p className="blog-detail-title">
                                     {state?.title}
                                 </p>
@@ -95,7 +95,7 @@ const BlogDetail = () => {
                                 <span className="bar one"></span>Related Post<span className="bar two"></span></h1>
                         </div>
                     </div>
-                    <div className="row">
+                    {/* <div className="row">
                         <div className="col-lg-12">
                             <div className="related-card">
                                 <div className="row">
@@ -214,7 +214,7 @@ const BlogDetail = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </section>
         </>
