@@ -107,7 +107,6 @@ const ScheduleAppointments = () => {
 
   const handleHoliday = useMutation(
     async (data) => {
-      console.log(data, "check data before api")
 
       const res = await fetch(`${url}/holidayList/mark_holiday`, {
         method: "POST",

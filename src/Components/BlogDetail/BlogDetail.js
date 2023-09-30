@@ -12,7 +12,6 @@ const BlogDetail = () => {
 
     const location = useLocation();
     const state = location.state;
-   console.log(url, 'sajnfkjlsfksaf')
     
   useEffect(()=> {
     if(param.id){
