@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect,useRef,useState } from "react";
 import "../../Css/Contact.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Row, Col } from "react-bootstrap";
@@ -14,20 +14,73 @@ const Contact = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // const contactSchema = Yup.object().shape({
+  //   email: Yup.string().email("Invalid email").required("Email is required"),
+  //   name: Yup.string().required("Name is required"),
+  //   number: Yup.string().required("Number is required"),
+  // });
+
+  // const contactusHandler = useMutation(
+  //   async (data) => {
+     
+  //   },
+  //   {
+  //     onSuccess: (res) => {
+  //       responseMsg.value = res.msg;
+  //       if (res.status === 200) {
+  //       }
+  //     },
+  //     onError: (error) => {
+  //       responseMsg.value = error.msg;
+  //     },
+  //   }
+  // );
+
+  const responseMsg = signal(undefined);
+  
+  const contactForm = useRef();
+  const [contactSuccsess ,setContactSuccsess] = useState(undefined)
+
+
+
   const contactSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
     name: Yup.string().required("Name is required"),
     number: Yup.string().required("Number is required"),
   });
 
-  const contactusHandler = useMutation(
+  const contactUsHandler = useMutation(
     async (data) => {
-     
+      // let url;
+      // const res = await fetch(`${url}/authantication/login`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(data),
+      // });
+      // return await res.json();
+      const apiUrl = 'http://localhost:4000/api/contactUs/';
+
+      fetch(apiUrl, {
+        method: 'POST', // Use 'POST' method to send data
+        headers: {
+          'Content-Type': 'application/json', // Set the content type to JSON
+        },
+        body: JSON.stringify(data), // Convert data to JSON and send it in the request body
+      })
+      
+      console.log("my form values before api hit",data )
     },
     {
       onSuccess: (res) => {
-        responseMsg.value = res.msg;
-        if (res.status === 200) {
+        console.log(res,"check the res for checking")
+        contactForm.current.resetForm();
+        setContactSuccsess("Form Submitted Successfully");
+        
+        if (res.status == 200) {
+        
+        console.log(res, "this is my respinse",responseMsg.value)
         }
       },
       onError: (error) => {
@@ -36,7 +89,9 @@ const Contact = () => {
     }
   );
 
-  const responseMsg = signal(undefined);
+  setTimeout(() => {
+    setContactSuccsess(undefined);
+  }, 3000);
 
 
   return (
@@ -138,6 +193,7 @@ const Contact = () => {
                   <div className="row">
                     <div className="col-md-12 d-flex flex-column">
                     <Formik
+                    innerRef={contactForm}
                   initialValues={{
                     name: "",
                     email: "",
@@ -146,7 +202,7 @@ const Contact = () => {
                   }}
                   validationSchema={contactSchema}
                   onSubmit={(values, { resetForm }) => {
-                    contactusHandler.mutate(values, {
+                    contactUsHandler.mutate(values, {
                       onSuccess: () => {
                         resetForm();
                       },
@@ -213,13 +269,24 @@ const Contact = () => {
                         </div>
                       </Row>
 
-                      <button
+                      {/* <button
                         type="submit"
                         className="common-submit  py-2 px-4 mt-4 border-0"
-                        disabled={contactusHandler.isLoading}
+                        disabled={contactUsHandler.isLoading}
                       >
-                        {contactusHandler.isLoading ? "Loading..." : "Submit"}
+                        {contactUsHandler.isLoading ? "Loading..." : "Submit"}
+                      </button> */}
+                        <button
+                        type="submit"
+                        className="common-submit  py-2 px-4 mt-4 border-0"
+                        disabled={contactUsHandler.isLoading}
+                      >
+                        {contactUsHandler.isLoading ? "Loading..." : "Submit"}
                       </button>
+
+                        <p className="text-white mt-3 ">
+                           {contactSuccsess && contactSuccsess}
+                        </p>
                     </Form>
                   )}
                 </Formik>    

@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect,useRef,useState } from "react";
 import { Link } from "react-router-dom";
 import { BsGlobe } from "react-icons/bs";
 import { GiMedicines } from "react-icons/gi";
@@ -20,12 +20,16 @@ import Images from "../../Util/Images";
 
 const responseMsg = signal(undefined);
 
+
+
 const Homepage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  
+  const contactForm = useRef();
+  const [contactSuccsess ,setContactSuccsess] = useState(undefined)
+
 
 
   const contactSchema = Yup.object().shape({
@@ -45,13 +49,27 @@ const Homepage = () => {
       //   body: JSON.stringify(data),
       // });
       // return await res.json();
+      const apiUrl = 'http://localhost:4000/api/contactUs/';
+
+      fetch(apiUrl, {
+        method: 'POST', // Use 'POST' method to send data
+        headers: {
+          'Content-Type': 'application/json', // Set the content type to JSON
+        },
+        body: JSON.stringify(data), // Convert data to JSON and send it in the request body
+      })
+      
       console.log("my form values before api hit",data )
     },
     {
       onSuccess: (res) => {
-        responseMsg.value = res.msg;
-        if (res.status === 200) {
-        console.log(res, "this is my respinse")
+        console.log(res,"check the res for checking")
+        contactForm.current.resetForm();
+        setContactSuccsess("Form Submitted Successfully");
+        
+        if (res.status == 200) {
+        
+        console.log(res, "this is my respinse",responseMsg.value)
         }
       },
       onError: (error) => {
@@ -59,6 +77,12 @@ const Homepage = () => {
       },
     }
   );
+
+  setTimeout(() => {
+    setContactSuccsess(undefined);
+  }, 3000);
+
+
 
 
   return (
@@ -918,6 +942,7 @@ const Homepage = () => {
               <div className="contact-form-wrapper">
               <div>
                 <Formik
+                innerRef={contactForm}
                   initialValues={{
                     name: "",
                     email: "",
@@ -1002,6 +1027,10 @@ const Homepage = () => {
                       >
                         {contactUsHandler.isLoading ? "Loading..." : "Submit"}
                       </button>
+
+                        <p className="text-white mt-3 ">
+                           {contactSuccsess && contactSuccsess}
+                        </p>
                     </Form>
                   )}
                 </Formik>
