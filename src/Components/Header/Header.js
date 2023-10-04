@@ -470,7 +470,7 @@ const Header = () => {
                       <div className="dropdown">
                         <Link
                         to="/patient-corner"
-                        onClick={() => setActiveLink("/patient-corner")}
+                        // onClick={() => setActiveLink("/patient-corner")}
                         className={`nav-link dropdown-toggle ${
                           activeLink === "/patient-corner" ? "current" : ""
                         }`}

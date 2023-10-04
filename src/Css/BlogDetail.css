@@ -35,6 +35,7 @@
     margin-bottom: 3px;
     margin-top: 15px;
     font-weight: 600;
+    font-size: 20px;
 }
 .blog-detail-wrapper .blog-detail-pic-box .blog-pic-date
 {
@@ -48,8 +49,9 @@
     font-weight: 700;
 }
 
+
 .blog-detail-title{
-    font-size: 30px;
+    font-size: 26px!important;
     font-weight: 600;
     margin-top: 20px;
 }

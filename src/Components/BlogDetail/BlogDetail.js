@@ -3,23 +3,28 @@ import "../../Css/Common.css";
 import "../../Css/BlogDetail.css";
 import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
-import Images from '../../Util/Images'
 import { url } from "../../Util/url";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+// import stripTags from 'strip-tags';
 
 const BlogDetail = () => {
     const param = useParams()
 
     const location = useLocation();
     const state = location.state;
+    const [blogDetails, setBlogDetails] = useState();
+    const [blogImage, setBlogImage] = useState()
+    
 
     useEffect(() => {
-        if (param.id) {
-            getBlogDetailBySlug(param.id);
+        console.log("check kr", param)
+        if (param.blog) {
+            getBlogDetailBySlug(param.blog);
         }
     }, [])
 
     const getBlogDetailBySlug = async (slug) => {
+        console.log("inside get all blog", slug)
         // let url = "http://localhost:4000/api/blog/get_blog_by_slug";
         let url = "http://185.239.209.106:4800/api/blog/get_blog_by_slug";
 
@@ -30,12 +35,22 @@ const BlogDetail = () => {
             let response = await axios.post(url, payload);
             if (response) {
                 console.log(response, "api responseeeeee")
+                // Parse the 'featuredImage' string into a JavaScript object
+const blogDetail =  JSON.parse(response.data.featuredImage);
+setBlogImage(blogDetail)
+                setBlogDetails(response.data)
             }
 
         } catch (error) {
             console.log("error", error)
         }
     }
+    const stripHtmlTags = (content)=>{
+        const doc = new DOMParser().parseFromString(content, "text/html")
+        return doc.body.textContent || "";
+    }
+
+    console.log("blogImage blogImage",blogImage)
 
     return (
         <>
@@ -43,14 +58,15 @@ const BlogDetail = () => {
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="row">
-                            <div className="col-lg-9">
+                            <div className="col-lg-10 mx-auto">
                                 <div className="blog-left-wrapper">
                                 <div className="row">
                                 <div className="col-lg-12 ">
                                     <div className="blog-detail-wrapper">
                                         <div className="blog-detail-pic-box">
-                                            <img src={`${url}/${state.featuredImage.path}`} className="img-fluid" alt="" />
-                                            <p className="blog-pic-name">{state.title}</p>
+                                        <p className="blog-pic-name">{blogDetails?.title}</p>
+                                            <img src={`${url}/${blogImage?.path}`} className="img-fluid" alt="" />
+                                            
                                             <p className="blog-pic-date">
                                                 {/* July 2, 2020 */}
                                             </p>
@@ -58,11 +74,11 @@ const BlogDetail = () => {
                                     </div>
                                 </div>
                                 <div className="col-lg-12 mt-lg-5">
-                                    <p className="blog-detail-title">
-                                        {state?.title}
+                                    <p className="blog-detail-title blog-sub-heading">
+                                        {blogDetails?.title}
                                     </p>
                                     <p className="blog-pic-date">
-                                        September 23, 2023
+                                       {blogDetails?.description}
                                     </p>
                                     {/* <p className="blog-detail-subtitle">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                     there live the blind texts.</p>
@@ -84,25 +100,23 @@ const BlogDetail = () => {
                                     When she reached th
                                     e first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p> */}
 
-                                    <p className="my-2">{state.content}</p>
-                                    <p className="my-2"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                    <p className="my-2"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <p className="my-2">{stripHtmlTags(blogDetails?.content)}</p>
 
                                 </div>
                                 </div></div>
                                
                             </div>
-                            <div className="col-lg-3">
-                                <div class="blog-right-wrapper">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="search-box">
-                                                <div class="search-box-wrapper">
-                                                    <div class="input-group mb-3">
-                                                        <input type="text" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
-                                                            <div class="input-group-append">
-                                                                <button class="btn search-btn" type="button">
-                                                                    <svg class="svg-inline--fa fa-search fa-w-16" 
+                            <div className="col-lg-3 d-none">
+                                <div className="blog-right-wrapper d-none">
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <div className="search-box">
+                                                <div className="search-box-wrapper">
+                                                    <div className="input-group mb-3">
+                                                        <input type="text" className="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+                                                            <div className="input-group-append">
+                                                                <button className="btn search-btn" type="button">
+                                                                    <svg className="svg-inline--fa fa-search fa-w-16" 
                                                                     aria-hidden="true" focusable="false" data-prefix="far" 
                                                                     data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" 
                                                                     viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" 
@@ -113,10 +127,10 @@ const BlogDetail = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
-                                            <p class="blog-right-wrapper-heading">Recent Posts</p>
-                                            <div class="recent-post-box">
-                                                <p class="border-0">
+                                        <div className="col-md-12">
+                                            <p className="blog-right-wrapper-heading">Recent Posts</p>
+                                            <div className="recent-post-box">
+                                                <p className="border-0">
                                                     <a href="#">Company Launches New Software Channel</a>
                                                 </p>
                                                 <p><a href="#">Paves The way for an eventual merger</a></p>
@@ -124,7 +138,7 @@ const BlogDetail = () => {
                                                 <p><a href="#">Retail banks wake up to digital lending</a></p>
                                                 <p><a href="#">design breakthrough updates products</a></p>
                                             </div>
-                                            <div class="separator"></div>
+                                            <div className="separator"></div>
                                         </div>
                                        
                                      
