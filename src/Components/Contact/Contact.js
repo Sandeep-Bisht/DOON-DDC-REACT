@@ -70,17 +70,14 @@ const Contact = () => {
         body: JSON.stringify(data), // Convert data to JSON and send it in the request body
       })
       
-      console.log("my form values before api hit",data )
     },
     {
       onSuccess: (res) => {
-        console.log(res,"check the res for checking")
         contactForm.current.resetForm();
         setContactSuccsess("Form Submitted Successfully");
         
         if (res.status == 200) {
         
-        console.log(res, "this is my respinse",responseMsg.value)
         }
       },
       onError: (error) => {

@@ -17,14 +17,12 @@ const BlogDetail = () => {
     
 
     useEffect(() => {
-        console.log("check kr", param)
         if (param.blog) {
             getBlogDetailBySlug(param.blog);
         }
     }, [])
 
     const getBlogDetailBySlug = async (slug) => {
-        console.log("inside get all blog", slug)
         // let url = "http://localhost:4000/api/blog/get_blog_by_slug";
         let url = "http://185.239.209.106:4800/api/blog/get_blog_by_slug";
 
@@ -34,7 +32,6 @@ const BlogDetail = () => {
         try {
             let response = await axios.post(url, payload);
             if (response) {
-                console.log(response, "api responseeeeee")
                 // Parse the 'featuredImage' string into a JavaScript object
 const blogDetail =  JSON.parse(response.data.featuredImage);
 setBlogImage(blogDetail)
@@ -50,7 +47,6 @@ setBlogImage(blogDetail)
         return doc.body.textContent || "";
     }
 
-    console.log("blogImage blogImage",blogImage)
 
     return (
         <>
